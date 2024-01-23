@@ -1,5 +1,5 @@
 <?php
-define('BASEURL', 'http://localhost/sipeta/public');
+define('BASEURL', 'http://localhost/sistem-pengecekan-tugas-praktikum/public');
 
 //DB
 
