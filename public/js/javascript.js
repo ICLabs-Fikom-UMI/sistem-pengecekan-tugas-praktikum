@@ -19,8 +19,6 @@ function toggleSidebar() {
 }
 
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
     var profileDropdown = document.getElementById('profileDropdown');
     
@@ -42,3 +40,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+function openTambahModal() {
+    document.getElementById('tambahModal').style.display = 'block';
+}
+
+function closeTambahModal() {
+    document.getElementById('tambahModal').style.display = 'none';
+}
+
+// Tutup modal jika mengklik di luar area modal
+window.onclick = function(event) {
+    var tambahModal = document.getElementById('tambahModal');
+    if (event.target == tambahModal) {
+        tambahModal.style.display = 'none';
+    }
+}
+
+// Menambahkan event listener untuk form
+document.getElementById('tambahForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Mencegah submit otomatis
+    // Proses formulir atau kirim data menggunakan AJAX
+    closeTambahModal(); // Menutup modal setelah submit
+});
+
+

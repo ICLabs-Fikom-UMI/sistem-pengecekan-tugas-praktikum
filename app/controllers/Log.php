@@ -12,7 +12,7 @@ class Log extends Controller {
         $password = $_POST['password']; 
         // $role = $_POST['role'];   
         
-        $data['login'] = $this->model("Login_model")->getUser($username, $password);
+        // $data['login'] = $this->model("Login_model")->getUser($username, $password);
         
         session_start();
         if ($data['login'] == NULL) {

@@ -6,7 +6,7 @@
                 <i class="fa fa-table-columns"></i> 
                 Dasboard
             </a>
-            <a href="<?= BASEURL; ?>/Matakuliah">
+            <a href="<?= BASEURL; ?>/matakuliah">
                 <i class="fa fa-folder"></i> 
                 Matakuliah
             </a>

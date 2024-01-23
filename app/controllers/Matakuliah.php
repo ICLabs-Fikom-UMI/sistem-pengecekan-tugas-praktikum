@@ -3,7 +3,11 @@
 class Matakuliah extends Controller {
     public function index(){
         $data['judul'] = 'Mata Kuliah';
-        $data['matkul'] = $this->model('Matakuliah_model')->getAllMatakuliah(); // Perbaikan di sini
+        try {
+        $data['matakuliah'] = $this->model('Matakuliah_model')->getAllMatakuliah(); 
+        } catch (\Throwable $th) {
+            echo $th;
+        }
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('matakuliah/index', $data);
