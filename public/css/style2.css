@@ -218,11 +218,12 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    
 }
 
 th, td {
     padding: 10px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
@@ -290,7 +291,7 @@ select {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #51A8B1;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -299,7 +300,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #51A8B1;
 }
 
 

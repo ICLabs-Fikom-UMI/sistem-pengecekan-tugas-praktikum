@@ -66,3 +66,20 @@ document.getElementById('tambahForm').addEventListener('submit', function(event)
 });
 
 
+function submitForm() {
+    var formData = new FormData(document.getElementById('tambahForm'));
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.responseText);
+            closeTambahModal();
+            // Reload halaman atau tindakan lain jika diperlukan
+        }
+    };
+
+    xhr.open('POST', '<?= BASEURL; ?>/Matakuliah/add', true);
+    xhr.send(formData);
+}
+
+
