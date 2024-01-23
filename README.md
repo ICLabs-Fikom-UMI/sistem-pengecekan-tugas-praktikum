@@ -2,8 +2,43 @@
 > [!NOTE]
 > NURUL AZMI 13020210066
 
+### Deskripsi Aplikasi
+#### Masalah Umum:
+1. **Ketidakjelasan Status Pengumpulan Tugas:**
+   - Praktikan merasa tugas sudah dikumpulkan, tetapi asisten tidak memiliki informasi yang jelas terkait pengumpulan tersebut.
+   - Kejadian ini seringkali menimbulkan ketidakpastian dan pertentangan antara praktikan dan asisten.
 
-Sistem ini dibuat guna untuk mempermudah komunikasi antara praktikan dan asisten. Dimana sebelumnya masalah yang sering terjadi yaitu praktikan merasa sudah mengumpulkan tugasnya tetapi tugas tersebut belum berada ditangan asisten, sehingga terjadi pertentangan antara keduanya. Oleh karena itu dengan adanya aplikasi ini, saya harap tugas praktikum yang dikumpulkan oleh praktikan dan sudah di terima, asisten dapat mengimputkannya ke dalam sistem ini sehingga praktikan juga dapat melihat rekapan tugas-tugas mereka yang diterima ataupun perlu revisi.
+#### Tujuan Aplikasi:
+1. **Mempermudah Komunikasi:**
+   - Menciptakan platform yang memfasilitasi komunikasi antara praktikan dan asisten praktikum.
+   - Meminimalkan ketidakjelasan terkait status tugas yang sudah dikumpulkan.
+
+2. **Rekapan Tugas:**
+   - Memungkinkan praktikan melihat rekapan tugas yang sudah mereka kumpulkan dan diterima oleh asisten.
+   - Memberikan visibilitas terhadap status tugas, baik yang sudah diterima maupun yang memerlukan revisi.
+
+3. **Input Tugas oleh Asisten:**
+   - Memberikan kemudahan bagi asisten untuk mengimput tugas yang sudah diterima ke dalam sistem.
+   - Memastikan bahwa data terkait tugas praktikum tersedia secara akurat dan up-to-date di dalam aplikasi.
+
+4. **Pencegahan Pertentangan:**
+   - Mengurangi kemungkinan konflik antara praktikan dan asisten dengan memberikan transparansi terhadap status tugas.
+   - Membantu mengatasi ketidaksepahaman yang mungkin muncul terkait pengumpulan dan penerimaan tugas.
+
+5. **Notifikasi:**
+   - Memberikan notifikasi kepada praktikan ketika tugas mereka sudah diimput oleh asisten.
+   - Meningkatkan komunikasi instan dan memastikan praktikan mendapatkan informasi terbaru.
+
+6. **Histori Rekaman:**
+   - Menyimpan riwayat tugas praktikan untuk referensi masa depan.
+   - Memudahkan asisten dan praktikan untuk melacak perkembangan dan pengumpulan tugas dari waktu ke waktu.
+
+Dengan mencapai tujuan-tujuan tersebut, diharapkan aplikasi dapat memberikan solusi efektif terhadap masalah umum yang dihadapi dalam proses praktikum, serta meningkatkan transparansi dan efisiensi dalam manajemen tugas praktikan.
+
+#### Teknologi Yang Digunakan
+- PHP
+- HTML
+- CSS
 
 ### Fitur MVP Aplikasi
 - Login (All User)
@@ -22,8 +57,6 @@ Sistem ini dibuat guna untuk mempermudah komunikasi antara praktikan dan asisten
 - view hasil pengecekan tugas (praktikan)
 - Edit Profile Praktikan (admin dan praktikan)
 - Ganti password (praktikan)
-
-
 
 
 ### Penjelasan Mengenai Arsitektur MVC
