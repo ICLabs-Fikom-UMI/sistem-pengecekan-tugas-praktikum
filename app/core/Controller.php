@@ -3,12 +3,12 @@
 class Controller {
     public function __construct(){
         $this->db = new Database();
-        // session_start();
+        session_start();
     }
 
     public function view($view, $data = [])
     {
-        if(!isset($_SESSION['nama'])){
+        if(!isset($_SESSION['id_user'])){
             require_once '../app/views/login/index.php';
         } else {
             require_once '../app/views/' . $view . '.php';

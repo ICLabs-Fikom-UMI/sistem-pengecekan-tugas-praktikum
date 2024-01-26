@@ -32,7 +32,7 @@
                 <div class="dropdown-content">
                     <a href="#">Profile</a>
                     <a href="#">Ganti Password</a>
-                    <a href="#">Logout</a>
+                    <a href="<?= BASEURL; ?>/log/logout">Logout</a>
                 </div>
                 <div class="arrow"></div>
             </div>

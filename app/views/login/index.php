@@ -25,7 +25,7 @@
 
             <div class="container2">
                 <h2>Login</h2>
-                <form action="<?= BASEURL ?>/Log/login" method="post">
+                <form action="<?= BASEURL ?>/Log/login" method="post" autocomplete="off">
                     <div class="input-group">
                         <input type="text" id="username" name="username" required placeholder="Username">
                     </div>
