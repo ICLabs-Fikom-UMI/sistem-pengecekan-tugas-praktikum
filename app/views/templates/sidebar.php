@@ -18,11 +18,11 @@
                 <i class="fa fa-user-group"></i> 
                 Asisten
             </a>
-            <a href="<?= BASEURL; ?>">
+            <a href="<?= BASEURL; ?>/frekuensi">
                 <i class="fa fa-code-branch"></i>
                 Frekuensi
             </a>
-            <a href="<?= BASEURL; ?>">
+            <a href="<?= BASEURL; ?>/praktikan">
                 <i class="fa fa-graduation-cap"></i></i>
                 Praktikan
             </a>

@@ -1,66 +1,41 @@
 <div class="content">
-    <h2>Frekuensi</h2>
-    <div class="crud-frekuensi">
+    <h2>Praktikan</h2>
+    <div class="crud-praktikan">
         <a href="#" class="crud tambah-crud" onclick="openTambahModal()">Tambah <i class="fa fa-folder-plus"></i></a>
     </div>
     <table>
         <thead>
             <tr>
-                <th>Nama Frekuensi</th>
+                <th>NIM</th>
+                <th>Nama Praktikan</th>
                 <th>Kelas</th>
-                <th>Matakuliah</th>
-                <th>Dosen Pengampuh</th>  
-                <th>Asisten 1</th>  
-                <th>Asisten 2</th>  
-                <th>Edit</th>
-                <th>Hapus</th>                  
+                <th>Frekuensi</th> 
+                <th>Edit</th>  
+                <th>Hapus</th>                
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($data['frekuensi'] as $frekuensi): ?>
+            <?php foreach ($data['praktikan'] as $praktikan): ?>
                 <tr>
-                    <td><?= $frekuensi['nama_frekuensi']; ?></td>
+                    <td><?= $praktikan['nim_praktikan']; ?></td>
+                    <td><?= $praktikan['nama_praktikan']; ?></td>
                     <td>
                         <?php
-                        // Ambil kelas dari tabel mst_dosen berdasarkan id_dosen
-                        $dosen = $this->model('Frekuensi_model')->getDosenById($frekuensi['id_dosen']);
+                        $dosen = $this->model('Praktikan_model')->getKelasById($praktikan['id_dosen']);
                         echo $dosen['kelas'];
                         ?>
                     </td>
                     <td>
                         <?php
-                        // Ambil matakuliah dari tabel mst_dosen berdasarkan id_dosen
-                        // $id_matkul = $frekuensi['id_matkul'];
-                        $dosen = $this->model('Frekuensi_model')->getDosenById($frekuensi['id_dosen']);
-                        echo $dosen['nama_matkul'];
-                        ?>
-                    </td>
-                    <td>
-                        <?php
                         // Ambil kelas dari tabel mst_dosen berdasarkan id_dosen
-                        $dosen = $this->model('Frekuensi_model')->getDosenById($frekuensi['id_dosen']);
-                        echo $dosen['nama_dosen'];
+                        $dosen = $this->model('Praktikan_model')->getFrekuensiById($praktikan['id_frekuensi']);
+                        echo $dosen['nama_frekuensi'];
                         ?>
-                    </td>
-                    <td>
-                        <?php
-                        // Ambil kelas dari tabel mst_dosen berdasarkan id_dosen
-                        $dosen = $this->model('Frekuensi_model')->getAsistenById($frekuensi['id_asisten']);
-                        echo $dosen['nama_asisten'];
-                        ?>
-                    </td>
-                    <td>
-                        <?php
-                        // Ambil kelas dari tabel mst_dosen berdasarkan id_dosen
-                        $dosen = $this->model('Frekuensi_model')->getAsistenById($frekuensi['id_asisten']);
-                        echo $dosen['nama_asisten'];
-                        ?>
-                    </td>
-                            
+                    </td>                      
                     
                     <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
-                    <td><a href="<?= BASEURL; ?>/frekuesni/edit/<?= $frekuensi['id_frekuensi']; ?>"><i class="fa fa-pencil"></i> </a></td>
-                    <td><a href="<?= BASEURL; ?>/frekuensi/hapus/<?= $frekuensi['id_frekuensi']; ?>" onclick="return confirm('Anda yakin ingin menghapus?');"><i class="fa fa-trash-can"></i></a></td>
+                    <td><a href="<?= BASEURL; ?>/praktikan/edit/<?= $frekuensi['id_praktikan']; ?>"><i class="fa fa-pencil"></i> </a></td>
+                    <td><a href="<?= BASEURL; ?>/praktikan/hapus/<?= $frekuensi['id_praktikan']; ?>" onclick="return confirm('Anda yakin ingin menghapus?');"><i class="fa fa-trash-can"></i></a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

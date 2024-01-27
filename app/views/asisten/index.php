@@ -19,8 +19,9 @@
         <tr>
             <td><?= $asisten['nim_asisten']; ?></td>
             <td><?= $asisten['nama_asisten']; ?></td>
-            <td><?= $asisten['prodi']; ?></td>
             <td><?= $asisten['kelas']; ?></td>
+            <td><?= $asisten['prodi']; ?></td>
+            
             <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
             <td><a href="<?= BASEURL; ?>/asisten/edit/<?= $asisten['id_asisten']; ?>"><i class="fa fa-pencil"></i></a></td>
             <td><a href="<?= BASEURL; ?>/asisten/hapus/<?= $asisten['id_asisten']; ?>" onclick="return confirm('Anda yakin ingin menghapus?');"><i class="fa fa-trash-can"></i></a></td>

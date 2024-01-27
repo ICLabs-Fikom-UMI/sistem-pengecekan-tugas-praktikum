@@ -17,13 +17,12 @@ class Frekuensi extends Controller {
     public function add(){
         try {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $Nama_asisten = $_POST['nama_frekuensi'];
-                $kelas = $_POST['kelas'];
+                $Nama_frekuensi = $_POST['nama_frekuensi'];
                 $id_dosen = $_POST['id_dosen'];
-                $id_asisten = $_POST['id_matkul'];
+                $id_asisten = $_POST['id_asisten'];
     
-                $dosen_model = $this->model('Frekuensi_model');
-                $dosen_model->addFrekuensi($Nama_asisten, $kelas, $id_dosen, $id_asisten);
+                $frekuensi_model = $this->model('Frekuensi_model');
+                $frekuensi_model->addFrekuensi($Nama_frekuensi, $id_dosen, $id_asisten);
                 echo "Berhasil Mengimputkan Data";
                 
             } else {
