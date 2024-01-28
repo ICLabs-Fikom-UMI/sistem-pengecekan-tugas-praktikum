@@ -45,40 +45,26 @@
     <div id="tambahModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeTambahModal()">&times;</span>
-            <h2>Tambah Frekuensi</h2>
-            <form id="tambahForm" action="<?= BASEURL; ?>/Frekuensi/add" method="POST">
+            <h2>Tambah Praktikan</h2>
+            <form id="tambahForm" action="<?= BASEURL; ?>/Praktikan/add" method="POST">
                 
-                <label for="inputNamaFrekuensi">Nama Frekuensi :</label>
+                <label for="inputNimPraktikan">NIM Praktikan :</label>
                 <!-- <input type="text" id="inputNipDosen" name="nip_dosen" required placeholder="Masukkan NIP Dosen"> -->
-                <input type="text" id="inputNamaFrekuensi" name="nama_frekuensi" required placeholder="Masukkan Nama Frekuensi">
+                <input type="text" id="inputNimPraktikan" name="nim_praktikan" required placeholder="Masukkan NIM Praktikan">
+                <label for="inputNamaPraktikan">Nama Praktikan :</label>
+                <!-- <input type="text" id="inputNipDosen" name="nip_dosen" required placeholder="Masukkan NIP Dosen"> -->
+                <input type="text" id="inputNamaPraktikan" name="nama_praktikan" required placeholder="Masukkan Nama Praktikan">
 
-                <label for="inputDosenPengampuh">Dosen Pengampuh :</label>
-                <select id="inputDosenPengampuh" name="id_dosen">
+                <label for="inputFrekuensi">Frekuensi :</label>
+                <select id="inputFrekuensi" name="id_frekuensi">
                 <option value="" disabled selected>Pilih</option>
-                <?php $dosenpengampuh = $this->model('Dosen_model')->getAllDosen(); ?>
-                    <?php foreach ($dosenpengampuh as $dosen): ?>
-                        <option value="<?= $dosen['id_dosen']; ?>"><?= $dosen['nama_dosen']; ?> (<?= $dosen['nama_matkul'];?> (<?= $dosen['kelas'];?>))</option>
+                <?php $frekuensi = $this->model('Frekuensi_model')->getAllFrekuensi(); ?>
+                    <?php foreach ($frekuensi as $frek): ?>
+                        <option value="<?= $frek['id_frekuensi']; ?>"><?= $frek['nama_frekuensi']; ?></option>
 
                     <?php endforeach; ?>
                 </select>
-                <label for="inputNamaAsisten1">Asisten 1 :</label>
-                <select id="inputNamaAsisten1" name="id_asisten">
-                <option value="" disabled selected>Pilih</option>
-                <?php $asistenlab = $this->model('Asisten_model')->getAllAsisten(); ?>
-                    <?php foreach ($asistenlab as $asisten): ?>
-                        <option value="<?= $asisten['id_asisten']; ?>"><?= $asisten['nama_asisten']; ?> </option>
 
-                    <?php endforeach; ?>
-                </select>
-                <label for="inputNamaAsisten2">Asisten 2 :</label>
-                <select id="inputNamaAsisten2" name="id_asisten">
-                <option value="" disabled selected>Pilih</option>
-                <?php $asistenlab = $this->model('Asisten_model')->getAllAsisten(); ?>
-                    <?php foreach ($asistenlab as $asisten): ?>
-                        <option value="<?= $asisten['id_asisten']; ?>"><?= $asisten['nama_asisten']; ?> </option>
-
-                    <?php endforeach; ?>
-                </select>
 
                 <button onclick="submitFormById('tambahForm')">Submit</button>
                 <button type="button" class="btn" onclick="closeTambahModal()">Batal</button>
