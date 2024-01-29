@@ -63,17 +63,6 @@ class Frekuensi_model {
         }
     } 
 
-    // public function getDosenById($id_dosen) {
-    //     try {
-    //         $this->db->query("SELECT * FROM mst_dosen WHERE id_dosen = :id_dosen");
-    //         $this->db->bind(':id_dosen', $id_dosen);
-    //         return $this->db->single();
-    //     } catch (\Throwable $th) {
-    //         // Handle error jika perlu
-    //         echo 'Error: ' . $th->getMessage();
-    //     }
-    // } 
-
     public function getDosenById($id_dosen) {
         try {
             $this->db->query("SELECT mst_dosen.*, mst_matkul.nama_matkul 

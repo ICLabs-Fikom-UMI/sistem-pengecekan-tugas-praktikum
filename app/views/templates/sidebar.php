@@ -28,8 +28,9 @@
             </a>
             <a href="<?= BASEURL; ?>">
                 <i class="fa fa-file"></i>
-                Tugas Praktikum
+                Tugas Lengkap
             </a>
+
             <a href="<?= BASEURL; ?>">
                 <i class="fa fa-users"></i>
                 Pengguna
