@@ -13,23 +13,33 @@ class Praktikan_model {
             $this->db->query('SELECT mst_praktikan.*, mst_user.*, trx_frekuensi.* FROM  mst_praktikan 
             LEFT JOIN mst_user ON mst_praktikan.id_user = mst_user.id_user
             LEFT JOIN trx_frekuensi ON mst_praktikan.id_frekuensi = trx_frekuensi.id_frekuensi');
-
             return $this->db->resultSet();
         } catch (\Throwable $th) {
             echo 'Error: ' . $th->getMessage();
         }
     }
 
-    public function addPraktikan($nim_praktikan, $nama_praktikan, $jenis_kelamin, $prodi, $email, $no_hp, $id_user, $id_frekuensi){
+//     public function getAllPraktikan()
+// {
+//     try {
+//         $this->db->query('SELECT mst_praktikan.*, mst_user.*, trx_frekuensi.nama_frekuensi 
+//                           FROM  mst_praktikan 
+//                           LEFT JOIN mst_user ON mst_praktikan.id_user = mst_user.id_user
+//                           LEFT JOIN trx_frekuensi ON mst_praktikan.id_praktikan = trx_frekuensi.id_praktikan');
+//         return $this->db->resultSet();
+//     } catch (\Throwable $th) {
+//         echo 'Error: ' . $th->getMessage();
+//     }
+// }
+
+
+
+    public function addPraktikan($nim_praktikan, $nama_praktikan,$id_user, $id_frekuensi){
         try {
-            $this->db->query("INSERT INTO $this->table (nim_praktikan, nama_praktikan, jenis_kelamin, prodi, email, no_hp, id_user, id_frekuensi) VALUES (:nim_praktikan, :nama_praktikan, :jenis_kelamin, :prodi, : email, :no_hp, :id_user, : id_frekuensi)");
+            // $this->db->query("INSERT INTO $this->table (nim_praktikan, nama_praktikan, id_user, id_frekuensi) VALUES (:nim_praktikan, :nama_praktikan, :id_user, : id_frekuensi)");
+            $this->db->query("CALL tambah_praktikan(:nim_praktikan, :nama_praktikan, :id_frekuensi)");
             $this->db->bind(':nim_praktikan', $nim_praktikan);
             $this->db->bind(':nama_praktikan', $nama_praktikan);
-            $this->db->bind(':jenis_kelamin', $jenis_kelamin);
-            $this->db->bind(':prodi', $prodi);
-            $this->db->bind(':email', $email);
-            $this->db->bind(':no_hp', $no_hp);
-            $this->db->bind(':id_user', $id_user);
             $this->db->bind(':id_frekuensi', $id_frekuensi);
     
             $this->db->execute();
@@ -50,15 +60,6 @@ class Praktikan_model {
             echo 'Error: ' . $th->getMessage();
         }
     }
-
-        // public function getAllDosen(){
-        //     try {
-        //         $this->db->query('SELECT mst_dosen.*, mst_matkul.nama_matkul FROM mst_dosen LEFT JOIN mst_matkul ON mst_dosen.id_matkul = mst_matkul.id_matkul');
-        //         return $this->db->resultSet();
-        //     } catch (\Throwable $th) {
-        //         echo 'Error: ' . $th->getMessage();
-        //     }
-        // }
     
         public function getMatkulById($id_matkul) {
             try {

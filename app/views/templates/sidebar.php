@@ -26,12 +26,19 @@
                 <i class="fa fa-graduation-cap"></i></i>
                 Praktikan
             </a>
+            <a href="<?= BASEURL; ?>/tugas">
+                <i class="fa fa-file"></i>
+                Tugas
+            </a>
+            <a href="<?= BASEURL; ?>">
+                <i class="fa fa-file"></i>
+                Pengecekan
+            </a>
             <a href="<?= BASEURL; ?>">
                 <i class="fa fa-file"></i>
                 Tugas Lengkap
             </a>
-
-            <a href="<?= BASEURL; ?>">
+            <a href="<?= BASEURL; ?>/pengguna">
                 <i class="fa fa-users"></i>
                 Pengguna
             </a>

@@ -43,15 +43,6 @@ class Dosen_model {
             echo 'Error: ' . $th->getMessage();
         }
     }
-
-        // public function getAllDosen(){
-        //     try {
-        //         $this->db->query('SELECT mst_dosen.*, mst_matkul.nama_matkul FROM mst_dosen LEFT JOIN mst_matkul ON mst_dosen.id_matkul = mst_matkul.id_matkul');
-        //         return $this->db->resultSet();
-        //     } catch (\Throwable $th) {
-        //         echo 'Error: ' . $th->getMessage();
-        //     }
-        // }
     
         public function getMatkulById($id_matkul) {
             try {

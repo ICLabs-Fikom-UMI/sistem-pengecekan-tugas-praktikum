@@ -13,7 +13,8 @@ class Frekuensi_model {
             $this->db->query('SELECT trx_frekuensi.*, mst_dosen.*, mst_asisten.*, mst_matkul.nama_matkul
                     FROM trx_frekuensi
                     LEFT JOIN mst_dosen ON trx_frekuensi.id_dosen = mst_dosen.id_dosen
-                    LEFT JOIN mst_asisten ON trx_frekuensi.id_asisten = mst_asisten.id_asisten
+                    LEFT JOIN mst_asisten ON trx_frekuensi.id_asisten1 = mst_asisten.id_asisten
+                   
                     LEFT JOIN mst_matkul ON mst_dosen.id_matkul = mst_matkul.id_matkul
                     ');
             // $this->db->query('SELECT 

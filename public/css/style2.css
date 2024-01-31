@@ -304,7 +304,16 @@ button:hover {
     background-color: #51A8B1;
 }
 
+/* TAMBAH TUGAS */
+.matkul {
+    display: flex; /* Mengubah display menjadi flex */
+    flex-direction: column; /* Menetapkan flex direction menjadi column */
+    align-items: flex-start;
+}
 
+.matkul label {
+    margin-bottom: 5px; /* Menambahkan margin bottom agar ada ruang antara label dan input */
+}
 
 /* Responsive styles */
 @media screen and (max-width: 768px) {

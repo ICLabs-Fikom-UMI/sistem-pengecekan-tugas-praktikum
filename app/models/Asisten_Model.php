@@ -20,7 +20,8 @@ class Asisten_model {
 
     public function addAsisten($nim_asisten, $nama_asisten,$kelas, $prodi){
         try {
-            $this->db->query("INSERT INTO $this->table (nim_asisten, nama_asisten, kelas, prodi) VALUES (:nim_asisten, :nama_asisten, :kelas, :prodi)");
+            // $this->db->query("INSERT INTO $this->table (nim_asisten, nama_asisten, kelas, prodi) VALUES (:nim_asisten, :nama_asisten, :kelas, :prodi)");
+            $this->db->query("CALL tambah_asisten(:nim_asisten, :nama_asisten, :kelas, :prodi)");
             $this->db->bind(':nim_asisten', $nim_asisten);
             $this->db->bind(':nama_asisten', $nama_asisten);
             $this->db->bind(':kelas', $kelas);
@@ -32,7 +33,7 @@ class Asisten_model {
             echo 'Error: ' . $th->getMessage();
         }
     }
-   
+    
 
     public function getAsistenById($id_asisten) {
         try {
@@ -43,8 +44,7 @@ class Asisten_model {
             // Handle error jika perlu
             echo 'Error: ' . $th->getMessage();
         }
-    }
-         
+    }      
     
 }
 

@@ -102,6 +102,37 @@ a {
     font-size: 13px;
 }
 
+
+
+/*  DETAIL TUGAS */
+.detail {
+    max-width: 600px; /* Atur lebar maksimum detail sesuai kebutuhan Anda */
+    text-align: left; /* Pusatkan teks ke kiri */
+    padding-left: 30px; /* Berikan ruang di sekitar detail */
+}
+
+.buttons {
+    max-width: 600px; /* Atur lebar maksimum detail sesuai kebutuhan Anda */
+    text-align: left; /* Pusatkan teks ke kiri */
+    padding-left: 30px; /* Berikan ruang di sekitar detail */
+}
+
+.kembali {
+    display: inline-block;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #51A8B1;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.kembali:hover {
+    background-color: #0056b3;
+}
+
 @media screen and (max-width: 600px) {
     .container {
         width: 90%;
