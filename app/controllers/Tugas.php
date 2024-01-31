@@ -41,19 +41,6 @@ class Tugas extends Controller {
         $this->view('templates/footer');
 
     }
-
-    public function pengecekan($id_tugas) {
-        // Panggil model untuk mendapatkan detail tugas berdasarkan ID
-        $data['detailTugas'] = $this->model('Tugas_model')->getPengecekan($id_tugas);
-    
-        // Tampilkan tampilan detail tugas dengan data yang diteruskan
-
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('tugas/pengecekan', $data);
-        $this->view('templates/footer');
-
-    }
     
     public function add(){
         try {

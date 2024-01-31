@@ -1,6 +1,6 @@
 <?php
 
-class Tugas_model {
+class Pengecekan_model {
     private $table = "trx_tugas";
     private $db;
 
@@ -8,11 +8,18 @@ class Tugas_model {
         $this->db = new Database;
     }
 
-    public function getAllTugas(){
+    public function getAllPengecekan(){
         try {
-            $this->db->query('SELECT trx_tugas.*, trx_frekuensi.nama_frekuensi 
-                  FROM trx_tugas 
-                  LEFT JOIN trx_frekuensi ON trx_tugas.id_frekuensi = trx_frekuensi.id_frekuensi');
+            $this->db->query('SELECT 
+        trx_tugas.*, 
+        trx_frekuensi.nama_frekuensi,
+        mst_matkul.nama_matkul
+    FROM 
+        trx_tugas 
+    LEFT JOIN 
+        trx_frekuensi ON trx_tugas.id_frekuensi = trx_frekuensi.id_frekuensi
+    LEFT JOIN
+        mst_matkul ON trx_frekuensi.id_matkul = mst_matkul.id_matkul');
 
 
             return $this->db->resultSet();
@@ -21,7 +28,7 @@ class Tugas_model {
         }
     }
 
-    public function addTugas($nama_tugas, $deskripsi_tugas, $status, $tgl_tugas, $tgl_pengecekan, $id_frekuensi) {
+    public function addPengecean($nama_tugas, $deskripsi_tugas, $status, $tgl_tugas, $tgl_pengecekan, $id_frekuensi) {
         try {
             $this->db->query("INSERT INTO $this->table (nama_tugas, deskripsi_tugas, status_tugas, tgl_tugas, tgl_pengecekan, id_frekuensi) VALUES (:nama_tugas, :deskripsi_tugas, :status_tugas, :tgl_tugas, :tgl_pengecekan, :id_frekuensi)");
             $this->db->bind(':nama_tugas', $nama_tugas);
@@ -89,25 +96,7 @@ class Tugas_model {
     
         return $this->db->single(); // Mengembalikan satu baris hasil query
     }
-
-    public function getDetailTugas($id_tugas) {
-        $query = "SELECT * FROM trx_tugas WHERE id_tugas = :id_tugas";
-        $this->db->query($query);
-        $this->db->bind(':id_tugas', $id_tugas);
-        return $this->db->single();
-    }
     
-    public function getPraktikanByFrekuensi($id_frekuensi) {
-        $query = "SELECT mst_praktikan.nim_praktikan, mst_praktikan.nama_praktikan
-                  FROM trx_tugas
-                  JOIN mst_praktikan ON trx_tugas.id_frekuensi = mst_praktikan.id_frekuensi
-                  WHERE trx_tugas.id_frekuensi = :id_frekuensi";
-        
-        $this->db->query($query);
-        $this->db->bind('id_frekuensi', $id_frekuensi);
-    
-        return $this->db->resultset(); // Mengembalikan hasil query sebagai array
-    }
     
 }
 

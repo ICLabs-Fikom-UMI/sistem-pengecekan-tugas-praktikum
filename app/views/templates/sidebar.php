@@ -30,7 +30,7 @@
                 <i class="fa fa-file"></i>
                 Tugas
             </a>
-            <a href="<?= BASEURL; ?>">
+            <a href="<?= BASEURL; ?>/pengecekan">
                 <i class="fa fa-file"></i>
                 Pengecekan
             </a>

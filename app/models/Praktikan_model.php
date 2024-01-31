@@ -91,5 +91,20 @@ class Praktikan_model {
     
             return $this->db->single(); // Mengembalikan satu baris hasil query
         }
+
+        public function getPraktikanByFrekuensi($id_frekuensi) {
+            $query = "SELECT mst_praktikan.nim_praktikan, mst_praktikan.nama_praktikan
+                      FROM trx_tugas
+                      JOIN mst_praktikan ON trx_tugas.id_frekuensi = mst_praktikan.id_frekuensi
+                      WHERE trx_tugas.id_frekuensi = :id_frekuensi";
+            
+            $this->db->query($query);
+            $this->db->bind('id_frekuensi', $id_frekuensi);
+        
+            return $this->db->resultset(); // Mengembalikan hasil query sebagai array
+        }
+        
+
+        
 }
 

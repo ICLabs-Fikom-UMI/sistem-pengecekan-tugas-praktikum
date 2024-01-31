@@ -28,6 +28,37 @@
         }
     }
 
+    function updateFrekuensiOptions() {
+    var selectedMatkul = document.getElementById('inputNamaMatkul').value;
+    var frekuensiOptions = document.getElementsByClassName('frekuensi-option');
+
+    for (var i = 0; i < frekuensiOptions.length; i++) {
+        var option = frekuensiOptions[i];
+        var optionMatkul = option.getAttribute('data-matkul');
+
+        if (selectedMatkul === optionMatkul || selectedMatkul === "") {
+            option.style.display = 'block';
+        } else {
+            option.style.display = 'none';
+        }
+    }
+}
+
+function updateTugasOptions() {
+        var selectedFrekuensi = document.getElementById('inputFrekuensi').value;
+        var tugasOptions = document.getElementsByClassName('tugas-option');
+
+        for (var i = 0; i < tugasOptions.length; i++) {
+            var option = tugasOptions[i];
+            var optionFrekuensi = option.getAttribute('data-frekuensi');
+
+            if (selectedFrekuensi === optionFrekuensi || selectedFrekuensi === "") {
+                option.style.display = 'block';
+            } else {
+                option.style.display = 'none';
+            }
+        }
+    }
     
 </script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
