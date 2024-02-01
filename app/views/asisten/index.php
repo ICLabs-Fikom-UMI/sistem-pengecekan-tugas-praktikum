@@ -1,5 +1,5 @@
 <div class="content">
-    <h2>Asisten</h2>
+    <h2 style="margin-top: 70px;">Asisten</h2>
     <div class="crud-asisten">
         <a href="#" class="crud tambah-crud" onclick="openTambahModal()">Tambah <i class="fa fa-folder-plus"></i></a>
     </div>

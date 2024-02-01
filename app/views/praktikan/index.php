@@ -1,11 +1,12 @@
 <div class="content">
-    <h2>Praktikan</h2>
+    <h2 style="margin-top: 70px;">Praktikan</h2>
     <div class="crud-praktikan">
         <a href="#" class="crud tambah-crud" onclick="openTambahModal()">Tambah <i class="fa fa-folder-plus"></i></a>
     </div>
     <table>
         <thead>
             <tr>
+                <th>No</th>
                 <th>NIM</th>
                 <th>Nama Praktikan</th>
                 <th>Kelas</th>
@@ -15,8 +16,9 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($data['praktikan'] as $praktikan): ?>
+            <?php $i = 1; foreach ($data['praktikan'] as $praktikan): ?>
                 <tr>
+                <td><?= $i++?></td>
                     <td><?= $praktikan['nim_praktikan']; ?></td>
                     <td><?= $praktikan['nama_praktikan']; ?></td>
                     <td>

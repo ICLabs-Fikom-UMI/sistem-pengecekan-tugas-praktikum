@@ -1,5 +1,5 @@
 <div class="content">
-    <h2>Tugas Praktikum</h2>
+    <h2 style="margin-top:70px;">Tugas Praktikum</h2>
     <div class="crud-tugas">
         <!-- <a href="<?= BASEURL ?>/Tugas/tambahTugas" class="crud tambah-crud">Tambah <i class="fa fa-folder-plus"></i></a> -->
         <a href="#" class="crud tambah-crud" onclick="openTambahModal()">Tambah <i class="fa fa-folder-plus"></i></a>

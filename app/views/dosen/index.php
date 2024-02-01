@@ -1,5 +1,5 @@
 <div class="content">
-    <h2>Dosen Pengampuh</h2>
+    <h2 style="margin-top: 70px;">Dosen Pengampuh</h2>
     <div class="crud-dosen">
         <a href="#" class="crud tambah-crud" onclick="openTambahModal()">Tambah <i class="fa fa-folder-plus"></i></a>
     </div>
@@ -66,7 +66,7 @@
                 <option value="" disabled selected>Pilih</option>
                 <?php $matakuliah = $this->model('Matakuliah_model')->getAllMatakuliah(); ?>
                     <?php foreach ($matakuliah as $matkul): ?>
-                        <option value="<?= $matkul['id_matkul']; ?>"><?= $matkul['nama_matkul']; ?> - <?= $matkul['prodi'];?> </option>
+                        <option value="<?= $matkul['id_matkul']; ?>"><?= $matkul['prodi'];?> - <?= $matkul['nama_matkul']; ?> </option>
 
                     <?php endforeach; ?>
                 </select>

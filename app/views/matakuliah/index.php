@@ -1,5 +1,5 @@
 <div class="content">
-    <h2>Mata Kuliah</h2>
+    <h2 style="margin-top: 70px;">Mata Kuliah</h2>
     <div class="crud-matkul">
         <a href="#" class="crud tambah-crud" onclick="openTambahModal()">Tambah <i class="fa fa-folder-plus"></i></a>
     </div>

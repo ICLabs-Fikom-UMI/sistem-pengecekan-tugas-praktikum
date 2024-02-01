@@ -1,5 +1,5 @@
 <div class="content">
-    <h2>Pengecekan</h2>
+    <h2 style="margin-top: 70px;">Pengecekan</h2>
     <label for="inputNamaMatkul">Mata Kuliah:</label>
     <select id="inputNamaMatkul" name="id_matkul" onchange="updateFrekuensiOptions()">
         <option value="" disabled selected>Pilih</option>

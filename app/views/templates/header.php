@@ -6,12 +6,12 @@
     <title><?= $data['judul']?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="<?= BASEURL; ?> /css/style.css">
-    
     <link rel="stylesheet" href="<?= BASEURL; ?> /css/style2.css">
+    
 
 </head>
 <body>
-<div class="navbar">
+<div class="navbar" style="position: fixed; width:99%;" >
         <div class="space">
             <div class="images">
                 <img src="<?= BASEURL; ?>/img/sipetalogo.png" alt="SIPETA">
