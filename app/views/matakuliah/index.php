@@ -6,24 +6,34 @@
     <table>
         <thead>
             <tr>
+                <th>No</th>
                 <th>Kode Mata Kuliah</th>
                 <th>Nama Mata Kuliah</th>
                 <th>Program Studi</th>
-                <th>Semester</th>  
+                <th>Semester</th> 
+                <th>Tingkat Semester</th> 
                 <th>Edit</th>
                 <th>Hapus</th>                  
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($data['matakuliah'] as $matakuliah): ?>
+            <?php $i = 1;
+                foreach ($data['matakuliah'] as $matakuliah): ?>
                 <tr>
+                    <td><?= $i++?></td>
                     <td><?= $matakuliah['kode_matkul']; ?></td>
                     <td><?= $matakuliah['nama_matkul']; ?></td>
                     <td><?= $matakuliah['prodi']; ?></td>           
                     <td><?= $matakuliah['semester']; ?></td>
+                    <td><?= $matakuliah['tingkat_semester']; ?></td>
                     <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
                     <td><a href="<?= BASEURL; ?>/matakuliah/edit/<?= $matakuliah['id_matkul']; ?>"><i class="fa fa-pencil"></i> </a></td>
-                    <td><a href="<?= BASEURL; ?>/matakuliah/hapus/<?= $matakuliah['id_matkul']; ?>" onclick="return confirm('Anda yakin ingin menghapus?');"><i class="fa fa-trash-can"></i></a></td>
+                    <!-- <td><a href="<?= BASEURL; ?>/matakuliah/hapus/<?= $matakuliah['id_matkul']; ?>" onclick="return confirm('Anda yakin ingin menghapus?');"><i class="fa fa-trash-can"></i></a></td> -->
+                    <td>
+                <a href="<?= BASEURL; ?>/Matakuliah/" onclick="hapusMatkul('<?= $matakuliah['id_matkul']; ?>')">
+                    <i class="fa fa-trash-can"></i>
+                </a>
+            </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
@@ -49,9 +59,14 @@
                 </select>
 
                 <label for="inputSemester">Semester:</label>
-                <select id="inputSemester" name="semester">
+                <select id="inputSemester" name="semester" onchange="updateTingkatSemester()">
                     <option value="Ganjil">Ganjil</option>
                     <option value="Genap">Genap</option>
+                </select>
+
+                <label for="inputTingkatSemester">Tingkat Semester:</label>
+                <select id="inputTingkatSemester" name="tingkat_semester">
+                    <!-- Options will be dynamically updated using JavaScript -->
                 </select>
 
                 <button onclick="submitFormById('tambahForm')">Submit</button>

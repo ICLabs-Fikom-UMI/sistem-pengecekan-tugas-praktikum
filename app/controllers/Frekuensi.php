@@ -19,10 +19,11 @@ class Frekuensi extends Controller {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $Nama_frekuensi = $_POST['nama_frekuensi'];
                 $id_dosen = $_POST['id_dosen'];
-                $id_asisten = $_POST['id_asisten'];
+                $id_asisten1 = $_POST['id_asisten1'];
+                $id_asisten2 = $_POST['id_asisten2'];
     
                 $frekuensi_model = $this->model('Frekuensi_model');
-                $frekuensi_model->addFrekuensi($Nama_frekuensi, $id_dosen, $id_asisten);
+                $frekuensi_model->addFrekuensi($Nama_frekuensi, $id_dosen, $id_asisten1, $id_asisten2);
                 echo "Berhasil Mengimputkan Data";
                 
             } else {
@@ -31,6 +32,14 @@ class Frekuensi extends Controller {
         } catch (\Throwable $th) {
             echo $th;
         }
+    }
+
+    public function hapus($id) {
+    
+        if ($this->model('Frekuensi_model')->hapusFrekuensi($id)) {
+            header('Location: ' . BASEURL . '/Frekuensi');
+            exit;
+        } 
     }
 
 }

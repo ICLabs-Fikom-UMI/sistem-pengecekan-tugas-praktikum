@@ -35,7 +35,11 @@
                     
                     <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
                     <td><a href="<?= BASEURL; ?>/praktikan/edit/<?= $frekuensi['id_praktikan']; ?>"><i class="fa fa-pencil"></i> </a></td>
-                    <td><a href="<?= BASEURL; ?>/praktikan/hapus/<?= $frekuensi['id_praktikan']; ?>" onclick="return confirm('Anda yakin ingin menghapus?');"><i class="fa fa-trash-can"></i></a></td>
+                    <td>
+                <a href="<?= BASEURL; ?>/Praktikan/" onclick="hapusPraktikan('<?= $praktikan['id_prktikan']; ?>')">
+                    <i class="fa fa-trash-can"></i>
+                </a>
+            </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

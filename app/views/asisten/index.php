@@ -6,6 +6,7 @@
     <table>
         <thead>
             <tr>
+                <th>No</th>
                 <th>NIM Asisten</th>
                 <th>Nama Asisten</th>
                 <th>Kelas</th>
@@ -15,8 +16,10 @@
             </tr>
         </thead>
         <tbody>
-        <?php foreach ($data['asisten'] as $asisten): ?>
+        <?php $i = 1;
+        foreach ($data['asisten'] as $asisten): ?>
         <tr>
+            <td><?= $i++ ?></td>
             <td><?= $asisten['nim_asisten']; ?></td>
             <td><?= $asisten['nama_asisten']; ?></td>
             <td><?= $asisten['kelas']; ?></td>
@@ -24,7 +27,12 @@
             
             <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
             <td><a href="<?= BASEURL; ?>/asisten/edit/<?= $asisten['id_asisten']; ?>"><i class="fa fa-pencil"></i></a></td>
-            <td><a href="<?= BASEURL; ?>/asisten/hapus/<?= $asisten['id_asisten']; ?>" onclick="return confirm('Anda yakin ingin menghapus?');"><i class="fa fa-trash-can"></i></a></td>
+            <!-- <td><a href="<?= BASEURL; ?>/Asisten/hapus/<?= $asisten['id_asisten']; ?>" onclick="hapus('<?= $asisten['id_asisten']; ?>')"><i class="fa fa-trash-can"></i></a></td> -->
+            <td>
+                <a href="<?= BASEURL; ?>/Asisten/" onclick="hapus('<?= $asisten['id_asisten']; ?>')">
+                    <i class="fa fa-trash-can"></i>
+                </a>
+            </td>
         </tr>
         <?php endforeach; ?>
         </tbody>

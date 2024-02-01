@@ -55,7 +55,13 @@ class Dosen_model {
             }
         }
         
-    
+        public function hapusDosen($id) {
+            $query = "DELETE FROM mst_dosen WHERE id_dosen = :id_dosen";
+            $this->db->query($query);
+            $this->db->bind("id_dosen", $id);
+            $this->db->execute();
+            return $this->db->rowCount();
+        }
     
 }
 

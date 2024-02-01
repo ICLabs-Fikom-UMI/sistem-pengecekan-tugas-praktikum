@@ -16,24 +16,6 @@ class Matakuliah extends Controller {
 
 
 
-    // public function add(){
-    //     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //         $kode_matkul = $_POST['kode_matkul'];
-    //         $nama_matkul = $_POST['nama_matkul'];
-    //         $prodi = $_POST['prodi'];
-    //         $semester = $_POST['semester'];
-
-    //         // Validasi data jika diperlukan
-
-    //         // Panggil model untuk menyimpan data
-    //         $matakuliah_model = $this->model('Matakuliah_model');
-    //         $matakuliah_model->addMatakuliah($kode_matkul, $nama_matkul, $prodi, $semester);
-
-    //         // Redirect atau berikan respons jika diperlukan
-    //         // ...
-    //     }
-    // }dsjnsjdasda
-
     public function add(){
         try {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -41,9 +23,10 @@ class Matakuliah extends Controller {
                 $nama_matkul = $_POST['nama_matkul'];
                 $prodi = $_POST['prodi'];
                 $semester = $_POST['semester'];
+                $tingkat_semester = $_POST['tingkat_semester'];
     
                 $matakuliah_model = $this->model('Matakuliah_model');
-                $matakuliah_model->addMatakuliah($kode_matkul, $nama_matkul, $prodi, $semester);
+                $matakuliah_model->addMatakuliah($kode_matkul, $nama_matkul, $prodi, $semester, $tingkat_semester);
                 echo "Berhasil Mengimputkan Data";
                 
             } else {
@@ -52,6 +35,14 @@ class Matakuliah extends Controller {
         } catch (\Throwable $th) {
             echo $th;
         }
+    }
+
+    public function hapus($id) {
+    
+        if ($this->model('Matakuliah_model')->hapusMatkul($id)) {
+            header('Location: ' . BASEURL . '/Matakuliah');
+            exit;
+        } 
     }
 
 }

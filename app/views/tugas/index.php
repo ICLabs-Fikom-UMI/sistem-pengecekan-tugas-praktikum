@@ -29,7 +29,11 @@
                     <td><a href="<?= BASEURL; ?>/Tugas/detailTugas/<?= $tugas['id_tugas']; ?>"><i class="fa-solid fa-circle-info"></i></a></td>
 
                     <td><a href="<?= BASEURL; ?>/tugas/edit/<?= $tugas['id_tugas']; ?>"><i class="fa fa-pencil"></i> </a></td>
-                    <td><a href="<?= BASEURL; ?>/tugas/hapus/<?= $tugas['id_tugas']; ?>" onclick="return confirm('Anda yakin ingin menghapus?');"><i class="fa fa-trash-can"></i></a></td>
+                    <td>
+                <a href="<?= BASEURL; ?>/Tugas/" onclick="hapusTugas('<?= $tugas['id_tugas']; ?>')">
+                    <i class="fa fa-trash-can"></i>
+                </a>
+            </td>
                    
                 </tr>
             <?php endforeach; ?>
@@ -53,8 +57,8 @@
 
                     <?php endforeach; ?>
                 </select>
-            <label for="tanggal">Tanggal:</label>
-            <input type="date" id="tanggal" name="tanggal" required>
+            <label for="tgl_tugas">Tanggal:</label>
+            <input type="date" id="tgl_tugas" name="tgl_tugas" required>
 
             <!-- Input for Deskripsi Tugas -->
             <label for="deskripsi_tugas">Deskripsi Tugas:</label>

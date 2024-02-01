@@ -103,7 +103,13 @@ class Praktikan_model {
         
             return $this->db->resultset(); // Mengembalikan hasil query sebagai array
         }
-        
+        public function hapusPraktikan($id) {
+            $query = "DELETE FROM mst_praktikan WHERE id_praktikan = :id_praktikan";
+            $this->db->query($query);
+            $this->db->bind("id_praktikan", $id);
+            $this->db->execute();
+            return $this->db->rowCount();
+        }
 
         
 }

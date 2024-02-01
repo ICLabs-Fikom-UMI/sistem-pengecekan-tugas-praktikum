@@ -44,7 +44,18 @@ class Asisten_model {
             // Handle error jika perlu
             echo 'Error: ' . $th->getMessage();
         }
-    }      
+    }  
+    
+   // Asisten_model.php
+
+    public function hapusAsisten($id) {
+        $query = "DELETE FROM mst_asisten WHERE id_asisten = :id_asisten";
+        $this->db->query($query);
+        $this->db->bind("id_asisten", $id);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
     
 }
 

@@ -62,6 +62,14 @@ class Tugas extends Controller {
             echo $th;
         }
     }
+
+    public function hapus($id) {
+    
+        if ($this->model('Tugas_model')->hapusTugas($id)) {
+            header('Location: ' . BASEURL . '/Tugas');
+            exit;
+        } 
+    }
     
 
 }

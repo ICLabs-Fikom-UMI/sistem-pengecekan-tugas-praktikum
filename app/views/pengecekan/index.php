@@ -30,7 +30,7 @@
         <?php endforeach; ?>
     </select>
 
-    <table>
+    <table  id="data-table">
         <thead>
             <tr>
                 <th>NIM</th>
@@ -43,11 +43,11 @@
         <?php foreach ($data['pengecekan'] as $pengecekan): ?>
         <tr>
             <td><?php 
-                $nim_praktikan = $this->model('Praktikan_model')->getPraktikanByFrekuensi($pengecekan['id_frekuensi']);
+                $nim_praktikan = $this->model('Tugas_model')->getPraktikanByFrekuensi($pengecekan['id_frekuensi']);
                 echo $nim_praktikan['nim_praktikan'];
             ?></td>
             <td><?php 
-                $nama_praktikan = $this->model('Praktikan_model')->getPraktikanByFrekuensi($pengecekan['id_frekuensi']);
+                $nama_praktikan = $this->model('Tugas_model')->getPraktikanByFrekuensi($pengecekan['id_frekuensi']);
                 echo $nama_praktikan['nama_praktikan'];
             ?></td>
             <td>
@@ -56,7 +56,8 @@
                     <option value="ACC">ACC</option>
                     <option value="Revisi">Revisi</option>
                 </select>
-            </td>                             
+            </td> 
+            <td><?= $pengecekan['tgl_pengecekan']; ?></td>                        
         </tr>
         <?php endforeach; ?>
 

@@ -26,25 +26,12 @@ class Praktikan extends Controller {
                
     }
 
-    // public function add(){
-    //     try {
-    //         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //             $nim_praktikan = $_POST['nim_praktikan'];
-    //             $nama_praktikan = $_POST['nama_praktikan'];
-    //             $id_user = $_POST['id_user'];
-    //             $id_frekuensi = $_POST['id_frekuensi'];
+    public function hapus($id) {
     
-    //             $dosen_model = $this->model('Praktikan_model');
-    //             $dosen_model->addPraktikan($nim_praktikan, $nama_praktikan, $id_user, $id_frekuensi);
-    //             echo "Berhasil Mengimputkan Data";
-                
-    //         } else {
-    //             echo "Gagal Mengimputkan Data";
-    //         }
-    //     } catch (\Throwable $th) {
-    //         echo $th;
-    //     }
-    // }
-
+        if ($this->model('Praktikan_model')->hapusPraktikan($id)) {
+            header('Location: ' . BASEURL . '/Praktikan');
+            exit;
+        } 
+    }
 
 }

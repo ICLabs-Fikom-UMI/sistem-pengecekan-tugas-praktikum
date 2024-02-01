@@ -33,5 +33,12 @@ class Pengguna extends Controller {
         }
     }
     
+    public function hapus($id) {
+    
+        if ($this->model('Pengguna_model')->hapusPengguna($id)) {
+            header('Location: ' . BASEURL . '/Pengguna');
+            exit;
+        } 
+    }
 
 }

@@ -34,4 +34,20 @@ class Asisten extends Controller {
         }
     }
 
+    // Asisten.php
+
+public function hapus($id) {
+    
+    if ($this->model('Asisten_model')->hapusAsisten($id)) {
+        // Flasher::setFlash('berhasil', 'dihapus', 'success');
+        header('Location: ' . BASEURL . '/Asisten');
+        exit;
+    } else {
+        // Flasher::setFlash('gagal', 'dihapus', 'danger');
+        header('Location: ' . BASEURL . '/asisten');
+        exit;
+    }
+}
+
+
 }

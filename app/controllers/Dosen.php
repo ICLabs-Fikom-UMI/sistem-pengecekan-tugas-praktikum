@@ -34,4 +34,12 @@ class Dosen extends Controller {
         }
     }
 
+    public function hapus($id) {
+    
+        if ($this->model('Dosen_model')->hapusDosen($id)) {
+            header('Location: ' . BASEURL . '/Dosen');
+            exit;
+        }
+    }
+
 }

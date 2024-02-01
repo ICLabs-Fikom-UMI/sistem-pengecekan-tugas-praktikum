@@ -6,6 +6,7 @@
     <table>
         <thead>
             <tr>
+                <th>No</th>
                 <th>Nama Frekuensi</th>
                 <th>Kelas</th>
                 <th>Matakuliah</th>
@@ -17,8 +18,9 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($data['frekuensi'] as $frekuensi): ?>
+            <?php $i = 1;foreach ($data['frekuensi'] as $frekuensi): ?>
                 <tr>
+                    <td><?= $i++?></td>
                     <td><?= $frekuensi['nama_frekuensi']; ?></td>
                     <td>
                         <?php
@@ -45,14 +47,14 @@
                     <td>
                         <?php
                         // Ambil kelas dari tabel mst_dosen berdasarkan id_dosen
-                        $dosen = $this->model('Frekuensi_model')->getAsistenById($frekuensi['id_asisten']);
+                        $dosen = $this->model('Frekuensi_model')->getAsisten1ById($frekuensi['id_asisten1']);
                         echo $dosen['nama_asisten'];
                         ?>
                     </td>
                     <td>
                         <?php
                         // Ambil kelas dari tabel mst_dosen berdasarkan id_dosen
-                        $dosen = $this->model('Frekuensi_model')->getAsistenById($frekuensi['id_asisten']);
+                        $dosen = $this->model('Frekuensi_model')->getAsisten2ById($frekuensi['id_asisten2']);
                         echo $dosen['nama_asisten'];
                         ?>
                     </td>
@@ -60,7 +62,12 @@
                     
                     <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
                     <td><a href="<?= BASEURL; ?>/frekuesni/edit/<?= $frekuensi['id_frekuensi']; ?>"><i class="fa fa-pencil"></i> </a></td>
-                    <td><a href="<?= BASEURL; ?>/frekuensi/hapus/<?= $frekuensi['id_frekuensi']; ?>" onclick="return confirm('Anda yakin ingin menghapus?');"><i class="fa fa-trash-can"></i></a></td>
+                    <!-- <td><a href="<?= BASEURL; ?>/frekuensi/hapus/<?= $frekuensi['id_frekuensi']; ?>" onclick="return confirm('Anda yakin ingin menghapus?');"><i class="fa fa-trash-can"></i></a></td> -->
+                    <td>
+                <a href="<?= BASEURL; ?>/Frekuensi/" onclick="hapusFrekuensi('<?= $frekuensi['id_frekuensi']; ?>')">
+                    <i class="fa fa-trash-can"></i>
+                </a>
+            </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
@@ -82,12 +89,12 @@
                 <option value="" disabled selected>Pilih</option>
                 <?php $dosenpengampuh = $this->model('Dosen_model')->getAllDosen(); ?>
                     <?php foreach ($dosenpengampuh as $dosen): ?>
-                        <option value="<?= $dosen['id_dosen']; ?>"><?= $dosen['nama_dosen']; ?> (<?= $dosen['nama_matkul'];?> (<?= $dosen['kelas'];?>))</option>
+                        <option value="<?= $dosen['id_dosen']; ?>"><?= $dosen['nama_dosen']; ?> - <?= $dosen['nama_matkul'];?> (<?= $dosen['kelas'];?>)</option>
 
                     <?php endforeach; ?>
                 </select>
                 <label for="inputNamaAsisten1">Asisten 1 :</label>
-                <select id="inputNamaAsisten1" name="id_asisten">
+                <select id="inputNamaAsisten1" name="id_asisten1">
                 <option value="" disabled selected>Pilih</option>
                 <?php $asistenlab = $this->model('Asisten_model')->getAllAsisten(); ?>
                     <?php foreach ($asistenlab as $asisten): ?>
@@ -96,7 +103,7 @@
                     <?php endforeach; ?>
                 </select>
                 <label for="inputNamaAsisten2">Asisten 2 :</label>
-                <select id="inputNamaAsisten2" name="id_asisten">
+                <select id="inputNamaAsisten2" name="id_asisten2">
                 <option value="" disabled selected>Pilih</option>
                 <?php $asistenlab = $this->model('Asisten_model')->getAllAsisten(); ?>
                     <?php foreach ($asistenlab as $asisten): ?>

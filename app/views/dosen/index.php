@@ -6,6 +6,7 @@
     <table>
         <thead>
             <tr>
+                <th>No</th>
                 <th>NIP Dosen</th>
                 <th>Nama Nama</th>
                 <th>Mata Kuliah</th>
@@ -16,8 +17,9 @@
             </tr>
         </thead>
         <tbody>
-        <?php foreach ($data['dosen'] as $dosen): ?>
+        <?php $i = 1; foreach ($data['dosen'] as $dosen): ?>
         <tr>
+            <td><?= $i++?></td>
             <td><?= $dosen['nip_dosen']; ?></td>
             <td><?= $dosen['nama_dosen']; ?></td>
             <td>
@@ -37,8 +39,11 @@
             <td><?= $dosen['kelas']; ?></td>
             <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
             <td><a href="<?= BASEURL; ?>/dosen/edit/<?= $dosen['id_dosen']; ?>"><i class="fa fa-pencil"></i></a></td>
-            <td><a href="<?= BASEURL; ?>/dosen/hapus/<?= $dosen['id_dosen']; ?>" onclick="return confirm('Anda yakin ingin menghapus?');"><i class="fa fa-trash-can"></i></a></td>
-        </tr>
+            <td>
+                <a href="<?= BASEURL; ?>/Dosen/" onclick="hapusDosen('<?= $dosen['id_dosen']; ?>')">
+                    <i class="fa fa-trash-can"></i>
+                </a>
+            </td>
         <?php endforeach; ?>
         </tbody>
     </table>
@@ -61,14 +66,14 @@
                 <option value="" disabled selected>Pilih</option>
                 <?php $matakuliah = $this->model('Matakuliah_model')->getAllMatakuliah(); ?>
                     <?php foreach ($matakuliah as $matkul): ?>
-                        <option value="<?= $matkul['id_matkul']; ?>"><?= $matkul['nama_matkul']; ?> (<?= $matkul['prodi'];?>) </option>
+                        <option value="<?= $matkul['id_matkul']; ?>"><?= $matkul['nama_matkul']; ?> - <?= $matkul['prodi'];?> </option>
 
                     <?php endforeach; ?>
                 </select>
                 <label for="inputKelas">Kelas :</label>
                 <input type="text" id="inputKelas" name="kelas">
-
-                <button onclick="submitFormById('tambahForm')">Submit</button>
+                        <a href="<?= BASEURL; ?>/Dosen/" onclick="submitFormById('tambahForm')"><button type = "submit">Submit</button></a>
+                
                 <button type="button" class="btn" onclick="closeTambahModal()">Batal</button>
             </form>
         </div>
