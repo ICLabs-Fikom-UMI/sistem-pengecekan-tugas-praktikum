@@ -5,7 +5,7 @@
         <option value="" disabled selected>Pilih</option>
         <?php $matakuliah = $this->model('Matakuliah_model')->getAllMatakuliah(); ?>
         <?php foreach ($matakuliah as $matkul): ?>
-            <option value="<?= $matkul['id_matkul']; ?>"><?= $matkul['nama_matkul']; ?> (<?= $matkul['prodi'];?>) </option>
+            <option value="<?= $matkul['id_matkul']; ?>"><?= $matkul['prodi'];?> - <?= $matkul['nama_matkul']; ?>  </option>
         <?php endforeach; ?>
     </select>
 
@@ -30,9 +30,12 @@
         <?php endforeach; ?>
     </select>
 
+    <button style="margin-top: 20px;" onclick="cariPaktikan()">Cari</button>
+
     <table  id="data-table">
         <thead>
             <tr>
+                <th>No</th>
                 <th>NIM</th>
                 <th>Nama Praktikan</th>
                 <th>Status</th>     
@@ -40,30 +43,36 @@
             </tr>
         </thead>
         <tbody>
-        <?php foreach ($data['pengecekan'] as $pengecekan): ?>
-        <tr>
-            <td><?php 
-                $nim_praktikan = $this->model('Tugas_model')->getPraktikanByFrekuensi($pengecekan['id_frekuensi']);
-                echo $nim_praktikan['nim_praktikan'];
-            ?></td>
-            <td><?php 
-                $nama_praktikan = $this->model('Tugas_model')->getPraktikanByFrekuensi($pengecekan['id_frekuensi']);
-                echo $nama_praktikan['nama_praktikan'];
-            ?></td>
-            <td>
-                <!-- Dropdown Status -->
-                <select name="status" id="status_<?php echo $pengecekan['id_pengecekan']; ?>">
-                    <option value="ACC">ACC</option>
-                    <option value="Revisi">Revisi</option>
-                </select>
-            </td> 
-            <td><?= $pengecekan['tgl_pengecekan']; ?></td>                        
-        </tr>
-        <?php endforeach; ?>
+        <?php $i = 1; foreach ($data['pengecekan'] as $pengecekan): ?>
+    <tr>
+        <td><?= $i++ ?> </td>
+        <td><?php 
+            $nim_praktikan = $this->model('Tugas_model')->getPraktikanByFrekuensi($pengecekan['id_frekuensi']);
+            echo $nim_praktikan['nim_praktikan'];
+        ?></td>
+        <td><?php 
+            $nama_praktikan = $this->model('Tugas_model')->getPraktikanByFrekuensi($pengecekan['id_frekuensi']);
+            echo $nama_praktikan['nama_praktikan'];
+        ?></td>
+        <td>
+            <!-- Dropdown Status -->
+            <select name="status" id="status_<?php echo $pengecekan['id_pengecekan']; ?>">
+                <option value="ACC">ACC</option>
+                <option value="Revisi">Revisi</option>
+            </select>
+        </td> 
+        <td><?= $pengecekan['tgl_pengecekan']; ?></td>     
+    </tr>
+    
+<?php endforeach; ?>
+
 
         </tbody>
     </table>
-
+    <div style="margin-top: 30px;">
+        <button onclick="editPengecekan(<?php echo $pengecekan['id_tugas']; ?>)">Edit</button>
+        <button onclick="simpanPengecekan(<?php echo $pengecekan['id_tugas']; ?>)">Simpan</button>
+    </div>
 
 
 </div>

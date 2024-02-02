@@ -1,3 +1,4 @@
+<?php if ($_SESSION['role'] == 'Administrator') { ?>
 <div class="content">
     <h2 style="margin-top: 70px;">Praktikan</h2>
     <div class="crud-praktikan">
@@ -79,17 +80,44 @@
     </div>
 </div>
 
-<script>
-    function submitFormById(formId) {
-        var form = document.getElementById(formId);
+<?php } ?>
 
-        // Periksa apakah formulir ditemukan
-        if (form) {
-            form.submit();
-        } else {
-            console.error("Form with ID '" + formId + "' not found.");
-        }
-    }
+<?php if ($_SESSION['role'] == 'Asisten') { ?>
+<div class="content">
+    <h2 style="margin-top: 70px;">Praktikan</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>NIM</th>
+                <th>Nama Praktikan</th>
+                <th>Kelas</th>
+                <th>Frekuensi</th>               
+            </tr>
+        </thead>
+        <tbody>
+            <?php $i = 1; foreach ($data['praktikan'] as $praktikan): ?>
+                <tr>
+                <td><?= $i++?></td>
+                    <td><?= $praktikan['nim_praktikan']; ?></td>
+                    <td><?= $praktikan['nama_praktikan']; ?></td>
+                    <td>
+                        <?php
+                        $dosen = $this->model('Praktikan_model')->getKelasById($praktikan['id_dosen']);
+                        echo $dosen['kelas'];
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                        // Ambil kelas dari tabel mst_dosen berdasarkan id_dosen
+                        $dosen = $this->model('Praktikan_model')->getFrekuensiById($praktikan['id_frekuensi']);
+                        echo $dosen['nama_frekuensi'];
+                        ?>
+                    </td>                      
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
 
-</script>
-
+<?php } ?>

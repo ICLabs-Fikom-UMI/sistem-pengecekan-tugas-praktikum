@@ -1,4 +1,5 @@
-<div class="content">
+<?php if ($_SESSION['role'] == 'Administrator') { ?>
+    <div class="content">
     <h2 style="margin-top: 70px;">Frekuensi</h2>
     <div class="crud-frekuensi">
         <a href="#" class="crud tambah-crud" onclick="openTambahModal()">Tambah <i class="fa fa-folder-plus"></i></a>
@@ -117,19 +118,69 @@
             </form>
         </div>
     </div>
+</div> 
+<?php } ?>
+
+<?php if ($_SESSION['role'] == 'Asisten' || $_SESSION['role'] == 'Praktikan') { ?>
+<div class="content">
+    <h2 style="margin-top: 70px;">Frekuensi</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama Frekuensi</th>
+                <th>Kelas</th>
+                <th>Matakuliah</th>
+                <th>Dosen Pengampuh</th>  
+                <th>Asisten 1</th>  
+                <th>Asisten 2</th>                  
+            </tr>
+        </thead>
+        <tbody>
+            <?php $i = 1;foreach ($data['frekuensi'] as $frekuensi): ?>
+                <tr>
+                    <td><?= $i++?></td>
+                    <td><?= $frekuensi['nama_frekuensi']; ?></td>
+                    <td>
+                        <?php
+                        // Ambil kelas dari tabel mst_dosen berdasarkan id_dosen
+                        $dosen = $this->model('Frekuensi_model')->getDosenById($frekuensi['id_dosen']);
+                        echo $dosen['kelas'];
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                        // Ambil matakuliah dari tabel mst_dosen berdasarkan id_dosen
+                        // $id_matkul = $frekuensi['id_matkul'];
+                        $dosen = $this->model('Frekuensi_model')->getDosenById($frekuensi['id_dosen']);
+                        echo $dosen['nama_matkul'];
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                        // Ambil kelas dari tabel mst_dosen berdasarkan id_dosen
+                        $dosen = $this->model('Frekuensi_model')->getDosenById($frekuensi['id_dosen']);
+                        echo $dosen['nama_dosen'];
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                        // Ambil kelas dari tabel mst_dosen berdasarkan id_dosen
+                        $dosen = $this->model('Frekuensi_model')->getAsisten1ById($frekuensi['id_asisten1']);
+                        echo $dosen['nama_asisten'];
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                        // Ambil kelas dari tabel mst_dosen berdasarkan id_dosen
+                        $dosen = $this->model('Frekuensi_model')->getAsisten2ById($frekuensi['id_asisten2']);
+                        echo $dosen['nama_asisten'];
+                        ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
 </div>
-
-<script>
-    function submitFormById(formId) {
-        var form = document.getElementById(formId);
-
-        // Periksa apakah formulir ditemukan
-        if (form) {
-            form.submit();
-        } else {
-            console.error("Form with ID '" + formId + "' not found.");
-        }
-    }
-
-</script>
-
+<?php } ?>

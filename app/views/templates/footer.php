@@ -1,5 +1,16 @@
 <script src="<?= BASEURL; ?>/js/javascript.js"></script>
 <script>
+    function submitFormById(formId) {
+        var form = document.getElementById(formId);
+
+        // Periksa apakah formulir ditemukan
+        if (form) {
+            form.submit();
+        } else {
+            console.error("Form with ID '" + formId + "' not found.");
+        }
+    }
+    
     function search() {
         // Dapatkan nilai input pencarian
         var searchInput = document.getElementById("searchInput").value.toLowerCase();
@@ -139,7 +150,18 @@ function updateTugasOptions() {
         // Call the function initially to set default values
         updateTingkatSemester();
 
-    
+        function cariPaktikan() {
+            var selectedFrekuensi = document.getElementById("inputFrekuensi").value;
+            var selectedTugas = document.getElementById("pilihTugas").value;
+
+            // Simple validation
+            if (selectedFrekuensi && selectedTugas) {
+                // Perform the search logic here
+                // Example: alert("Perform search for Frekuensi: " + selectedFrekuensi + ", Tugas: " + selectedTugas);
+            } else {
+                alert("Pilih Frekuensi dan Nama Tugas terlebih dahulu.");
+            }
+        }
 </script>
 
 

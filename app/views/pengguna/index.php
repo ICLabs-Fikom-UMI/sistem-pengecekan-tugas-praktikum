@@ -26,7 +26,7 @@
                         $dataUser = $this->model('Pengguna_model')->getDataUserById($id_user);
 
                         // Menggabungkan nama praktikan dan asisten dalam satu field
-                        $nama_pengguna = $dataUser['nama_praktikan'] . ' - ' . $dataUser['nama_asisten'];
+                        $nama_pengguna = $dataUser['nama_admin'] . ' ' . $dataUser['nama_praktikan'] . ' ' . $dataUser['nama_asisten'];
                         
                         echo $nama_pengguna;
                         ?>

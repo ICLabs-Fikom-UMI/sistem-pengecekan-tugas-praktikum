@@ -111,6 +111,18 @@ class Frekuensi_model {
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+  
+    // public function getLoggedInAssistantId() {
+    //     if (isset($_SESSION['id_user']) && isset($_SESSION['role']) && $_SESSION['role'] == 'Asisten') {
+    //         // Assuming 'user_id' is the key where the user ID is stored in the session
+    //         return $_SESSION['id_user'];
+    //     } else {
+    //         // Return a default value or handle the case when the user is not logged in as an assistant
+    //         return null;
+    //     }
+    // }
+
     
 }
 

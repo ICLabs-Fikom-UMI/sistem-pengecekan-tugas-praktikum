@@ -34,6 +34,25 @@ class Pengecekan extends Controller {
             echo $th;
         }
     }
+
+    public function cari(){
+        try {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $id_matkul = $_POST['id_matkul'];
+                $id_frekuensi = $_POST['id_frekuensi'];
+                $id_tugas = $_POST['id_tugas'];
+            } else {
+                header('Location: ' . BASEURL . '/pengecekan/cari/'.$id_matkul.'/'.$id_frekuensi.'/'.$id_tugas.'/');
+            }
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+        
+    }
+
+    public function cari($id_matkul, $id_frekuensi, $id_tugas){
+
+    }
     
 
 }

@@ -9,23 +9,32 @@ class Pengecekan_model {
     }
 
     public function getAllPengecekan() {
-    try {
-        $this->db->query('SELECT 
-            trx_tugas.*, 
-            trx_frekuensi.nama_frekuensi,
-            mst_matkul.nama_matkul
-        FROM 
-            trx_tugas 
-        LEFT JOIN 
-            trx_frekuensi ON trx_tugas.id_frekuensi = trx_frekuensi.id_frekuensi
-        LEFT JOIN
-            mst_matkul ON trx_frekuensi.id_matkul = mst_matkul.id_matkul');
-
-        return $this->db->resultSet();
-    } catch (\Throwable $th) {
-        echo 'Error: ' . $th->getMessage();
+        try {
+            $this->db->query('SELECT 
+                trx_tugas.*, 
+                trx_frekuensi.nama_frekuensi,
+                mst_matkul.nama_matkul,
+                mst_praktikan.nim_praktikan,
+                mst_praktikan.nama_praktikan
+            FROM 
+                trx_tugas 
+            LEFT JOIN 
+                trx_frekuensi ON trx_tugas.id_frekuensi = trx_frekuensi.id_frekuensi
+            LEFT JOIN
+                mst_dosen ON trx_frekuensi.id_dosen = mst_dosen.id_dosen
+            LEFT JOIN
+                mst_matkul ON mst_dosen.id_matkul = mst_matkul.id_matkul
+            LEFT JOIN
+                mst_praktikan ON trx_frekuensi.id_frekuensi = mst_praktikan.id_frekuensi');
+    
+            return $this->db->resultSet();
+        } catch (\Throwable $th) {
+            echo 'Error: ' . $th->getMessage();
+        }
     }
-}
+    
+    
+    
 
 
     public function addPengecean($nama_tugas, $deskripsi_tugas, $status, $tgl_tugas, $tgl_pengecekan, $id_frekuensi) {

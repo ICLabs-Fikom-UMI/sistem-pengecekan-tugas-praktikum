@@ -1,3 +1,4 @@
+<?php if ($_SESSION['role'] == 'Asisten') { ?>
 <div class="content">
     <h2 style="margin-top:70px;">Tugas Praktikum</h2>
     <div class="crud-tugas">
@@ -69,18 +70,38 @@
         </div>
     </div>
 </div>
+<?php } ?>
 
-<script>
-    function submitFormById(formId) {
-        var form = document.getElementById(formId);
-
-        // Periksa apakah formulir ditemukan
-        if (form) {
-            form.submit();
-        } else {
-            console.error("Form with ID '" + formId + "' not found.");
-        }
-    }
-
-</script>
+<?php if ($_SESSION['role'] == 'Administrator'|| $_SESSION['role'] == 'Praktikan') { ?>
+<div class="content">
+    <h2 style="margin-top:70px;">Tugas Praktikum</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Tugas</th>
+                <th>Frekuensi</th>
+                <th>Detail</th>              
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($data['tugas'] as $tugas): ?>
+                <tr>
+                    <td><?= $tugas['nama_tugas']; ?></td>
+                    <td>
+                        <?php
+                        $namafrekuensi = $this->model('Tugas_model')->getFrekuensiById($tugas['id_frekuensi']);
+                        echo $namafrekuensi['nama_frekuensi'];                        
+                        ?>
+                    </td>                  
+                    <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
+                    <!-- <td><a href="<?= BASEURL; ?>/Tugas/detailTugas"><i class="fa-solid fa-circle-info"></i></a></td> -->
+                    <td><a href="<?= BASEURL; ?>/Tugas/detailTugas/<?= $tugas['id_tugas']; ?>"><i class="fa-solid fa-circle-info"></i></a></td>
+                   
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    
+</div>
+<?php } ?>
 
