@@ -16,7 +16,7 @@
         <?php $frekuensi = $this->model('Frekuensi_model')->getAllFrekuensi(); ?>
         <?php foreach ($frekuensi as $frek): ?>
             <option class="frekuensi-option" value="<?= $frek['id_frekuensi']; ?>" data-matkul="<?= $frek['id_matkul']; ?>">
-                <?= $frek['nama_frekuensi']; ?> - <?= $frek['nama_dosen']; ?>
+                <?= $frek['nama_frekuensi']; ?> 
             </option>
         <?php endforeach; ?>
     </select>
@@ -57,11 +57,14 @@
                 <td><?= $pengecekan['nim_praktikan']; ?></td>
                 <td><?= $pengecekan['nama_praktikan']; ?></td>
                 <td>
-    <select name="status" class="status-dropdown" id="status_<?php echo $pengecekan['id_pengecekan']; ?>" onchange="updateTanggalPengecekan(this)">
-        <option value="" disabled selected>Pilih</option>
-        <option value="ACC">ACC</option>
-        <option value="Revisi">Revisi</option>
-    </select>
+                <select name="status" class="status-dropdown" id="status_<?php echo $pengecekan['id_pengecekan']; ?>" onchange="updatePengecekan(this)">
+    <option value="" disabled selected>Pilih</option>
+    <option value="ACC">ACC</option>
+    <option value="Revisi">Revisi</option>
+    <!-- <option value="Manual">Lainnya<input type="text" name="custom_status" id="customStatusInput" style="display: none;" placeholder="Masukkan status manual"></option> -->
+</select>
+<!-- <input type="text" name="custom_status" id="customStatusInput" style="display: none;" placeholder="Masukkan status manual"> -->
+
 </td>
 <td class="tgl_pengecekan"><?= $pengecekan['tgl_pengecekan']; ?></td>
 
@@ -72,9 +75,6 @@
         </tr>
     <?php endif; ?>
 <?php endif; ?>
-
-
-
 
 
         </tbody>

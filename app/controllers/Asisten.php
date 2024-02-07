@@ -22,8 +22,9 @@ class Asisten extends Controller {
                 $nama_asisten = $_POST['nama_asisten'];
                 $kelas = $_POST['kelas'];
                 $prodi = $_POST['prodi'];
+                $id_user = $_POST['id_user'];
                 $asisten_model = $this->model('Asisten_model');
-                $asisten_model->addAsisten($nim_asisten, $nama_asisten, $kelas, $prodi);
+                $asisten_model->addAsisten($nim_asisten, $nama_asisten, $kelas, $prodi, $id_user);
                 echo "Berhasil Mengimputkan Data";
                 // var_dump($nim_asisten);
             } else {

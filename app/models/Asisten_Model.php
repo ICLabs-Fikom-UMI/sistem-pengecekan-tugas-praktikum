@@ -18,7 +18,7 @@ class Asisten_model {
         }
     }
 
-    public function addAsisten($nim_asisten, $nama_asisten,$kelas, $prodi){
+    public function addAsisten($nim_asisten, $nama_asisten,$kelas, $prodi, $id_user){
         try {
             // $this->db->query("INSERT INTO $this->table (nim_asisten, nama_asisten, kelas, prodi) VALUES (:nim_asisten, :nama_asisten, :kelas, :prodi)");
             $this->db->query("CALL tambah_asisten(:nim_asisten, :nama_asisten, :kelas, :prodi)");
@@ -26,6 +26,7 @@ class Asisten_model {
             $this->db->bind(':nama_asisten', $nama_asisten);
             $this->db->bind(':kelas', $kelas);
             $this->db->bind(':prodi', $prodi);
+            // $this->db->bind(':id_user', $id_user);
             // var_dump($nim_asisten);
     
             $this->db->execute();

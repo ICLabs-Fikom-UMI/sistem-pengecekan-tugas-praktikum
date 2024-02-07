@@ -11,6 +11,8 @@
         }
     }
     
+
+
     function search() {
         // Dapatkan nilai input pencarian
         var searchInput = document.getElementById("searchInput").value.toLowerCase();
@@ -200,82 +202,49 @@ function updateTugasOptions() {
     });
 }
 
+// function updateTanggalPengecekan(select) {
+//     var selectedValue = select.value;
+//     var row = select.closest('tr'); // Mendapatkan baris terdekat (closest) dari elemen select
+//     var tanggalPengecekanCell = row.querySelector('.tgl_pengecekan'); // Mendapatkan sel dengan kelas 'tgl_pengecekan'
 
-     
-    // function cariPaktikan() {
-    //     // Get the selected values from the dropdowns
-    //     var id_matkul = document.getElementById('inputNamaMatkul').value;
-    //     var id_frekuensi = document.getElementById('inputFrekuensi').value;
-    //     var id_tugas = document.getElementById('pilihTugas').value;
+//     // Jika opsi yang dipilih adalah 'ACC' atau 'Revisi', isi otomatis nilai tanggal pengecekan
+//     if (selectedValue === 'ACC' || selectedValue === 'Revisi') {
+//         var currentDate = new Date();
+//         var formattedDate = currentDate.toLocaleString(); // Konversi tanggal menjadi format yang sesuai
 
-    //     // Send an AJAX request to the server to perform the search
-    //     var xhr = new XMLHttpRequest();
-    //     xhr.open('POST', '<?php echo BASEURL; ?>/pengecekan/cari', true);
-    //     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        
-    //     // Define the data to be sent in the request body
-    //     var data = 'id_matkul=' + id_matkul + '&id_frekuensi=' + id_frekuensi + '&id_tugas=' + id_tugas;
+//         // Isi nilai tanggal pengecekan dengan tanggal saat ini
+//         tanggalPengecekanCell.textContent = formattedDate;
+//     } else {
+//         // Jika opsi yang dipilih tidak 'ACC' atau 'Revisi', kosongkan nilai tanggal pengecekan
+//         tanggalPengecekanCell.textContent = '';
+//     }
+// }
 
-    //     xhr.onreadystatechange = function () {
-    //         if (xhr.readyState == 4 && xhr.status == 200) {
-    //             // Handle the response from the server
-    //             // You may want to update the table or display the results as needed
-    //             console.log(xhr.responseText);
-    //         }
-    //     };
-
-    //     // Send the request
-    //     xhr.send(data);
-    // }
-
-    
-// document.addEventListener("DOMContentLoaded", function() {
-//     // Get all status dropdowns with the specified class
-//     var statusDropdowns = document.querySelectorAll('.status-dropdown');
-
-//     // Add change event listeners to each status dropdown
-//     statusDropdowns.forEach(function(dropdown) {
-//         dropdown.addEventListener('change', function() {
-//             // Get the selected option value
-//             var selectedStatus = dropdown.value;
-
-//             // Get the corresponding row element
-//             var row = dropdown.closest('tr');
-
-//             // Find the element with the class 'tgl_pengecekan' in the same row
-//             var tglPengecekanElement = row.querySelector('.tgl_pengecekan');
-
-//             // Update the 'tgl_pengecekan' based on the selected status
-//             if (selectedStatus === 'ACC' || selectedStatus === 'Revisi') {
-//                 // You may want to fetch and set the actual date here
-//                 tglPengecekanElement.textContent = 'Your Updated Date'; 
-//             } else {
-//                 // Reset the 'tgl_pengecekan' when no status is selected
-//                 tglPengecekanElement.textContent = '';
-//             }
-//         });
-//     });
-// });
-
-function updateTanggalPengecekan(select) {
+function updatePengecekan(select) {
     var selectedValue = select.value;
     var row = select.closest('tr'); // Mendapatkan baris terdekat (closest) dari elemen select
     var tanggalPengecekanCell = row.querySelector('.tgl_pengecekan'); // Mendapatkan sel dengan kelas 'tgl_pengecekan'
+    var customStatusInput = document.getElementById('customStatusInput');
 
-    // Jika opsi yang dipilih adalah 'ACC' atau 'Revisi', isi otomatis nilai tanggal pengecekan
     if (selectedValue === 'ACC' || selectedValue === 'Revisi') {
         var currentDate = new Date();
         var formattedDate = currentDate.toLocaleString(); // Konversi tanggal menjadi format yang sesuai
 
         // Isi nilai tanggal pengecekan dengan tanggal saat ini
         tanggalPengecekanCell.textContent = formattedDate;
+        customStatusInput.style.display = 'none'; // Sembunyikan input teks jika opsi ACC atau Revisi dipilih
+    } else if (selectedValue === 'Manual') {
+        var currentDate = new Date();
+        var formattedDate = currentDate.toLocaleString(); // Konversi tanggal menjadi format yang sesuai
+
+        // Isi nilai tanggal pengecekan dengan tanggal saat ini
+        tanggalPengecekanCell.textContent = formattedDate;
+        customStatusInput.style.display = 'block'; // Tampilkan input teks jika opsi Manual dipilih
     } else {
-        // Jika opsi yang dipilih tidak 'ACC' atau 'Revisi', kosongkan nilai tanggal pengecekan
-        tanggalPengecekanCell.textContent = '';
+        tanggalPengecekanCell.textContent = ''; // Kosongkan nilai tanggal pengecekan
+        customStatusInput.style.display = 'none'; // Sembunyikan input teks jika opsi lainnya dipilih
     }
 }
-
-
 
 function togglePraktikanOptions() {
     var inputMatkul = document.getElementById("inputNamaMatkul");
@@ -312,9 +281,32 @@ document.getElementById("btnCari").addEventListener("click", function() {
     }
 });
 
+function editPengecekan(id_tugas) {
+    // Aktifkan dropdown status
+    var statusDropdown = document.getElementById('status_' + id_tugas);
+    statusDropdown.disabled = false;
+}
+
+function simpanPengecekan(id_tugas) {
+    // Nonaktifkan dropdown status
+    var statusDropdown = document.getElementById('status_' + id_tugas);
+    statusDropdown.disabled = true;
+}
 
 
-  
+function populateAsisten() {
+    var select = document.getElementById('inputFrekuensi');
+    var selectedOption = select.options[select.selectedIndex];
+    var dosenInput = document.getElementById('dosenInput');
+    var asisten1Input = document.getElementById('asisten1Input');
+    var asisten2Input = document.getElementById('asisten2Input');
+    
+    
+    dosenInput.value = selectedOption.getAttribute('data-dosen');
+    asisten1Input.value = selectedOption.getAttribute('data-asisten1');
+    asisten2Input.value = selectedOption.getAttribute('data-asisten2');
+}
+
 
 
 
