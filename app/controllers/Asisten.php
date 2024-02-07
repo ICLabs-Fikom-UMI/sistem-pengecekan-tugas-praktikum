@@ -25,7 +25,7 @@ class Asisten extends Controller {
                 $asisten_model = $this->model('Asisten_model');
                 $asisten_model->addAsisten($nim_asisten, $nama_asisten, $kelas, $prodi);
                 echo "Berhasil Mengimputkan Data";
-                
+                // var_dump($nim_asisten);
             } else {
                 echo "Gagal Mengimputkan Data";
             }

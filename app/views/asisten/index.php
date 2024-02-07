@@ -45,7 +45,7 @@
             <form id="tambahForm" action="<?= BASEURL; ?>/asisten/add" method="POST">
                 <label for="inputNimasisten">NIM asisten :</label>
                 <!-- <input type="text" id="inputNipasisten" name="nip_asisten" required placeholder="Masukkan NIP asisten"> -->
-                <input type="text" id="inputNimasisten" name="nim_asisten" required placeholder="Masukkan NIM Asisten" pattern="[0-9]+" title="Hanya masukkan angka (0-9)">
+                <input type="text" id="inputNimasisten" name="nim_asisten" required placeholder="Masukkan NIM Asisten" >
                 <label for="inputNamaAsisten">Nama Asisten :</label>
                 <input type="text" id="inputNamaAsisten" name="nama_asisten" required placeholder="Masukkan Nama Asisten">
                 <label for="inputKelas">Kelas :</label>
@@ -62,18 +62,4 @@
     </div>
 </div>
 
-<script>
-
-function submitFormById(formId) {
-    var form = document.getElementById(formId);
-
-    // Periksa apakah formulir ditemukan
-    if (form) {
-        form.submit();
-    } else {
-        console.error("Form with ID '" + formId + "' not found.");
-    }
-}
-
-</script>
 

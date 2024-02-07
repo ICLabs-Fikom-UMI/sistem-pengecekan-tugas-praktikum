@@ -115,5 +115,7 @@ class Tugas_model {
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    
 }
 

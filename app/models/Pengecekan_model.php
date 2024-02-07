@@ -105,6 +105,55 @@ class Pengecekan_model {
     
         return $this->db->single(); // Mengembalikan satu baris hasil query
     }
+
+
+    public function cariPengecekan($id_matkul, $id_frekuensi, $id_tugas) {
+        try {
+            // Modify the query to filter the results based on the provided parameters
+            $this->db->query('SELECT 
+                trx_tugas.*, 
+                trx_frekuensi.nama_frekuensi,
+                mst_matkul.nama_matkul,
+                mst_praktikan.nim_praktikan,
+                mst_praktikan.nama_praktikan
+            FROM 
+                trx_tugas 
+            LEFT JOIN 
+                trx_frekuensi ON trx_tugas.id_frekuensi = trx_frekuensi.id_frekuensi
+            LEFT JOIN
+                mst_dosen ON trx_frekuensi.id_dosen = mst_dosen.id_dosen
+            LEFT JOIN
+                mst_matkul ON mst_dosen.id_matkul = mst_matkul.id_matkul
+            LEFT JOIN
+                mst_praktikan ON trx_frekuensi.id_frekuensi = mst_praktikan.id_frekuensi
+            WHERE
+                mst_matkul.id_matkul = :id_matkul
+                AND trx_frekuensi.id_frekuensi = :id_frekuensi
+                AND trx_tugas.id_tugas = :id_tugas');
+        
+            $this->db->bind(':id_matkul', $id_matkul);
+            $this->db->bind(':id_frekuensi', $id_frekuensi);
+            $this->db->bind(':id_tugas', $id_tugas);
+    
+            return $this->db->resultSet();
+        } catch (\Throwable $th) {
+            echo 'Error: ' . $th->getMessage();
+        }
+    }
+
+    public function getPraktikanByFrekuensi($id_frekuensi) {
+        try {
+            $this->db->query("SELECT * FROM mst_praktikan WHERE id_frekuensi = :id_frekuensi");
+            $this->db->bind(':id_frekuensi', $id_frekuensi);
+            return $this->db->resultSet();
+        } catch (\Throwable $th) {
+            echo 'Error: ' . $th->getMessage();
+        }
+    }
+
+    
+    
+
     
     
 }

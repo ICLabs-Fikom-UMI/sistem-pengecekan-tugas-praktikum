@@ -1,5 +1,6 @@
 <div class="content">
-    <h2 style="margin-top: 70px;">Pengecekan</h2>
+<form method="POST" action="<?= BASEURL; ?>/pengecekan/cari">    
+<h2 style="margin-top: 70px;">Pengecekan</h2>
     <label for="inputNamaMatkul">Mata Kuliah:</label>
     <select id="inputNamaMatkul" name="id_matkul" onchange="updateFrekuensiOptions()">
         <option value="" disabled selected>Pilih</option>
@@ -20,7 +21,7 @@
         <?php endforeach; ?>
     </select>
     <label for="pilihTugas">Nama Tugas :</label>
-    <select id="pilihTugas" name="id_tugas" onchange="updateTugasOptions()">
+    <select id="pilihTugas" name="id_tugas">
         <option value="" disabled selected>Pilih</option>
         <?php $namaTugas = $this->model('Tugas_model')->getAllTugas(); ?>
         <?php foreach ($namaTugas as $tugas): ?>
@@ -29,8 +30,13 @@
             </option>
         <?php endforeach; ?>
     </select>
+    
+
+
 
     <button style="margin-top: 20px;" onclick="cariPaktikan()">Cari</button>
+
+    </form>
 
     <table  id="data-table">
         <thead>
@@ -43,28 +49,32 @@
             </tr>
         </thead>
         <tbody>
+        <?php if(isset($_POST['id_matkul']) && isset($_POST['id_frekuensi']) && isset($_POST['id_tugas'])): ?>
+    <?php if(isset($data['pengecekan']) && !empty($data['pengecekan'])): ?>
         <?php $i = 1; foreach ($data['pengecekan'] as $pengecekan): ?>
-    <tr>
-        <td><?= $i++ ?> </td>
-        <td><?php 
-            $nim_praktikan = $this->model('Tugas_model')->getPraktikanByFrekuensi($pengecekan['id_frekuensi']);
-            echo $nim_praktikan['nim_praktikan'];
-        ?></td>
-        <td><?php 
-            $nama_praktikan = $this->model('Tugas_model')->getPraktikanByFrekuensi($pengecekan['id_frekuensi']);
-            echo $nama_praktikan['nama_praktikan'];
-        ?></td>
-        <td>
-            <!-- Dropdown Status -->
-            <select name="status" id="status_<?php echo $pengecekan['id_pengecekan']; ?>">
-                <option value="ACC">ACC</option>
-                <option value="Revisi">Revisi</option>
-            </select>
-        </td> 
-        <td><?= $pengecekan['tgl_pengecekan']; ?></td>     
-    </tr>
-    
-<?php endforeach; ?>
+            <tr>
+                <td><?= $i++ ?></td>
+                <td><?= $pengecekan['nim_praktikan']; ?></td>
+                <td><?= $pengecekan['nama_praktikan']; ?></td>
+                <td>
+                    <select name="status" class="status-dropdown" id="status_<?php echo $pengecekan['id_pengecekan']; ?>">
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="ACC">ACC</option>
+                        <option value="Revisi">Revisi</option>
+                    </select>
+                </td>
+                <td class="tgl_pengecekan"><?= $pengecekan['tgl_pengecekan']; ?></td>
+            </tr>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <tr>
+            <td colspan="5">Tidak ada data yang tersedia.</td>
+        </tr>
+    <?php endif; ?>
+<?php endif; ?>
+
+
+
 
 
         </tbody>
@@ -74,8 +84,6 @@
         <button onclick="simpanPengecekan(<?php echo $pengecekan['id_tugas']; ?>)">Simpan</button>
     </div>
 
-
 </div>
-
 
 
