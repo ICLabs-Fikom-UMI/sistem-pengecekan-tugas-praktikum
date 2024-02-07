@@ -229,33 +229,53 @@ function updateTugasOptions() {
     // }
 
     
-document.addEventListener("DOMContentLoaded", function() {
-    // Get all status dropdowns with the specified class
-    var statusDropdowns = document.querySelectorAll('.status-dropdown');
+// document.addEventListener("DOMContentLoaded", function() {
+//     // Get all status dropdowns with the specified class
+//     var statusDropdowns = document.querySelectorAll('.status-dropdown');
 
-    // Add change event listeners to each status dropdown
-    statusDropdowns.forEach(function(dropdown) {
-        dropdown.addEventListener('change', function() {
-            // Get the selected option value
-            var selectedStatus = dropdown.value;
+//     // Add change event listeners to each status dropdown
+//     statusDropdowns.forEach(function(dropdown) {
+//         dropdown.addEventListener('change', function() {
+//             // Get the selected option value
+//             var selectedStatus = dropdown.value;
 
-            // Get the corresponding row element
-            var row = dropdown.closest('tr');
+//             // Get the corresponding row element
+//             var row = dropdown.closest('tr');
 
-            // Find the element with the class 'tgl_pengecekan' in the same row
-            var tglPengecekanElement = row.querySelector('.tgl_pengecekan');
+//             // Find the element with the class 'tgl_pengecekan' in the same row
+//             var tglPengecekanElement = row.querySelector('.tgl_pengecekan');
 
-            // Update the 'tgl_pengecekan' based on the selected status
-            if (selectedStatus === 'ACC' || selectedStatus === 'Revisi') {
-                // You may want to fetch and set the actual date here
-                tglPengecekanElement.textContent = 'Your Updated Date'; 
-            } else {
-                // Reset the 'tgl_pengecekan' when no status is selected
-                tglPengecekanElement.textContent = '';
-            }
-        });
-    });
-});
+//             // Update the 'tgl_pengecekan' based on the selected status
+//             if (selectedStatus === 'ACC' || selectedStatus === 'Revisi') {
+//                 // You may want to fetch and set the actual date here
+//                 tglPengecekanElement.textContent = 'Your Updated Date'; 
+//             } else {
+//                 // Reset the 'tgl_pengecekan' when no status is selected
+//                 tglPengecekanElement.textContent = '';
+//             }
+//         });
+//     });
+// });
+
+function updateTanggalPengecekan(select) {
+    var selectedValue = select.value;
+    var row = select.closest('tr'); // Mendapatkan baris terdekat (closest) dari elemen select
+    var tanggalPengecekanCell = row.querySelector('.tgl_pengecekan'); // Mendapatkan sel dengan kelas 'tgl_pengecekan'
+
+    // Jika opsi yang dipilih adalah 'ACC' atau 'Revisi', isi otomatis nilai tanggal pengecekan
+    if (selectedValue === 'ACC' || selectedValue === 'Revisi') {
+        var currentDate = new Date();
+        var formattedDate = currentDate.toLocaleString(); // Konversi tanggal menjadi format yang sesuai
+
+        // Isi nilai tanggal pengecekan dengan tanggal saat ini
+        tanggalPengecekanCell.textContent = formattedDate;
+    } else {
+        // Jika opsi yang dipilih tidak 'ACC' atau 'Revisi', kosongkan nilai tanggal pengecekan
+        tanggalPengecekanCell.textContent = '';
+    }
+}
+
+
 
 function togglePraktikanOptions() {
     var inputMatkul = document.getElementById("inputNamaMatkul");

@@ -57,14 +57,14 @@
                 <td><?= $pengecekan['nim_praktikan']; ?></td>
                 <td><?= $pengecekan['nama_praktikan']; ?></td>
                 <td>
-                    <select name="status" class="status-dropdown" id="status_<?php echo $pengecekan['id_pengecekan']; ?>">
-                        <option value="" disabled selected>Pilih</option>
-                        <option value="ACC">ACC</option>
-                        <option value="Revisi">Revisi</option>
-                    </select>
-                </td>
-                <td class="tgl_pengecekan"><?= $pengecekan['tgl_pengecekan']; ?></td>
-            </tr>
+    <select name="status" class="status-dropdown" id="status_<?php echo $pengecekan['id_pengecekan']; ?>" onchange="updateTanggalPengecekan(this)">
+        <option value="" disabled selected>Pilih</option>
+        <option value="ACC">ACC</option>
+        <option value="Revisi">Revisi</option>
+    </select>
+</td>
+<td class="tgl_pengecekan"><?= $pengecekan['tgl_pengecekan']; ?></td>
+
         <?php endforeach; ?>
     <?php else: ?>
         <tr>
