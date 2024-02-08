@@ -51,4 +51,28 @@ public function hapus($id) {
 }
 
 
+public function ubahModal(){
+    $this->isAdmin();
+    $id = $_POST['id'];
+    $data['ubahdata'] = $this->model('Asisten_model')->ubah($id);
+    $data['viewAsisten'] = $this->model('Asisten_model')->viewAsisten();
+  
+
+    $data['kelasDetail'] = $this->model('Asisten_model')->getKelasById($data['ubahdata']['nim']);
+    $data['angkatanDetail'] = $this->model('Asisten_model')->getAngkatanById($data['ubahdata']['ID_Angkatan']);
+    $data['jurusanDetail'] = $this->model('Asisten_model')->getJurusanById($data['ubahdata']['ID_Jurusan']);
+    $data['statusDetail'] = $this->model('Asisten_model')->getStatusById($data['ubahdata']['ID_Status']);
+    $data['userDetail'] = $this->model('Asisten_model')->getUserById($data['ubahdata']['ID_User']);
+
+    $this->view('asisten/ubah_asisten', $data);
+}
+
+public function prosesUbah(){
+    $this->isAdmin();
+    if($this->model('Asisten_model')->prosesUbah($_POST) > 0){
+        header('Location: '.BASEURL. '/Asisten');
+        exit;
+    }
+}
+
 }

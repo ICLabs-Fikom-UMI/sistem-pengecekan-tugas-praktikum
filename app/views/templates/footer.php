@@ -307,6 +307,15 @@ function populateAsisten() {
     asisten2Input.value = selectedOption.getAttribute('data-asisten2');
 }
 
+function ubahdata(x){
+      $('.modal-title').html('Ubah Data');
+      let url = '<?= BASEURL?>/Asisten/ubahModal';
+      $.post(url, {
+        id : x
+      }, function(data, success){
+        $('.modal-body').html(data);
+      });
+  }
 
 
 

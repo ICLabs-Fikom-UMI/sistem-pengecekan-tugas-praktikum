@@ -48,7 +48,7 @@ class Asisten_model {
         }
     }  
     
-   // Asisten_model.php
+   // HAPUS
 
     public function hapusAsisten($id) {
         $query = "DELETE FROM mst_asisten WHERE id_asisten = :id_asisten";
@@ -58,6 +58,34 @@ class Asisten_model {
         return $this->db->rowCount();
     }
 
+    //UPDATE
+
+    public function viewAsisten(){
+        $this->db->query("SELECT * FROM mst_asisten");
+        return $this->db->resultSet();
+    }
+
+    public function prosesUbah($data){
+        
+        $query = "UPDATE mst_asisten SET nim_asisten = :nim_asisten, nama_asisten = :nama_asisten, kelas = :kelas, prodi = :prodi WHERE id_asisten = :id_asisten";
+        
+        $this->db->query($query);
+        $this->db->bind('nim_asisten', $data['nim_asisten']);
+        $this->db->bind('nama_asisten', $data['nama_asisten']);
+        $this->db->bind('kelas', $data['kelas']);
+        $this->db->bind('prodi', $data['prodi']);
+        $this->db->bind('id_asisten', $data['id_asisten']);
     
+        $this->db->execute();
+    
+        return $this->db->rowCount();
+    }
+
+    public function ubah($id){
+        $this->db->query("SELECT * FROM asisten");
+        $this->db->bind("id_asisten", $id);
+
+        return $this->db->single(); 
+    }
     
 }

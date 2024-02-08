@@ -1,7 +1,8 @@
 <div class="content">
 <form method="POST" action="<?= BASEURL; ?>/riwayat/cariTugas">    
 <h2 style="margin-top: 70px;">Riwayat Pengecekan</h2>
-<label for="pilihTugas">Frekuensi :</label>
+<div class="form-group">
+<label for="pilihTugas">Frekuensi</label>
 <select id="inputFrekuensi" name="id_frekuensi" onchange="populateAsisten()">
     <option value="" disabled selected>Pilih</option>
     <?php $frekuensi = $this->model('Frekuensi_model')->getAllFrekuensi(); ?>
@@ -15,16 +16,21 @@
         </option>
     <?php endforeach; ?>
 </select>
+</div>
+<div class="form-group">
+    <label for="dosenInput">Dosen Pengampuh </label>
+    <input type="text" id="dosenInput" readonly>
+</div>
 
-<label for="pilihTugas">Dosen Pengampuh :</label>
-<input style="background-color: #E7F4EF;border:none;" type="text" id="dosenInput" readonly>
+<div class="form-group">
+    <label for="asisten1Input">Asisten 1 </label>
+    <input type="text" id="asisten1Input" readonly>
+</div>
 
-
-<label for="pilihTugas">Asisten 1 :</label>
-<input style="background-color: #E7F4EF;border:none;" type="text" id="asisten1Input" readonly>
-
-<label for="pilihTugas">Asisten 2 :</label>
-<input style="background-color: #E7F4EF; border:none;" type="text" id="asisten2Input" readonly>
+<div class="form-group">
+    <label for="asisten2Input">Asisten 2 </label>
+    <input type="text" id="asisten2Input" readonly>
+</div>
 
 
     </form>

@@ -187,7 +187,7 @@ if ($_SESSION['role'] == 'Asisten' ) {
 </div>
 <?php } ?>
 
-<!-- <?php 
+<?php 
 if ($_SESSION['role'] == 'Praktikan' ) { 
     $data['frekuensi'] = $this->model('Frekuensi_model')->getFrekuensibyUserPrak($_SESSION['id_user']);
 ?>
@@ -252,4 +252,4 @@ if ($_SESSION['role'] == 'Praktikan' ) {
 
 </div>
 <?php } ?>
- -->
+

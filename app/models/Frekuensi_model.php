@@ -18,9 +18,7 @@ class Frekuensi_model {
             LEFT JOIN mst_dosen ON trx_frekuensi.id_dosen = mst_dosen.id_dosen
             LEFT JOIN mst_asisten AS asisten1 ON trx_frekuensi.id_asisten1 = asisten1.id_asisten
             LEFT JOIN mst_asisten AS asisten2 ON trx_frekuensi.id_asisten2 = asisten2.id_asisten
-            LEFT JOIN mst_matkul ON mst_dosen.id_matkul = mst_matkul.id_matkul
-
-            ');
+            LEFT JOIN mst_matkul ON mst_dosen.id_matkul = mst_matkul.id_matkul');
             
 
 
@@ -139,21 +137,24 @@ class Frekuensi_model {
         return $this->db->resultSet();
     }
 
-    // public function getFrekuensibyUserPrak($loggedInUserId) {
-    //     $query = "SELECT trx_frekuensi.*, mst_dosen.*, 
-    //         mst_praktikan.nama_praktikan,
-    //         mst_matkul.nama_matkul
-    //         FROM trx_frekuensi
-    //         LEFT JOIN mst_dosen ON trx_frekuensi.id_dosen = mst_dosen.id_dosen
-    //         LEFT JOIN mst_praktikan ON trx_frekuensi.id_praktikan = mst_praktikan.id_praktikan
-    //         LEFT JOIN mst_matkul ON mst_dosen.id_matkul = mst_matkul.id_matkul 
-    //         WHERE mst_praktikan.id_user = :id_user";
+    public function getFrekuensibyUserPrak($loggedInUserId) {
+        $query = "SELECT trx_frekuensi.*, mst_dosen.*, mst_praktikan.*, 
+        asisten1.nama_asisten AS nama_asisten1, 
+        asisten2.nama_asisten AS nama_asisten2,
+        mst_matkul.nama_matkul
+        FROM trx_frekuensi
+        LEFT JOIN mst_dosen ON trx_frekuensi.id_dosen = mst_dosen.id_dosen
+        LEFT JOIN mst_asisten AS asisten1 ON trx_frekuensi.id_asisten1 = asisten1.id_asisten
+        LEFT JOIN mst_asisten AS asisten2 ON trx_frekuensi.id_asisten2 = asisten2.id_asisten
+        LEFT JOIN mst_matkul ON mst_dosen.id_matkul = mst_matkul.id_matkul
+        LEFT JOIN mst_praktikan ON mst_praktikan.id_frekuensi = trx_frekuensi.id_frekuensi
+        WHERE mst_praktikan.id_user =  :id_user";
     
-    //     $this->db->query($query);
-    //     $this->db->bind(":id_user", $loggedInUserId);
-    //     $this->db->execute();
-    //     return $this->db->resultSet();
-    // }
+        $this->db->query($query);
+        $this->db->bind(":id_user", $loggedInUserId);
+        $this->db->execute();
+        return $this->db->resultSet();
+    }
     
     
 

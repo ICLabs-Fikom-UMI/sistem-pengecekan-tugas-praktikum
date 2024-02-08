@@ -4,9 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $data['judul']?></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="<?= BASEURL; ?> /css/style.css">
     <link rel="stylesheet" href="<?= BASEURL; ?> /css/style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <style>
+        .form-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.form-group select {
+    width: 200%; /* Sesuaikan lebar label sesuai kebutuhan */
+    text-align: left;
+    margin-right: 10px;
+}
+
+.form-group label {
+    width: 40%; /* Sesuaikan lebar label sesuai kebutuhan */
+    text-align: left;
+    margin-right: 10px;
+}
+
+.form-group input {
+    width: 200%; /* Sesuaikan lebar input sesuai kebutuhan */
+    background-color: #E7F4EF;
+    border: none;
+    color :#526D82;
+}
+
+    </style>
     
 
 </head>
@@ -25,7 +53,21 @@
                 <input type="text" id="searchInput" placeholder="Search...">
                 <button type="button" onclick="search()"><i class="fa fa-search"></i></button>
             </div>
+            <div class="nama_user">
+            <?php
+            // Mendapatkan ID pengguna dari variabel $pengguna
+            $id_user = $pengguna['id_user'];
+            // Mendapatkan data pengguna berdasarkan ID pengguna
+            $dataUser = $this->model('Pengguna_model')->getDataUserById($id) ;
             
+            // Menggabungkan nama praktikan, asisten, atau admin (sesuai dengan data yang tersedia) dalam satu field
+            $nama_pengguna = $dataUser['nama_admin'] ?? $dataUser['nama_praktikan'] ?? $dataUser['nama_asisten'] ?? $dataUser['nama_praktikan'];
+            
+            // Menampilkan nama pengguna
+            echo $nama_pengguna;
+            ?>
+            </div>
+
 
         </div>
         <div class="profile-picture">

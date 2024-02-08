@@ -318,6 +318,8 @@ button:hover {
     margin-bottom: 5px; /* Menambahkan margin bottom agar ada ruang antara label dan input */
 }
 
+
+
 /* Responsive styles */
 @media screen and (max-width: 768px) {
     .navbar {
