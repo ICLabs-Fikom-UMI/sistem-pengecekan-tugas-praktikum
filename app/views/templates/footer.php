@@ -12,34 +12,35 @@
     }
     
 
-
     function search() {
-        // Dapatkan nilai input pencarian
-        var searchInput = document.getElementById("searchInput").value.toLowerCase();
+    // Dapatkan nilai input pencarian
+    var searchInput = document.getElementById("searchInput").value.toLowerCase();
 
-        // Dapatkan semua elemen baris pada tabel
-        var rows = document.getElementsByTagName("tr");
+    // Dapatkan semua elemen baris pada tabel di dalam tbody
+    var tbodyRows = document.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
 
-        // Loop melalui setiap baris
-        for (var i = 0; i < rows.length; i++) {
-            var isRowMatch = false;
+    // Loop melalui setiap baris dalam tbody
+    for (var i = 0; i < tbodyRows.length; i++) {
+        var isRowMatch = false;
 
-            // Dapatkan sel dalam setiap kolom
-            var cells = rows[i].getElementsByTagName("td");
+        // Dapatkan sel dalam setiap kolom
+        var cells = tbodyRows[i].getElementsByTagName("td");
 
-            // Loop melalui setiap sel
-            for (var j = 0; j < cells.length; j++) {
-                var cellText = cells[j].textContent.toLowerCase() || cells[j].innerText.toLowerCase();
-                if (cellText.includes(searchInput)) {
-                    isRowMatch = true;
-                    break; // Keluar dari loop jika ada kecocokan di salah satu sel
-                }
+        // Loop melalui setiap sel dalam baris tbody
+        for (var j = 0; j < cells.length; j++) {
+            var cellText = cells[j].textContent.toLowerCase() || cells[j].innerText.toLowerCase();
+            if (cellText.includes(searchInput)) {
+                isRowMatch = true;
+                break; // Keluar dari loop jika ada kecocokan di salah satu sel
             }
-
-            // Tampilkan atau sembunyikan baris berdasarkan hasil pencarian
-            rows[i].style.display = isRowMatch ? "" : "none";
         }
+
+        // Tampilkan atau sembunyikan baris berdasarkan hasil pencarian
+        tbodyRows[i].style.display = isRowMatch ? "" : "none";
     }
+}
+
+
     function filterPraktikanByFrekuensi() {
     var selectedFrekuensi = document.getElementById('inputFrekuensi').value;
     var praktikanRows = document.querySelectorAll('.praktikan-row');

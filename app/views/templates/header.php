@@ -51,8 +51,7 @@
                 <div class="bar"></div>
             </div>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search...">
-                <button type="button" onclick="search()"><i class="fa fa-search"></i></button>
+            <input type="text" id="searchInput" placeholder="Search..." onkeyup="search()">
             </div>
             <div class="nama_user">
             <?php
