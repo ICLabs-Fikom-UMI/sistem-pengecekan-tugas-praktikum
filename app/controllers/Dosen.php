@@ -42,4 +42,36 @@ class Dosen extends Controller {
         }
     }
 
+    public function edit($id) {
+        $data['judul'] = 'Edit Dosen';
+        $data['dosen'] = $this->model('Dosen_model')->getDosenById($id); 
+        // Ambil data dosen berdasarkan id
+        // Tampilkan view edit dengan data dosen yang akan diubah
+        $this->view('templates/header', $data);
+        $this->view('templates/sidebar', $data);
+        $this->view('dosen/edit', $data);
+        $this->view('templates/footer');
+    }
+    
+    public function update() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id_dosen = $_POST['id_dosen'];
+            $nip_dosen = $_POST['nip_dosen'];
+            $nama_dosen = $_POST['nama_dosen'];
+            $id_matkul = $_POST['id_matkul'];
+            $kelas = $_POST['kelas'];
+            $result = $this->model('Dosen_model')->updateDosen($id_dosen, $nip_dosen, $nama_dosen, $id_matkul, $kelas);
+            if ($result) {
+                header('Location: ' . BASEURL . '/dosen');
+            } else {
+                // Tampilkan pesan error jika gagal update
+                echo "Gagal melakukan update.";
+            }
+        } else {
+            // Tampilkan pesan error jika metode request bukan POST
+            echo "Metode request tidak valid.";
+        }
+    }
+    
+
 }

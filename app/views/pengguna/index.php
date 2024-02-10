@@ -36,9 +36,9 @@
                   
                     
                     <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
-                    <td><a href="<?= BASEURL; ?>/pengguna/edit/<?= $user['id_user']; ?>"><i class="fa fa-pencil"></i> </a></td>
-                    <td>
-                <a href="<?= BASEURL; ?>/Pengguna/" onclick="hapusPengguna('<?= $pengguna['id_user']; ?>')">
+                    <td style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/pengguna/edit/<?= $user['id_user']; ?>"><i class="fa fa-pencil"></i> </a></td>
+                    <td style="position: relative;">
+                <a class="btn-crud" href="<?= BASEURL; ?>/Pengguna/" onclick="hapusPengguna('<?= $pengguna['id_user']; ?>')">
                     <i class="fa fa-trash-can"></i>
                 </a>
             </td>

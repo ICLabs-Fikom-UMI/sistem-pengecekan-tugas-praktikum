@@ -55,6 +55,7 @@
         }
     });
 }
+
     function updateFrekuensiOptions() {
     var selectedMatkul = document.getElementById('inputNamaMatkul').value;
     var frekuensiOptions = document.getElementsByClassName('frekuensi-option');

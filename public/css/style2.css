@@ -18,6 +18,10 @@ body {
    
 }
 
+.btn-edit{
+    border: 1px solid;
+    height: 100%;
+}
 
 .space {
     display: flex;
@@ -75,11 +79,17 @@ body {
     margin-bottom: 15px;
 }
 
-.fa a{
-    font-family: poppins;
-    font-weight:450; 
- }
+.btn-crud i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
+/* td {
+    position: relative;
+}
+ */
 
 .profile-picture img {
     height: 50px;
@@ -197,18 +207,15 @@ body {
     color: #000000;
     background-color: #4caf4f00;
     border: 3px solid #51A8B1;
-    border-radius: 5px;
+    border-radius: 5px;  
+   
+
     
     
 }
 
-.edit-crud {
-    margin-left: 10px;
-}
 
-.delete-crud {
-    margin-left: 10px;
-}
+
 
 .crud:hover {
     background-color: #51a7b1a1; /* Warna latar belakang saat tombol dihover */

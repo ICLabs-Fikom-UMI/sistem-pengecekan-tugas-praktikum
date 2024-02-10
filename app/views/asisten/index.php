@@ -27,11 +27,11 @@
             
             <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
             <!-- <td><a href="<?= BASEURL; ?>/asisten/" onclick="openEditPopup(<?= $asisten['id_asisten']; ?>)" ><i class="fa fa-pencil"></i></a></td> -->
-            <td><a href="<?= BASEURL; ?>/asisten/edit/<?= $asisten['id_asisten']; ?>"><i class="fa fa-pencil"></i></a></td>
+            <td   style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/asisten/edit/<?= $asisten['id_asisten']; ?>"><i class="fa fa-pencil"></i></a></td>
             <!-- <td><a href="#" class="crud tambah-crud" onclick="openEditModal(<?= $asisten['id_asisten']; ?>)"><i class="fa fa-pencil"></i></a></td> -->
 
-            <td>
-                <a href="<?= BASEURL; ?>/Asisten/" onclick="hapus('<?= $asisten['id_asisten']; ?>')">
+            <td style="position: relative;" >
+                <a class="btn-crud" href="<?= BASEURL; ?>/Asisten/" onclick="hapus('<?= $asisten['id_asisten']; ?>')">
                     <i class="fa fa-trash-can"></i>
                 </a>
             </td>

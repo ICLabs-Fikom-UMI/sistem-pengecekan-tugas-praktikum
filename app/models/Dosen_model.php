@@ -62,6 +62,43 @@ class Dosen_model {
             $this->db->execute();
             return $this->db->rowCount();
         }
+
+        // public function updateDosen($id_dosen, $nip_dosen, $nama_dosen, $id_matkul, $kelas) {
+        //     try {
+        //         $query = "UPDATE $this->table SET nip_dosen = :nip_dosen, nama_dosen = :nama_dosen, id_matkul = :id_matkul, kelas = :kelas WHERE id_dosen = :id_dosen";
+        //         $this->db->query($query);
+        //         $this->db->bind(':id_dosen', $id_dosen);
+        //         $this->db->bind(':nip_dosen', $nip_dosen);
+        //         $this->db->bind(':nama_dosen', $nama_dosen);
+        //         $this->db->bind(':id_matkul', $id_matkul);
+        //         $this->db->bind(':kelas', $kelas);
+        //         $this->db->execute();
+        //         return true; // Berhasil melakukan update
+        //     } catch (\Throwable $th) {
+        //         echo 'Error: ' . $th->getMessage(); // Tampilkan pesan error jika terjadi kesalahan
+        //         return false; // Gagal melakukan update
+        //     }
+        // }
+
+        public function updateDosen($id_dosen, $nip_dosen, $nama_dosen, $id_matkul, $kelas) {
+            try {
+                $query = "UPDATE $this->table SET nip_dosen = :nip_dosen, nama_dosen = :nama_dosen, id_matkul = :id_matkul, kelas = :kelas WHERE id_dosen = :id_dosen";
+                $this->db->query($query);
+                $this->db->bind(':nip_dosen', $nip_dosen);
+                $this->db->bind(':nama_dosen', $nama_dosen);
+                $this->db->bind(':id_matkul', $id_matkul);
+                $this->db->bind(':kelas', $kelas);
+                $this->db->bind(':id_dosen', $id_dosen);
+                $this->db->execute();
+                return true; // Berhasil melakukan update
+            } catch (\Throwable $th) {
+                echo 'Error: ' . $th->getMessage(); // Tampilkan pesan error jika terjadi kesalahan
+                return false; // Gagal melakukan update
+            }
+        }
+        
+        
+        
     
 }
 

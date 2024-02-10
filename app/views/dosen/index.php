@@ -38,9 +38,9 @@
             </td>           
             <td><?= $dosen['kelas']; ?></td>
             <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
-            <td><a href="<?= BASEURL; ?>/dosen/edit/<?= $dosen['id_dosen']; ?>"><i class="fa fa-pencil"></i></a></td>
-            <td>
-                <a href="<?= BASEURL; ?>/Dosen/" onclick="hapusDosen('<?= $dosen['id_dosen']; ?>')">
+            <td style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/Dosen/edit/<?= $dosen['id_dosen']; ?>"><i class="fa fa-pencil"></i></a></td>
+            <td style="position: relative;">
+                <a class="btn-crud" href="<?= BASEURL; ?>/Dosen/" onclick="hapusDosen('<?= $dosen['id_dosen']; ?>')">
                     <i class="fa fa-trash-can"></i>
                 </a>
             </td>

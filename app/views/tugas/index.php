@@ -29,11 +29,11 @@
                     </td>                  
                     <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
                     <!-- <td><a href="<?= BASEURL; ?>/Tugas/detailTugas"><i class="fa-solid fa-circle-info"></i></a></td> -->
-                    <td><a href="<?= BASEURL; ?>/Tugas/detailTugas/<?= $tugas['id_tugas']; ?>"><i class="fa-solid fa-circle-info"></i></a></td>
+                    <td style="position: relative;"><a class="btn-crud"href="<?= BASEURL; ?>/Tugas/detailTugas/<?= $tugas['id_tugas']; ?>"><i class="fa-solid fa-circle-info"></i></a></td>
 
-                    <td><a href="<?= BASEURL; ?>/tugas/edit/<?= $tugas['id_tugas']; ?>"><i class="fa fa-pencil"></i> </a></td>
-                    <td>
-                <a href="<?= BASEURL; ?>/Tugas/" onclick="hapusTugas('<?= $tugas['id_tugas']; ?>')">
+                    <td style="position: relative;"><a class="btn-crud"href="<?= BASEURL; ?>/tugas/edit/<?= $tugas['id_tugas']; ?>"><i class="fa fa-pencil"></i> </a></td>
+                    <td style="position: relative;">
+                <a class="btn-crud" href="<?= BASEURL; ?>/Tugas/" onclick="hapusTugas('<?= $tugas['id_tugas']; ?>')">
                     <i class="fa fa-trash-can"></i>
                 </a>
             </td>
