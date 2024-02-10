@@ -1,5 +1,5 @@
 <div class="content">
-<form method="POST" action="<?= BASEURL; ?>/pengecekan/cari">    
+<form method="POST" action="<?= BASEURL; ?>/pengecekan/cari" onsubmit="return validateForm()">    
 <h2 style="margin-top: 70px;">Pengecekan</h2>
     <label for="inputNamaMatkul">Mata Kuliah:</label>
     <select id="inputNamaMatkul" name="id_matkul" onchange="updateFrekuensiOptions()">
@@ -21,20 +21,21 @@
         <?php endforeach; ?>
     </select>
     <label for="pilihTugas">Nama Tugas :</label>
-    <select id="pilihTugas" name="id_tugas">
-        <option value="" disabled selected>Pilih</option>
-        <?php $namaTugas = $this->model('Tugas_model')->getAllTugas(); ?>
-        <?php foreach ($namaTugas as $tugas): ?>
-            <option class="tugas-option" value="<?= $tugas['id_tugas']; ?>" data-frekuensi="<?= $tugas['id_frekuensi']; ?>">
-                <?= $tugas['nama_tugas']; ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
+<select id="pilihTugas" name="id_tugas" onchange="updateTugasOptions()">
+    <option value="" disabled selected>Pilih</option>
+    <?php $namaTugas = $this->model('Tugas_model')->getAllTugas(); ?>
+    <?php foreach ($namaTugas as $tugas): ?>
+        <option class="tugas-option" value="<?= $tugas['id_tugas']; ?>" data-frekuensi="<?= $tugas['id_frekuensi']; ?>">
+            <?= $tugas['nama_tugas']; ?>
+        </option>
+    <?php endforeach; ?>
+</select>
     
 
 
 
     <button style="margin-top: 20px;" onclick="cariPaktikan()">Cari</button>
+  
 
     </form>
 

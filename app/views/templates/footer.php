@@ -40,7 +40,20 @@
             rows[i].style.display = isRowMatch ? "" : "none";
         }
     }
+    function filterPraktikanByFrekuensi() {
+    var selectedFrekuensi = document.getElementById('inputFrekuensi').value;
+    var praktikanRows = document.querySelectorAll('.praktikan-row');
 
+    praktikanRows.forEach(function(row) {
+        var frekuensi = row.getAttribute('data-frekuensi');
+
+        if (selectedFrekuensi === "" || selectedFrekuensi === "Semua" || selectedFrekuensi === frekuensi) {
+            row.style.display = 'table-row'; // Tampilkan baris jika frekuensi cocok atau tidak ada yang dipilih
+        } else {
+            row.style.display = 'none'; // Sembunyikan baris jika frekuensi tidak cocok
+        }
+    });
+}
     function updateFrekuensiOptions() {
     var selectedMatkul = document.getElementById('inputNamaMatkul').value;
     var frekuensiOptions = document.getElementsByClassName('frekuensi-option');
@@ -57,24 +70,8 @@
     }
 }
 
-// function updateTugasOptions() {
-//         var selectedFrekuensi = document.getElementById('inputFrekuensi').value;
-//         var tugasOptions = document.getElementsByClassName('tugas-option');
-
-//         for (var i = 0; i < tugasOptions.length; i++) {
-//             var option = tugasOptions[i];
-//             var optionFrekuensi = option.getAttribute('data-frekuensi');
-
-//             if (selectedFrekuensi === optionFrekuensi || selectedFrekuensi === "") {
-//                 option.style.display = 'block';
-//             } else {
-//                 option.style.display = 'none';
-//             }
-//         }
-//     }
-
 function updateTugasOptions() {
-    var selectedFrekuensi = document.getElementById('pilihTugas').value;
+    var selectedFrekuensi = document.getElementById('pilihFrekuensi').value; // Mengambil nilai frekuensi yang dipilih
     var tugasOptions = document.getElementsByClassName('tugas-option');
 
     for (var i = 0; i < tugasOptions.length; i++) {
@@ -88,6 +85,7 @@ function updateTugasOptions() {
         }
     }
 }
+
 
     function hapus(id) {
         var isConfirmed = confirm('Anda yakin ingin menghapus?');
@@ -317,6 +315,23 @@ function ubahdata(x){
       });
   }
 
+// Fungsi untuk memvalidasi formulir sebelum pengiriman
+function validateForm() {
+    // Ambil nilai dari input atau elemen formulir lainnya
+    var idTugas = document.getElementById('pilihTugas').value;
+    var idPraktikan = document.getElementById('inputIdPraktikan').value;
+    var statusPengecekan = document.getElementById('inputStatusPengecekan').value;
+    var tglPengecekan = document.getElementById('inputTglPengecekan').value;
+
+    // Lakukan validasi sesuai kebutuhan
+    if (idTugas === "" || idPraktikan === "" || statusPengecekan === "" || tglPengecekan === "") {
+        alert("Harap lengkapi semua field sebelum mengirimkan formulir.");
+        return false; // Mengembalikan false untuk mencegah pengiriman formulir jika ada field yang kosong
+    }
+
+    // Jika semua validasi berhasil, kembalikan true untuk mengizinkan pengiriman formulir
+    return true;
+}
 
 
 

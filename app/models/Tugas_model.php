@@ -12,7 +12,8 @@ class Tugas_model {
         try {
             $this->db->query('SELECT trx_tugas.*, trx_frekuensi.nama_frekuensi 
                   FROM trx_tugas 
-                  LEFT JOIN trx_frekuensi ON trx_tugas.id_frekuensi = trx_frekuensi.id_frekuensi');
+                  LEFT JOIN trx_frekuensi ON trx_tugas.id_frekuensi = trx_frekuensi.id_frekuensi
+                  WHERE trx_tugas.id_frekuensi = trx_frekuensi.id_frekuensi');
 
 
             return $this->db->resultSet();
@@ -115,6 +116,21 @@ class Tugas_model {
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+
+    public function getAllTugasByFrekuensi($id_frek) {
+        $query = "SELECT trx_tugas.nama_tugas
+        FROM trx_tugas 
+        LEFT JOIN trx_frekuensi ON trx_tugas.id_frekuensi  = trx_frekuensi.id_frekuensi
+        WHERE trx_tugas.id_frekuensi   = :id_frekuensi";
+        
+        $this->db->query($query);
+        $this->db->bind(':id_frekuensi', $id_frek);
+    
+        return $this->db->resultset(); 
+ 
+    }
+    
 
     
 }

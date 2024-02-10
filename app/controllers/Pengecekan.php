@@ -17,15 +17,12 @@
         public function add(){
             try {
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    $nama_tugas = $_POST['nama_tugas'];
-                    $deskripsi_tugas = $_POST['deskripsi_tugas'];
-                    $status = $_POST['status_tugas']; // Sesuaikan dengan nama input di formulir
-                    $tgl_tugas = $_POST['tgl_tugas'];
+                    $id_praktikan = $_POST['id_praktikan'];
+                    $id_tugas = $_POST['id_tugas'];
+                    $status = $_POST['status_pengecekan']; // Sesuaikan dengan nama input di formulir
                     $tgl_pengecekan = $_POST['tgl_pengecekan'];
-                    $id_frekuensi = $_POST['id_frekuensi'];
-                    // $id_praktikan = $_POST['id_praktikan'];
-                    $tugas_model = $this->model('Tugas_model');
-                    $tugas_model->addTugas($nama_tugas, $deskripsi_tugas, $status, $tgl_tugas, $tgl_pengecekan, $id_frekuensi);
+                    $pengecekan_model = $this->model('Pengecekan_model');
+                    $pengecekan_model->addPengecekan($id_praktikan, $id_tugas, $status, $tgl_pengecekan);
                     echo "Berhasil Mengimputkan Data";
                 } else {
                     echo "Gagal Mengimputkan Data";

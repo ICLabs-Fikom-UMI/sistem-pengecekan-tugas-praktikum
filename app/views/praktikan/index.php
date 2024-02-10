@@ -3,6 +3,16 @@
     <h2 style="margin-top: 70px;">Praktikan</h2>
     <div class="crud-praktikan">
         <a href="#" class="crud tambah-crud" onclick="openTambahModal()">Tambah <i class="fa fa-folder-plus"></i></a>
+        <select id="inputFrekuensi" name="id_frekuensi" onchange="filterPraktikanByFrekuensi()">
+    <option value="" disabled selected>Pilih Frekuensi</option>
+    <option value="Semua">Tampilkan Semua</option>
+    <?php $frekuensi = $this->model('Frekuensi_model')->getAllFrekuensi(); ?>
+    <?php foreach ($frekuensi as $frek): ?>
+        <option class="frekuensi-option" value="<?= $frek['id_frekuensi']; ?>">
+            <?= $frek['nama_frekuensi']; ?> 
+        </option>
+    <?php endforeach; ?>
+</select>
     </div>
     <table>
         <thead>
@@ -17,34 +27,27 @@
             </tr>
         </thead>
         <tbody>
-            <?php $i = 1; foreach ($data['praktikan'] as $praktikan): ?>
-                <tr>
+        <?php $i = 1; foreach ($data['praktikan'] as $praktikan): ?>
+            <tr class="praktikan-row" data-frekuensi="<?= $praktikan['id_frekuensi']; ?>">
                 <td><?= $i++?></td>
-                    <td><?= $praktikan['nim_praktikan']; ?></td>
-                    <td><?= $praktikan['nama_praktikan']; ?></td>
-                    <td>
-                        <?php
-                        $dosen = $this->model('Praktikan_model')->getKelasById($praktikan['id_dosen']);
-                        echo $dosen['kelas'];
-                        ?>
-                    </td>
-                    <td>
-                        <?php
-                        // Ambil kelas dari tabel mst_dosen berdasarkan id_dosen
-                        $dosen = $this->model('Praktikan_model')->getFrekuensiById($praktikan['id_frekuensi']);
-                        echo $dosen['nama_frekuensi'];
-                        ?>
-                    </td>                      
-                    
-                    <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
-                    <td><a href="<?= BASEURL; ?>/praktikan/edit/<?= $frekuensi['id_praktikan']; ?>"><i class="fa fa-pencil"></i> </a></td>
-                    <td>
-                <a href="<?= BASEURL; ?>/Praktikan/" onclick="hapusPraktikan('<?= $praktikan['id_prktikan']; ?>')">
-                    <i class="fa fa-trash-can"></i>
-                </a>
-            </td>
-                </tr>
-            <?php endforeach; ?>
+                <td><?= $praktikan['nim_praktikan']; ?></td>
+                <td><?= $praktikan['nama_praktikan']; ?></td>
+                <td>
+                    <?php
+                    $dosen = $this->model('Praktikan_model')->getKelasById($praktikan['id_dosen']);
+                    echo $dosen['kelas'];
+                    ?>
+                </td>
+                <td>
+                    <?php
+                    $dosen = $this->model('Praktikan_model')->getFrekuensiById($praktikan['id_frekuensi']);
+                    echo $dosen['nama_frekuensi'];
+                    ?>
+                </td>
+                <td><a href="<?= BASEURL; ?>/praktikan/edit/<?= $praktikan['id_praktikan']; ?>"><i class="fa fa-pencil"></i> </a></td>
+                <td><a href="<?= BASEURL; ?>/Praktikan/" onclick="hapusPraktikan('<?= $praktikan['id_praktikan']; ?>')"><i class="fa fa-trash-can"></i></a></td>
+            </tr>
+        <?php endforeach; ?>
         </tbody>
     </table>
 

@@ -90,7 +90,7 @@
                 <option value="" disabled selected>Pilih</option>
                 <?php $dosenpengampuh = $this->model('Dosen_model')->getAllDosen(); ?>
                     <?php foreach ($dosenpengampuh as $dosen): ?>
-                        <option value="<?= $dosen['id_dosen']; ?>"><?= $dosen['nama_dosen']; ?> - <?= $dosen['nama_matkul'];?> (<?= $dosen['kelas'];?>)</option>
+                        <option value="<?= $dosen['id_dosen']; ?>"> <?= $dosen['nama_dosen']; ?> - <?= $dosen['nama_matkul'];?> (<?= $dosen['kelas'];?>)<?= $dosen['prodi']; ?></option>
 
                     <?php endforeach; ?>
                 </select>

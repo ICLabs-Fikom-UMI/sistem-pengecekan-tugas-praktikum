@@ -37,15 +37,15 @@ class Pengecekan_model {
     
 
 
-    public function addPengecean($nama_tugas, $deskripsi_tugas, $status, $tgl_tugas, $tgl_pengecekan, $id_frekuensi) {
+    public function addPengecean($id_praktikan, $id_tugas, $status, $tgl_pengecekan) {
         try {
-            $this->db->query("INSERT INTO $this->table (nama_tugas, deskripsi_tugas, status_tugas, tgl_tugas, tgl_pengecekan, id_frekuensi) VALUES (:nama_tugas, :deskripsi_tugas, :status_tugas, :tgl_tugas, :tgl_pengecekan, :id_frekuensi)");
-            $this->db->bind(':nama_tugas', $nama_tugas);
-            $this->db->bind(':deskripsi_tugas', $deskripsi_tugas);
-            $this->db->bind(':status_tugas', $status);
-            $this->db->bind(':tgl_tugas', $tgl_tugas);
+            $this->db->query("INSERT INTO $this->table (id_praktikan, id_tugas, status_pengecekan, tgl_pengecekan) VALUES (:id_praktikan, :id_tugas, :status_pengecekan, :tgl_pengecekan)");
+            $this->db->bind(':id_praktikan', $id_praktikan);
+            $this->db->bind(':id_tugas', $id_tugas);
+            $this->db->bind(':status_pengecekan', $status);
+            // $this->db->bind(':tgl_tugas', $tgl_tugas);
             $this->db->bind(':tgl_pengecekan', $tgl_pengecekan);
-            $this->db->bind(':id_frekuensi', $id_frekuensi);
+            // $this->db->bind(':id_frekuensi', $id_frekuensi);
             // $this->db->bind(':id_praktikan', $id_praktikan);
     
             $this->db->execute();
