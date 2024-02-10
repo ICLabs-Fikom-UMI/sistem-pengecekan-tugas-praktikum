@@ -8,6 +8,7 @@
     <table>
         <thead>
             <tr>
+                <th>No</th>
                 <th>Nama Tugas</th>
                 <th>Frekuensi</th>
                 <th>Detail</th>
@@ -16,8 +17,9 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($data['tugas'] as $tugas): ?>
+            <?php $i = 1; foreach ($data['tugas'] as $tugas): ?>
                 <tr>
+                <td><?= $i++ ?></td>
                     <td><?= $tugas['nama_tugas']; ?></td>
                     <td>
                         <?php
@@ -78,14 +80,16 @@
     <table>
         <thead>
             <tr>
+                <th>No</th>
                 <th>Nama Tugas</th>
                 <th>Frekuensi</th>
                 <th>Detail</th>              
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($data['tugas'] as $tugas): ?>
+            <?php $i= 1; foreach ($data['tugas'] as $tugas): ?>
                 <tr>
+                <td><?= $i++ ?></td>
                     <td><?= $tugas['nama_tugas']; ?></td>
                     <td>
                         <?php

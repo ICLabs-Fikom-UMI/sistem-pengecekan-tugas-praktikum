@@ -1,7 +1,7 @@
 <?php
 
 class Pengecekan_model {
-    private $table = "trx_tugas";
+    private $table = "trx_pengecekan";
     private $db;
 
     public function __construct(){

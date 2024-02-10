@@ -35,6 +35,7 @@
     color :#526D82;
 }
 
+
     </style>
     
 
@@ -74,7 +75,10 @@
             <div class="profile-dropdown" id="profileDropdown">
                 <img src="<?= BASEURL; ?> /img/back1.png" alt="Profile Picture">
                 <div class="dropdown-content">
+                <?php if ($_SESSION['role'] == 'Praktikan') { ?>
                     <a href="#">Profile</a>
+                <?php } ?>
+                    
                     <a href="#">Ganti Password</a>
                     <a href="<?= BASEURL; ?>/log/logout">Logout</a>
                 </div>

@@ -50,6 +50,8 @@ function closeTambahModal() {
     document.getElementById('tambahModal').style.display = 'none';
 }
 
+
+
 // Tutup modal jika mengklik di luar area modal
 window.onclick = function(event) {
     var tambahModal = document.getElementById('tambahModal');

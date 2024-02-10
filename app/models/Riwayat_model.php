@@ -1,7 +1,7 @@
 <?php
 
 class Riwayat_model {
-    private $table = "trx_tugas";
+    private $table = "trx_pengecekan";
     private $db;
 
     public function __construct(){
@@ -10,7 +10,7 @@ class Riwayat_model {
 
     public function getAllRiwayat() {
         try {
-            $this->db->query('SELECT nama_tugas, status_tugas, tgl_pengecekan FROM trx_tugas;');
+            $this->db->query('SELECT* FROM trx_pengecekan');
 
             return $this->db->resultSet();
         } catch (\Throwable $th) {

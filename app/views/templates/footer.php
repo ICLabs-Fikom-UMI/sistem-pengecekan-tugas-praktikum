@@ -333,6 +333,45 @@ function validateForm() {
     // Jika semua validasi berhasil, kembalikan true untuk mengizinkan pengiriman formulir
     return true;
 }
+function getAsistenById(id) {
+    var table = document.getElementById('tabel-asisten'); // Gantilah 'tabel-asisten' dengan ID tabel yang sesuai
+    for (var i = 1; i < table.rows.length; i++) {
+        if (table.rows[i].cells[0].innerText == id) { // Asumsikan ID asisten terdapat di kolom pertama tabel
+            return {
+                id_asisten: table.rows[i].cells[0].innerText,
+                nim_asisten: table.rows[i].cells[1].innerText,
+                nama_asisten: table.rows[i].cells[2].innerText,
+                kelas: table.rows[i].cells[3].innerText,
+                prodi: table.rows[i].cells[4].innerText
+            };
+        }
+    }
+    return null; // Return null jika tidak ditemukan data asisten dengan ID yang diberikan
+}
+
+
+// function openEditModal(id) {
+//     var asisten = getAsistenById(id);
+//     document.getElementById('editId').value = asisten.id_asisten;
+//     document.getElementById('editNim').value = asisten.nim_asisten;
+//     document.getElementById('editNama').value = asisten.nama_asisten;
+//     document.getElementById('editKelas').value = asisten.kelas;
+//     document.getElementById('editProdi').value = asisten.prodi;
+//     document.getElementById('editModal').style.display = 'block';
+// }
+
+// function closeEditModal() {
+//     document.getElementById('editModal').style.display = 'none';
+// }
+
+// function getAsistenById(id) {
+//     // Implementasi fungsi untuk mendapatkan data asisten berdasarkan ID dari tabel
+//     // Anda bisa mendapatkan data ini dari variabel PHP yang telah tersedia atau dengan menggunakan AJAX jika perlu.
+// }
+
+// function submitFormById(formId) {
+//     document.getElementById(formId).submit();
+// }
 
 
 
