@@ -34,4 +34,26 @@ class Praktikan extends Controller {
         } 
     }
 
+
+    public function edit($id) {
+        $data['judul'] = 'Edit Praktikan';
+        $data['praktikan'] = $this->model('Praktikan_model')->getPraktikanById($id);
+        $this->view('templates/header', $data);
+        $this->view('templates/sidebar', $data);
+        $this->view('praktikan/edit', $data); // Buat file edit.php di folder praktikan
+        $this->view('templates/footer');
+    }
+    
+    public function update() {
+        $id = $_POST['id_praktikan'];
+        $nim_praktikan = $_POST['nim_praktikan'];
+        $nama_praktikan = $_POST['nama_praktikan'];
+        $id_frekuensi = $_POST['id_frekuensi'];
+        $this->model('Praktikan_model')->updatePraktikan($id, $nim_praktikan, $nama_praktikan, $id_frekuensi);
+        header('Location: ' . BASEURL . '/Praktikan');
+    }
+    
+    
+    
+
 }

@@ -44,7 +44,9 @@
                     echo $dosen['nama_frekuensi'];
                     ?>
                 </td>
-                <td style="position: relative;"><a class="btn-crud"href="<?= BASEURL; ?>/praktikan/edit/<?= $praktikan['id_praktikan']; ?>"><i class="fa fa-pencil"></i> </a></td>
+                <td style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/praktikan/edit/<?= $praktikan['id_praktikan']; ?>"><i class="fa fa-pencil"></i> </a></td>
+
+                <!-- <td style="position: relative;"><a class="btn-crud"href="<?= BASEURL; ?>/praktikan/edit/<?= $praktikan['id_praktikan']; ?>"><i class="fa fa-pencil"></i> </a></td> -->
                 <td style="position: relative;"><a class="btn-crud"href="<?= BASEURL; ?>/Praktikan/" onclick="hapusPraktikan('<?= $praktikan['id_praktikan']; ?>')"><i class="fa fa-trash-can"></i></a></td>
             </tr>
         <?php endforeach; ?>

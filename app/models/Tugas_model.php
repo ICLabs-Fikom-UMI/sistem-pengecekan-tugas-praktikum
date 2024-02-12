@@ -130,6 +130,33 @@ class Tugas_model {
         return $this->db->resultset(); 
  
     }
+
+    public function getTugasById($id) {
+        try {
+            $this->db->query("SELECT * FROM $this->table WHERE id_tugas = :id_tugas");
+            $this->db->bind(':id_tugas', $id);
+            return $this->db->single();
+        } catch (\Throwable $th) {
+            echo 'Error: ' . $th->getMessage();
+        }
+    }
+    
+    public function updateTugas($id, $nama_tugas, $deskripsi_tugas, $status_tugas, $tgl_tugas, $tgl_pengecekan, $id_frekuensi) {
+        try {
+            $this->db->query("UPDATE $this->table SET nama_tugas = :nama_tugas, deskripsi_tugas = :deskripsi_tugas, status_tugas = :status_tugas, tgl_tugas = :tgl_tugas, tgl_pengecekan = :tgl_pengecekan, id_frekuensi = :id_frekuensi WHERE id_tugas = :id_tugas");
+            $this->db->bind(':id_tugas', $id);
+            $this->db->bind(':nama_tugas', $nama_tugas);
+            $this->db->bind(':deskripsi_tugas', $deskripsi_tugas);
+            $this->db->bind(':status_tugas', $status_tugas);
+            $this->db->bind(':tgl_tugas', $tgl_tugas);
+            $this->db->bind(':tgl_pengecekan', $tgl_pengecekan);
+            $this->db->bind(':id_frekuensi', $id_frekuensi);
+            $this->db->execute();
+        } catch (\Throwable $th) {
+            echo 'Error: ' . $th->getMessage();
+        }
+    }
+    
     
 
     

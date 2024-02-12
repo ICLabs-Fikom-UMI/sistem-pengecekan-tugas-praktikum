@@ -19,19 +19,6 @@ class Praktikan_model {
         }
     }
 
-//     public function getAllPraktikan()
-// {
-//     try {
-//         $this->db->query('SELECT mst_praktikan.*, mst_user.*, trx_frekuensi.nama_frekuensi 
-//                           FROM  mst_praktikan 
-//                           LEFT JOIN mst_user ON mst_praktikan.id_user = mst_user.id_user
-//                           LEFT JOIN trx_frekuensi ON mst_praktikan.id_praktikan = trx_frekuensi.id_praktikan');
-//         return $this->db->resultSet();
-//     } catch (\Throwable $th) {
-//         echo 'Error: ' . $th->getMessage();
-//     }
-// }
-
 
 
     public function addPraktikan($nim_praktikan, $nama_praktikan,$id_user, $id_frekuensi){
@@ -110,6 +97,31 @@ class Praktikan_model {
             $this->db->execute();
             return $this->db->rowCount();
         }
+
+        public function getPraktikanById($id) {
+            try {
+                $this->db->query("SELECT * FROM $this->table WHERE id_praktikan = :id_praktikan");
+                $this->db->bind(':id_praktikan', $id);
+                return $this->db->single();
+            } catch (\Throwable $th) {
+                echo 'Error: ' . $th->getMessage();
+            }
+        }
+        
+        public function updatePraktikan($id, $nim_praktikan, $nama_praktikan, $id_frekuensi) {
+            try {
+                $this->db->query("UPDATE $this->table SET nim_praktikan = :nim_praktikan, nama_praktikan = :nama_praktikan, id_frekuensi = :id_frekuensi WHERE id_praktikan = :id_praktikan");
+                $this->db->bind(':id_praktikan', $id);
+                $this->db->bind(':nim_praktikan', $nim_praktikan);
+                $this->db->bind(':nama_praktikan', $nama_praktikan);
+                $this->db->bind(':id_frekuensi', $id_frekuensi);
+                $this->db->execute();
+            } catch (\Throwable $th) {
+                echo 'Error: ' . $th->getMessage();
+            }
+        }
+        
+        
 
         
 }

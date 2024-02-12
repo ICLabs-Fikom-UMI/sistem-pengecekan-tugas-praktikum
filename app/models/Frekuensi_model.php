@@ -155,6 +155,23 @@ class Frekuensi_model {
         $this->db->execute();
         return $this->db->resultSet();
     }
+
+    public function updateFrekuensi($id_frekuensi, $nama_frekuensi, $id_dosen, $id_asisten1, $id_asisten2){
+        try {
+            $this->db->query("UPDATE $this->table SET nama_frekuensi = :nama_frekuensi, id_dosen = :id_dosen, id_asisten1 = :id_asisten1, id_asisten2 = :id_asisten2 WHERE id_frekuensi = :id_frekuensi");
+            $this->db->bind(':id_frekuensi', $id_frekuensi);
+            $this->db->bind(':nama_frekuensi', $nama_frekuensi);
+            $this->db->bind(':id_dosen', $id_dosen);
+            $this->db->bind(':id_asisten1', $id_asisten1);
+            $this->db->bind(':id_asisten2', $id_asisten2);
+    
+            $this->db->execute();
+            
+        } catch (\Throwable $th) {
+            echo 'Error: ' . $th->getMessage();
+        }
+    }
+    
     
     
 

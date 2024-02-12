@@ -62,9 +62,9 @@
                             
                     
                     <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
-                    <td style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/frekuesni/edit/<?= $frekuensi['id_frekuensi']; ?>"><i class="fa fa-pencil"></i> </a></td>
+                    <td style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/frekuensi/edit/<?= $frekuensi['id_frekuensi']; ?>"><i class="fa fa-pencil"></i> </a></td>
                     <!-- <td><a href="<?= BASEURL; ?>/frekuensi/hapus/<?= $frekuensi['id_frekuensi']; ?>" onclick="return confirm('Anda yakin ingin menghapus?');"><i class="fa fa-trash-can"></i></a></td> -->
-                    <td>
+                    <td style="position: relative;">
                 <a class="btn-crud" href="<?= BASEURL; ?>/Frekuensi/" onclick="hapusFrekuensi('<?= $frekuensi['id_frekuensi']; ?>')">
                     <i class="fa fa-trash-can"></i>
                 </a>

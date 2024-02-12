@@ -70,6 +70,32 @@ class Tugas extends Controller {
             exit;
         } 
     }
+
+    public function edit($id) {
+        $data['judul'] = 'Edit Tugas';
+        $data['tugas'] = $this->model('Tugas_model')->getTugasById($id);
+        // Ambil data frekuensi untuk dropdown
+        $data['frekuensi'] = $this->model('Frekuensi_model')->getAllFrekuensi();
+        $this->view('templates/header', $data);
+        $this->view('templates/sidebar', $data);
+        $this->view('tugas/edit', $data); // Buat file edit.php di folder tugas
+        $this->view('templates/footer');
+    }
+    
+    public function update() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id_tugas'];
+            $nama_tugas = $_POST['nama_tugas'];
+            $deskripsi_tugas = $_POST['deskripsi_tugas'];
+            $status_tugas = $_POST['status_tugas'];
+            $tgl_tugas = $_POST['tgl_tugas'];
+            $id_frekuensi = $_POST['id_frekuensi'];
+            $this->model('Tugas_model')->updateTugas($id, $nama_tugas, $deskripsi_tugas, $status_tugas, $tgl_tugas, $tgl_pengecekan, $id_frekuensi);
+            header('Location: ' . BASEURL . '/Tugas');
+            exit;
+        }
+    }
+    
     
 
 }
