@@ -41,4 +41,42 @@ class Pengguna extends Controller {
         } 
     }
 
+    // public function resetPassword($id) {
+    //     try {
+    //         // Ambil password awal dari database atau dari suatu sumber lain
+    //         $initialPassword = $this->model('Pengguna_model')->getInitialPassword($id);
+    
+    //         // Update password pengguna dengan password awal
+    //         $this->model('Pengguna_model')->resetUserPassword($id, $initialPassword);
+    
+    //         echo "Password berhasil direset ke password awal.";
+    //     } catch (\Throwable $th) {
+    //         echo 'Error: ' . $th->getMessage();
+    //     }
+    // }
+    // Panggil metode resetPassword() dalam controller Anda
+// Panggil metode resetPassword() dalam controller Anda
+// Panggil metode resetPassword() dalam controller Anda
+public function resetPassword($id) {
+    try {
+        // Ambil role pengguna
+        $roleData = $this->model('Pengguna_model')->getDataUserById($id);
+        $role = $roleData['role'];
+
+        // Reset password berdasarkan role pengguna
+        $initialPassword = $this->model('Pengguna_model')->getInitialPassword($id, $role);
+
+        // Update password pengguna dengan password awal
+        $this->model('Pengguna_model')->resetUserPassword($id, $initialPassword);
+
+        echo "Password berhasil direset ke password awal.";
+    } catch (\Throwable $th) {
+        echo 'Error: ' . $th->getMessage();
+    }
+}
+
+
+
+    
+
 }

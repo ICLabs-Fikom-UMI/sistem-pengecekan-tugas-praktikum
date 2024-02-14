@@ -65,7 +65,7 @@
 
             <!-- Input for Deskripsi Tugas -->
             <label for="deskripsi_tugas">Deskripsi Tugas:</label>
-            <textarea id="deskripsi_tugas" name="deskripsi_tugas" rows="4" required></textarea>
+            <textarea id="deskripsi_tugas" name="deskripsi_tugas" rows="10" required></textarea>
                 <button onclick="submitFormById('tambahForm')">Submit</button>
                 <button type="button" class="btn" onclick="closeTambahModal()">Batal</button>
             </form>
@@ -97,10 +97,8 @@
                         echo $namafrekuensi['nama_frekuensi'];                        
                         ?>
                     </td>                  
-                    <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
-                    <!-- <td><a href="<?= BASEURL; ?>/Tugas/detailTugas"><i class="fa-solid fa-circle-info"></i></a></td> -->
-                    <td><a href="<?= BASEURL; ?>/Tugas/detailTugas/<?= $tugas['id_tugas']; ?>"><i class="fa-solid fa-circle-info"></i></a></td>
-                   
+                    <td style="position: relative;"><a class="btn-crud"href="<?= BASEURL; ?>/Tugas/detailTugas/<?= $tugas['id_tugas']; ?>"><i class="fa-solid fa-circle-info"></i></a></td>
+
                 </tr>
             <?php endforeach; ?>
         </tbody>

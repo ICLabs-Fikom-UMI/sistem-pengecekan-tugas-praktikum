@@ -22,14 +22,13 @@ class Tugas_model {
         }
     }
 
-    public function addTugas($nama_tugas, $deskripsi_tugas, $status, $tgl_tugas, $tgl_pengecekan, $id_frekuensi) {
+    public function addTugas($nama_tugas, $deskripsi_tugas, $status, $tgl_tugas,  $id_frekuensi) {
         try {
-            $this->db->query("INSERT INTO $this->table (nama_tugas, deskripsi_tugas, status_tugas, tgl_tugas, tgl_pengecekan, id_frekuensi) VALUES (:nama_tugas, :deskripsi_tugas, :status_tugas, :tgl_tugas, :tgl_pengecekan, :id_frekuensi)");
+            $this->db->query("INSERT INTO $this->table (nama_tugas, deskripsi_tugas, status_tugas, tgl_tugas, id_frekuensi) VALUES (:nama_tugas, :deskripsi_tugas, :status_tugas, :tgl_tugas, :id_frekuensi)");
             $this->db->bind(':nama_tugas', $nama_tugas);
             $this->db->bind(':deskripsi_tugas', $deskripsi_tugas);
             $this->db->bind(':status_tugas', $status);
             $this->db->bind(':tgl_tugas', $tgl_tugas);
-            $this->db->bind(':tgl_pengecekan', $tgl_pengecekan);
             $this->db->bind(':id_frekuensi', $id_frekuensi);
             // $this->db->bind(':id_praktikan', $id_praktikan);
     
@@ -141,15 +140,14 @@ class Tugas_model {
         }
     }
     
-    public function updateTugas($id, $nama_tugas, $deskripsi_tugas, $status_tugas, $tgl_tugas, $tgl_pengecekan, $id_frekuensi) {
+    public function updateTugas($id, $nama_tugas, $deskripsi_tugas, $status_tugas, $tgl_tugas,  $id_frekuensi) {
         try {
-            $this->db->query("UPDATE $this->table SET nama_tugas = :nama_tugas, deskripsi_tugas = :deskripsi_tugas, status_tugas = :status_tugas, tgl_tugas = :tgl_tugas, tgl_pengecekan = :tgl_pengecekan, id_frekuensi = :id_frekuensi WHERE id_tugas = :id_tugas");
+            $this->db->query("UPDATE $this->table SET nama_tugas = :nama_tugas, deskripsi_tugas = :deskripsi_tugas, status_tugas = :status_tugas, tgl_tugas = :tgl_tugas, id_frekuensi = :id_frekuensi WHERE id_tugas = :id_tugas");
             $this->db->bind(':id_tugas', $id);
             $this->db->bind(':nama_tugas', $nama_tugas);
             $this->db->bind(':deskripsi_tugas', $deskripsi_tugas);
             $this->db->bind(':status_tugas', $status_tugas);
             $this->db->bind(':tgl_tugas', $tgl_tugas);
-            $this->db->bind(':tgl_pengecekan', $tgl_pengecekan);
             $this->db->bind(':id_frekuensi', $id_frekuensi);
             $this->db->execute();
         } catch (\Throwable $th) {

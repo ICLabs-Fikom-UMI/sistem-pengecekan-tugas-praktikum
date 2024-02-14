@@ -37,17 +37,30 @@ class Pengecekan_model {
     
 
 
+    // public function addPengecean($id_praktikan, $id_tugas, $status, $tgl_pengecekan) {
+    //     try {
+    //         $this->db->query("INSERT INTO $this->table (id_praktikan, id_tugas, status_pengecekan, tgl_pengecekan) VALUES (:id_praktikan, :id_tugas, :status_pengecekan, :tgl_pengecekan)");
+    //         $this->db->bind(':id_praktikan', $id_praktikan);
+    //         $this->db->bind(':id_tugas', $id_tugas);
+    //         $this->db->bind(':status_pengecekan', $status);
+    //         // $this->db->bind(':tgl_tugas', $tgl_tugas);
+    //         $this->db->bind(':tgl_pengecekan', $tgl_pengecekan);
+    //         // $this->db->bind(':id_frekuensi', $id_frekuensi);
+    //         // $this->db->bind(':id_praktikan', $id_praktikan);
+    
+    //         $this->db->execute();
+    //     } catch (\Throwable $th) {
+    //         echo 'Error: ' . $th->getMessage();
+    //     }
+    // }
+
     public function addPengecean($id_praktikan, $id_tugas, $status, $tgl_pengecekan) {
         try {
-            $this->db->query("INSERT INTO $this->table (id_praktikan, id_tugas, status_pengecekan, tgl_pengecekan) VALUES (:id_praktikan, :id_tugas, :status_pengecekan, :tgl_pengecekan)");
+            $this->db->query("CALL PengecekanProcedure(:id_praktikan, :id_tugas, :status_pengecekan, :tgl_pengecekan)");
             $this->db->bind(':id_praktikan', $id_praktikan);
             $this->db->bind(':id_tugas', $id_tugas);
             $this->db->bind(':status_pengecekan', $status);
-            // $this->db->bind(':tgl_tugas', $tgl_tugas);
             $this->db->bind(':tgl_pengecekan', $tgl_pengecekan);
-            // $this->db->bind(':id_frekuensi', $id_frekuensi);
-            // $this->db->bind(':id_praktikan', $id_praktikan);
-    
             $this->db->execute();
         } catch (\Throwable $th) {
             echo 'Error: ' . $th->getMessage();

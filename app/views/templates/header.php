@@ -51,6 +51,7 @@
                 <div class="bar"></div>
                 <div class="bar"></div>
             </div>
+      
             <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search..." onkeyup="search()">
             </div>
@@ -76,7 +77,8 @@
                 <img src="<?= BASEURL; ?> /img/back1.png" alt="Profile Picture">
                 <div class="dropdown-content">
                 <?php if ($_SESSION['role'] == 'Praktikan') { ?>
-                    <a href="#">Profile</a>
+                    <a href="<?= BASEURL; ?>/Praktikan/profile">Profile</a>
+
                 <?php } ?>
                     
                     <a href="#">Ganti Password</a>

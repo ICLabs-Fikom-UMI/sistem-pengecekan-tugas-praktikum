@@ -23,7 +23,7 @@
             <?php endforeach; ?>
         </select>
 
-        <button type="submit" onclick='location.href="<?= BASEURL; ?>/Tugas/update"'>Update</button>
+        <button type="submit" onclick='location.href="<?= BASEURL; ?>/Tugas/update"'>Simpan</button>
         <a href="<?= BASEURL; ?>/tugas/detail_tugas" class="kembali">Kembali</a>
     </form>
 

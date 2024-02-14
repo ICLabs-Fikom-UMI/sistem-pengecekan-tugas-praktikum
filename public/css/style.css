@@ -22,6 +22,7 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     width: 400px;
     margin: 50px auto;
+   
  
 }
 
@@ -117,7 +118,7 @@ a {
 .buttons {
     max-width: 600px; /* Atur lebar maksimum detail sesuai kebutuhan Anda */
     text-align: left; /* Pusatkan teks ke kiri */
-    padding-left: 30px; /* Berikan ruang di sekitar detail */
+    padding-left: 10px; /* Berikan ruang di sekitar detail */
 }
 
 .kembali {

@@ -23,6 +23,7 @@ class Praktikan extends Controller {
     
                 $dosen_model = $this->model('Praktikan_model');
                 $dosen_model->addPraktikan($nim_praktikan, $nama_praktikan, $id_user, $id_frekuensi);
+                header('Location: ' . BASEURL . '/Praktikan');
                
     }
 

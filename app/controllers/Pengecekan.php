@@ -14,7 +14,25 @@
             $this->view('templates/footer');
         }
 
-        public function add(){
+        // public function add(){
+        //     try {
+        //         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //             $id_praktikan = $_POST['id_praktikan'];
+        //             $id_tugas = $_POST['id_tugas'];
+        //             $status = $_POST['status_pengecekan']; // Sesuaikan dengan nama input di formulir
+        //             $tgl_pengecekan = $_POST['tgl_pengecekan'];
+        //             $pengecekan_model = $this->model('Pengecekan_model');
+        //             $pengecekan_model->addPengecekan($id_praktikan, $id_tugas, $status, $tgl_pengecekan);
+        //             echo "Berhasil Mengimputkan Data";
+        //         } else {
+        //             echo "Gagal Mengimputkan Data";
+        //         }
+        //     } catch (\Throwable $th) {
+        //         echo $th;
+        //     }
+        // }
+
+        public function add() {
             try {
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $id_praktikan = $_POST['id_praktikan'];
@@ -22,8 +40,10 @@
                     $status = $_POST['status_pengecekan']; // Sesuaikan dengan nama input di formulir
                     $tgl_pengecekan = $_POST['tgl_pengecekan'];
                     $pengecekan_model = $this->model('Pengecekan_model');
-                    $pengecekan_model->addPengecekan($id_praktikan, $id_tugas, $status, $tgl_pengecekan);
-                    echo "Berhasil Mengimputkan Data";
+                    $pengecekan_model->addPengecean($id_praktikan, $id_tugas, $status, $tgl_pengecekan); // Panggil metode untuk menyimpan data
+                    // Redirect atau lakukan tindakan lain setelah penyimpanan berhasil
+                    header("Location: halaman_lain.php");
+                    exit();
                 } else {
                     echo "Gagal Mengimputkan Data";
                 }
@@ -31,6 +51,7 @@
                 echo $th;
             }
         }
+        
 
 
         public function cari() {

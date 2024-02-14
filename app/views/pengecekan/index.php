@@ -1,3 +1,5 @@
+
+
 <div class="content">
 <form method="POST" action="<?= BASEURL; ?>/pengecekan/cari" onsubmit="return validateForm()">    
 <h2 style="margin-top: 70px;">Pengecekan</h2>
@@ -82,7 +84,9 @@
     </table>
     <div style="margin-top: 30px;">
         <button onclick="editPengecekan(<?php echo $pengecekan['id_tugas']; ?>)">Edit</button>
-        <button onclick="simpanPengecekan(<?php echo $pengecekan['id_tugas']; ?>)">Simpan</button>
+        <!-- <button onclick="simpanPengecekan(<?php echo $pengecekan['id_tugas']; ?>)">Simpan</button> -->
+        <button type="submit" name="simpan">Simpan</button>
+
     </div>
 
 </div>

@@ -3,16 +3,16 @@
     <h2 style="margin-top: 70px;">Praktikan</h2>
     <div class="crud-praktikan">
         <a href="#" class="crud tambah-crud" onclick="openTambahModal()">Tambah <i class="fa fa-folder-plus"></i></a>
-        <select id="inputFrekuensi" name="id_frekuensi" onchange="filterPraktikanByFrekuensi()">
-    <option value="" disabled selected>Pilih Frekuensi</option>
-    <option value="Semua">Tampilkan Semua</option>
-    <?php $frekuensi = $this->model('Frekuensi_model')->getAllFrekuensi(); ?>
-    <?php foreach ($frekuensi as $frek): ?>
-        <option class="frekuensi-option" value="<?= $frek['id_frekuensi']; ?>">
-            <?= $frek['nama_frekuensi']; ?> 
-        </option>
-    <?php endforeach; ?>
-</select>
+        <select style="width:150px;height:48px;border: 3px solid #51A8B1;border-radius:5px;font-family:poppins;font-size:15px" id="inputFrekuensi" name="id_frekuensi" onchange="filterPraktikanByFrekuensi()">
+            <option value="" disabled selected>Pilih Frekuensi</option>
+            <option value="Semua">Tampilkan Semua</option>
+            <?php $frekuensi = $this->model('Frekuensi_model')->getAllFrekuensi(); ?>
+            <?php foreach ($frekuensi as $frek): ?>
+                <option class="frekuensi-option" value="<?= $frek['id_frekuensi']; ?>">
+                    <?= $frek['nama_frekuensi']; ?> 
+                </option>
+            <?php endforeach; ?>
+        </select>
     </div>
     <table>
         <thead>
@@ -66,7 +66,7 @@
                 <label for="inputNamaPraktikan">Nama Praktikan :</label>
                 <!-- <input type="text" id="inputNipDosen" name="nip_dosen" required placeholder="Masukkan NIP Dosen"> -->
                 <input type="text" id="inputNamaPraktikan" name="nama_praktikan" required placeholder="Masukkan Nama Praktikan">
-
+                
                 <label for="inputFrekuensi">Frekuensi :</label>
                 <select id="inputFrekuensi" name="id_frekuensi">
                 <option value="" disabled selected>Pilih</option>
@@ -76,7 +76,7 @@
 
                     <?php endforeach; ?>
                 </select>
-
+           
 
                 <button onclick="submitFormById('tambahForm')">Submit</button>
                 <button type="button" class="btn" onclick="closeTambahModal()">Batal</button>

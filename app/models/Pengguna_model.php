@@ -68,6 +68,77 @@ class Pengguna_model {
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    public function getUsernameById($id) {
+        try {
+            $this->db->query("SELECT username FROM $this->table WHERE id_user = :id_user");
+            $this->db->bind(':id_user', $id);
+            $result = $this->db->single();
+            return $result['username'];
+        } catch (\Throwable $th) {
+            echo 'Error: ' . $th->getMessage();
+        }
+    }
+    
+
+    public function resetUserPassword($id, $password) {
+        try {
+            $this->db->query("UPDATE $this->table SET password = :password WHERE id_user = :id_user");
+            $this->db->bind(':password', $password);
+            $this->db->bind(':id_user', $id);
+            $this->db->execute();
+        } catch (\Throwable $th) {
+            echo 'Error: ' . $th->getMessage();
+        }
+    }
+    
+    // public function getInitialPassword($id) {
+    //     try {
+    //         $this->db->query("SELECT 'password' FROM $this->table WHERE id_user = :id_user");
+    //         $this->db->bind(':id_user', $id);
+    //         $result = $this->db->single();
+    //         return 'asisten';
+    //     } catch (\Throwable $th) {
+    //         echo 'Error: ' . $th->getMessage();
+    //     }
+    // // }
+    // public function getDataUserById($id) {
+    //     try {
+    //         $this->db->query("SELECT role FROM $this->table WHERE id_user = :id_user");
+    //         $this->db->bind(':id_user', $id);
+    //         return $this->db->single();
+    //     } catch (\Throwable $th) {
+    //         echo 'Error: ' . $th->getMessage();
+    //         die(); // Tambahkan die() untuk memastikan kode berhenti di sini jika ada error
+    //     }
+    // }
+    
+    
+    
+
+    public function getInitialPassword($id, $role) {
+        try {
+            switch($role) {
+                case 'administrator':
+                    return 'Admin';
+                    break;
+                case 'asisten':
+                    return 'asisten';
+                    break;
+                case 'praktikan':
+                    // Get the username of the praktikan
+                    return $this->getUsernameById($id);
+                    break;
+                default:
+                    return ''; // Default password is empty if no role matches
+            }
+        } catch (\Throwable $th) {
+            echo 'Error: ' . $th->getMessage();
+        }
+    }
+    
+    
+    
     
 
 

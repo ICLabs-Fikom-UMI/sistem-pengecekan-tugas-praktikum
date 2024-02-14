@@ -10,10 +10,13 @@
         </p>
         <p>Tanggal Tugas : <?= $data['detailTugas']['tgl_tugas']; ?></p>
         <p>Deskripsi : </p>
-        <p><?= $data['detailTugas']['deskripsi_tugas']; ?></p>
-        <div class="buttons">
-            <button onclick="submitFormById('tambahForm')">Edit</button>
-            <a href="<?= BASEURL; ?>/tugas/index" class="kembali">Kembali</a>
+        <textarea  style="font-family: poppins;font-size: 14px;border:3px solid;border-color:#51A8B1;border-radius:5px" name="detailTugas" id="" cols="200" rows="20" readonly><?= $data['detailTugas']['deskripsi_tugas']; ?></textarea>
+        
+        <div class="buttons" style="padding-left: 0px;">
+            
+        <button onclick="window.location.href='<?= BASEURL; ?>/Tugas/edit/<?= $data['detailTugas']['id_tugas']; ?>'">Edit</button>
+
+        <a href="<?= BASEURL; ?>/tugas/index" class="kembali">Kembali</a>
         </div>
     
     </div>
@@ -32,8 +35,8 @@
             </p>
             <p>Tanggal Tugas : <?= $data['detailTugas']['tgl_tugas']; ?></p>
             <p>Deskripsi : </p>
-            <p><?= $data['detailTugas']['deskripsi_tugas']; ?></p>
-            <div class="buttons">
+            <textarea  style="font-family: poppins;font-size: 14px;border:3px solid;border-color:#51A8B1;border-radius:5px" name="detailTugas" id="" cols="200" rows="20" readonly><?= $data['detailTugas']['deskripsi_tugas']; ?></textarea>
+            <div class="buttons" style="padding-left: 0px;">
                 <a href="<?= BASEURL; ?>/tugas/index" class="kembali">Kembali</a>
             </div>
         </div>

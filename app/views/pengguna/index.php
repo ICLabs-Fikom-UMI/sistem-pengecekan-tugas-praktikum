@@ -1,7 +1,6 @@
 <div class="content">
     <h2 style="margin-top: 70px;">Pengguna</h2>
     <div class="crud-pengguna">
-        <a href="#" class="crud tambah-crud" onclick="openTambahModal()">Tambah <i class="fa fa-folder-plus"></i></a>
     </div>
     <table>
         <thead>
@@ -36,7 +35,14 @@
                   
                     
                     <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
-                    <td style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/pengguna/edit/<?= $user['id_user']; ?>"><i class="fa fa-pencil"></i> </a></td>
+                    <!-- <td style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/pengguna/edit/<?= $user['id_user']; ?>"><i class="fa fa-pencil"></i> </a></td> -->
+                    <td style="position: relative;">
+    <a class="btn-crud" href="<?= BASEURL; ?>/pengguna/resetPassword/<?= $pengguna['id_user']; ?>" onclick="return confirm('Apakah Anda yakin ingin mereset password pengguna ini?')">
+        Reset Password
+    </a>
+</td>
+
+                    
                     <td style="position: relative;">
                 <a class="btn-crud" href="<?= BASEURL; ?>/Pengguna/" onclick="hapusPengguna('<?= $pengguna['id_user']; ?>')">
                     <i class="fa fa-trash-can"></i>
@@ -49,18 +55,3 @@
 
    
 </div>
-
-<script>
-    function submitFormById(formId) {
-        var form = document.getElementById(formId);
-
-        // Periksa apakah formulir ditemukan
-        if (form) {
-            form.submit();
-        } else {
-            console.error("Form with ID '" + formId + "' not found.");
-        }
-    }
-
-</script>
-
