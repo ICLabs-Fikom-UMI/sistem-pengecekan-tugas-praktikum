@@ -4,15 +4,15 @@
     <a href="<?= BASEURL; ?>"><i class="fa fa-gauge-high"></i></i>&nbsp;&nbsp; Dashboard</a>
 
     <?php if ($_SESSION['role'] == 'Administrator') { ?>
-        <a href="<?= BASEURL; ?>/matakuliah"><i class="fa fa-folder-tree"></i></i>&nbsp;&nbsp; Matakuliah</a>
-        <a href="<?= BASEURL; ?>/dosen"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp; Dosen</a>
-        <a href="<?= BASEURL; ?>/asisten"><i class="fa fa-user-group"></i>&nbsp;&nbsp; Asisten</a>
+        <a href="<?= BASEURL; ?>/matakuliah"><i class="fa fa-swatchbook"></i>&nbsp;&nbsp; Mata Kuliah</a>
+        <a href="<?= BASEURL; ?>/dosen"><i class="fa fa-chalkboard-user"></i>&nbsp;&nbsp;&nbsp; Dosen</a>
+        <a href="<?= BASEURL; ?>/asisten"><i class="fa-brands fa-teamspeak"></i>&nbsp;&nbsp; Asisten</a>
     <?php } ?>
 
-    <a href="<?= BASEURL; ?>/frekuensi"><i class="fa fa-code-branch"></i>&nbsp;&nbsp;&nbsp; Frekuensi</a>
+    <a href="<?= BASEURL; ?>/frekuensi"><i class="fa fa-podcast"></i>&nbsp;&nbsp; Frekuensi</a>
 
     <?php if ($_SESSION['role'] == 'Administrator' || $_SESSION['role'] == 'Asisten') { ?>
-        <a href="<?= BASEURL; ?>/praktikan"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp; Praktikan</a>
+        <a href="<?= BASEURL; ?>/praktikan"><i class="fa fa-book-open-reader"></i>&nbsp;&nbsp; Praktikan</a>
     <?php } ?>
 
     <a href="<?= BASEURL; ?>/tugas"><i class="fa fa-laptop-file"></i></i>&nbsp;&nbsp; Tugas</a>

@@ -32,6 +32,8 @@ class Pengguna extends Controller {
             echo 'Error: ' . $th->getMessage();
         }
     }
+
+
     
     public function hapus($id) {
     
@@ -41,26 +43,11 @@ class Pengguna extends Controller {
         } 
     }
 
-    // public function resetPassword($id) {
-    //     try {
-    //         // Ambil password awal dari database atau dari suatu sumber lain
-    //         $initialPassword = $this->model('Pengguna_model')->getInitialPassword($id);
     
-    //         // Update password pengguna dengan password awal
-    //         $this->model('Pengguna_model')->resetUserPassword($id, $initialPassword);
-    
-    //         echo "Password berhasil direset ke password awal.";
-    //     } catch (\Throwable $th) {
-    //         echo 'Error: ' . $th->getMessage();
-    //     }
-    // }
-    // Panggil metode resetPassword() dalam controller Anda
-// Panggil metode resetPassword() dalam controller Anda
-// Panggil metode resetPassword() dalam controller Anda
 public function resetPassword($id) {
     try {
         // Ambil role pengguna
-        $roleData = $this->model('Pengguna_model')->getDataUserById($id);
+        $roleData = $this->model('Pengguna_model')->getRoleById($id);
         $role = $roleData['role'];
 
         // Reset password berdasarkan role pengguna
@@ -69,14 +56,51 @@ public function resetPassword($id) {
         // Update password pengguna dengan password awal
         $this->model('Pengguna_model')->resetUserPassword($id, $initialPassword);
 
-        echo "Password berhasil direset ke password awal.";
+        header('Location: ' . BASEURL . '/Pengguna');
+
     } catch (\Throwable $th) {
         echo 'Error: ' . $th->getMessage();
     }
 }
 
 
+public function ubahPassword(){
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $id = $_POST['id_user'];
+        $newPassword = $_POST['new_password'];
+        $confirmPassword = $_POST['confirm_password'];
+  
 
-    
+        // Validasi input
+        if (empty($newPassword) || empty($confirmPassword)) {
+            echo "Password tidak boleh kosong.";
+            return;
+        }
 
+        if ($newPassword !== $confirmPassword) {
+            echo "Konfirmasi password tidak sesuai.";
+            return;
+        }
+
+        // Panggil model untuk melakukan update password
+        $success = $this->model('Pengguna_model')->updatePassword($id, $newPassword);
+
+        if ($success) {
+            // Redirect ke halaman login setelah mengubah password
+            header('Location: ' . BASEURL . '/Log/logout');
+            exit;
+        } else {
+            echo "Gagal mengubah password.";
+        }
+    } else {
+        // Jika bukan metode POST, tampilkan halaman form ubah password
+        $data['id_user'] = $_SESSION['id_user']; // Sesuaikan dengan cara Anda mendapatkan ID pengguna yang sedang login
+        $this->view('templates/header');
+        $this->view('pengguna/ubah_password', $data);
+        $this->view('templates/footer');
+    }
 }
+}
+
+
+

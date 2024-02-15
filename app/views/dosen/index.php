@@ -1,7 +1,7 @@
 <div class="content">
     <h2 style="margin-top: 70px;">Dosen Pengampuh</h2>
     <div class="crud-dosen">
-        <a href="#" class="crud tambah-crud" onclick="openTambahModal()">Tambah <i class="fa fa-folder-plus"></i></a>
+        <a href="#" class="crud tambah-crud" onclick="openTambahModal()">Tambah <i class="fa fa-user-plus"></i></a>
     </div>
     <table>
         <thead>
@@ -38,7 +38,7 @@
             </td>           
             <td><?= $dosen['kelas']; ?></td>
             <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
-            <td style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/Dosen/edit/<?= $dosen['id_dosen']; ?>"><i class="fa fa-pencil"></i></a></td>
+            <td style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/Dosen/edit/<?= $dosen['id_dosen']; ?>"><i class="fa fa-pen-to-square"></i></a></td>
             <td style="position: relative;">
                 <a class="btn-crud" href="<?= BASEURL; ?>/Dosen/" onclick="hapusDosen('<?= $dosen['id_dosen']; ?>')">
                     <i class="fa fa-trash-can"></i>

@@ -2,7 +2,7 @@
 <div class="content">
     <h2 style="margin-top: 70px;">Praktikan</h2>
     <div class="crud-praktikan">
-        <a href="#" class="crud tambah-crud" onclick="openTambahModal()">Tambah <i class="fa fa-folder-plus"></i></a>
+        <a href="#" class="crud tambah-crud" onclick="openTambahModal()">Tambah <i class="fa fa-user-plus"></i></a>
         <select style="width:150px;height:48px;border: 3px solid #51A8B1;border-radius:5px;font-family:poppins;font-size:15px" id="inputFrekuensi" name="id_frekuensi" onchange="filterPraktikanByFrekuensi()">
             <option value="" disabled selected>Pilih Frekuensi</option>
             <option value="Semua">Tampilkan Semua</option>
@@ -44,7 +44,7 @@
                     echo $dosen['nama_frekuensi'];
                     ?>
                 </td>
-                <td style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/praktikan/edit/<?= $praktikan['id_praktikan']; ?>"><i class="fa fa-pencil"></i> </a></td>
+                <td style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/praktikan/edit/<?= $praktikan['id_praktikan']; ?>"><i class="fa fa-pen-to-square"></i> </a></td>
 
                 <!-- <td style="position: relative;"><a class="btn-crud"href="<?= BASEURL; ?>/praktikan/edit/<?= $praktikan['id_praktikan']; ?>"><i class="fa fa-pencil"></i> </a></td> -->
                 <td style="position: relative;"><a class="btn-crud"href="<?= BASEURL; ?>/Praktikan/" onclick="hapusPraktikan('<?= $praktikan['id_praktikan']; ?>')"><i class="fa fa-trash-can"></i></a></td>

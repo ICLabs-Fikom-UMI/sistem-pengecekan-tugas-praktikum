@@ -1,7 +1,7 @@
 <div class="content">
     <h2 style="margin-top: 70px;">Asisten</h2>
     <div class="crud-asisten">
-        <a href="#" class="crud tambah-crud" onclick="openTambahModal()">Tambah <i class="fa fa-folder-plus"></i></a>
+        <a href="#" class="crud tambah-crud" onclick="openTambahModal()">Tambah <i class="fa fa-user-plus"></i></a>
     </div>
     <table>
         <thead>
@@ -27,7 +27,7 @@
             
             <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
             <!-- <td><a href="<?= BASEURL; ?>/asisten/" onclick="openEditPopup(<?= $asisten['id_asisten']; ?>)" ><i class="fa fa-pencil"></i></a></td> -->
-            <td   style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/asisten/edit/<?= $asisten['id_asisten']; ?>"><i class="fa fa-pencil"></i></a></td>
+            <td   style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/asisten/edit/<?= $asisten['id_asisten']; ?>"><i class="fa fa-pen-to-square"></i></a></td>
             <!-- <td><a href="#" class="crud tambah-crud" onclick="openEditModal(<?= $asisten['id_asisten']; ?>)"><i class="fa fa-pencil"></i></a></td> -->
 
             <td style="position: relative;" >

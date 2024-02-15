@@ -9,7 +9,7 @@
                 <th>Username</th>
                 <th>Nama Pengguna</th>
                 <th>Role</th>
-                <th>Edit</th>  
+                <th>Reset Password</th>  
                 <th>Hapus</th>                
             </tr>
         </thead>
@@ -38,7 +38,7 @@
                     <!-- <td style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/pengguna/edit/<?= $user['id_user']; ?>"><i class="fa fa-pencil"></i> </a></td> -->
                     <td style="position: relative;">
     <a class="btn-crud" href="<?= BASEURL; ?>/pengguna/resetPassword/<?= $pengguna['id_user']; ?>" onclick="return confirm('Apakah Anda yakin ingin mereset password pengguna ini?')">
-        Reset Password
+    <i class="fa fa-arrow-rotate-right"></i>
     </a>
 </td>
 
@@ -55,3 +55,6 @@
 
    
 </div>
+
+
+

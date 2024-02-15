@@ -28,7 +28,7 @@
                         <td><?= $matakuliah['semester']; ?></td>
                         <td><?= $matakuliah['tingkat_semester']; ?></td>
                         <!-- Tambahkan link atau tombol Edit dan Hapus di sini -->
-                        <td style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/matakuliah/edit/<?= $matakuliah['id_matkul']; ?>"><i class="fa fa-pencil"></i> </a></td>
+                        <td style="position: relative;"><a class="btn-crud" href="<?= BASEURL; ?>/matakuliah/edit/<?= $matakuliah['id_matkul']; ?>"><i class="fa fa-pen-to-square"></i></a></td>
                         <!-- <td><a href="<?= BASEURL; ?>/matakuliah/hapus/<?= $matakuliah['id_matkul']; ?>" onclick="return confirm('Anda yakin ingin menghapus?');"><i class="fa fa-trash-can"></i></a></td> -->
                         <td style="position: relative;">
                     <a class="btn-crud" href="<?= BASEURL; ?>/Matakuliah/" onclick="hapusMatkul('<?= $matakuliah['id_matkul']; ?>')">

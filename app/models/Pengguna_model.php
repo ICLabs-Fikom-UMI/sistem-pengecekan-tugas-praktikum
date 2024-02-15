@@ -31,16 +31,7 @@ class Pengguna_model {
         }
     }
 
-    // public function getDataUserById($id) {
-    //     try {
-    //         $this->db->query("SELECT mst_praktikan.nama_praktikan, mst_asisten.nama_asisten FROM mst_praktikan INNER JOIN mst_asisten ON mst_praktikan.id_user = mst_asisten.id_user WHERE id_user = :id_user");
-    //         $this->db->bind(':id_user', $id);
-    //         return $this->db->single();
-    //     } catch (\Throwable $th) {
-    //         // Handle error jika perlu
-    //         echo 'Error: ' . $th->getMessage();
-    //     }
-    // }
+ 
     public function getDataUserById($id) {
         try {
             $this->db->query("SELECT 
@@ -59,7 +50,18 @@ class Pengguna_model {
             echo 'Error: ' . $th->getMessage();
         }
     }
-    
+    // Di dalam class Pengguna_model
+
+public function getUserById($id) {
+    try {
+        $this->db->query("SELECT * FROM $this->table WHERE id_user = :id_user");
+        $this->db->bind(':id_user', $id);
+        return $this->db->single();
+    } catch (\Throwable $th) {
+        echo 'Error: ' . $th->getMessage();
+    }
+}
+
 
     public function hapusPengguna($id) {
         $query = "DELETE FROM mst_user WHERE id_user = :id_user";
@@ -91,27 +93,17 @@ class Pengguna_model {
             echo 'Error: ' . $th->getMessage();
         }
     }
-    
-    // public function getInitialPassword($id) {
-    //     try {
-    //         $this->db->query("SELECT 'password' FROM $this->table WHERE id_user = :id_user");
-    //         $this->db->bind(':id_user', $id);
-    //         $result = $this->db->single();
-    //         return 'asisten';
-    //     } catch (\Throwable $th) {
-    //         echo 'Error: ' . $th->getMessage();
-    //     }
-    // // }
-    // public function getDataUserById($id) {
-    //     try {
-    //         $this->db->query("SELECT role FROM $this->table WHERE id_user = :id_user");
-    //         $this->db->bind(':id_user', $id);
-    //         return $this->db->single();
-    //     } catch (\Throwable $th) {
-    //         echo 'Error: ' . $th->getMessage();
-    //         die(); // Tambahkan die() untuk memastikan kode berhenti di sini jika ada error
-    //     }
-    // }
+
+    public function getRoleById($id) {
+        try {
+            $this->db->query("SELECT role FROM $this->table WHERE id_user = :id_user");
+            $this->db->bind(':id_user', $id);
+            return $this->db->single();
+        } catch (\Throwable $th) {
+            echo 'Error: ' . $th->getMessage();
+            die(); // Tambahkan die() untuk memastikan kode berhenti di sini jika ada error
+        }
+    }
     
     
     
@@ -119,13 +111,13 @@ class Pengguna_model {
     public function getInitialPassword($id, $role) {
         try {
             switch($role) {
-                case 'administrator':
+                case 'Administrator':
                     return 'Admin';
                     break;
-                case 'asisten':
+                case 'Asisten':
                     return 'asisten';
                     break;
-                case 'praktikan':
+                case 'Praktikan':
                     // Get the username of the praktikan
                     return $this->getUsernameById($id);
                     break;
@@ -137,6 +129,41 @@ class Pengguna_model {
         }
     }
     
+    // public function updatePassword($id, $newPassword) {
+    //     try {
+    //         // Hash password baru sebelum menyimpannya ke database
+    //         $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+    
+    //         // Eksekusi query UPDATE untuk mengubah password
+    //         $this->db->query("UPDATE $this->table SET password = :password WHERE id_user = :id_user");
+    //         $this->db->bind(':password', $hashedPassword);
+    //         $this->db->bind(':id_user', $id);
+            
+    //         // Lakukan eksekusi query
+    //         $this->db->execute();
+            
+    //         // Kembalikan true jika eksekusi berhasil
+    //         return true;
+    //     } catch (\Throwable $th) {
+    //         // Tangkap dan tampilkan pesan error jika terjadi kesalahan
+    //         echo 'Error: ' . $th->getMessage();
+    //         // Kembalikan false jika terjadi kesalahan
+    //         return false;
+    //     }
+    // }
+
+    public function updatePassword($id, $newPassword) {
+        try {
+            $this->db->query("UPDATE $this->table SET password = :password WHERE id_user = :id_user");
+            $this->db->bind(':password', $newPassword);
+            $this->db->bind(':id_user', $id);
+            $this->db->execute();
+            return true; // Berhasil memperbarui password
+        } catch (\Throwable $th) {
+            echo 'Error: ' . $th->getMessage();
+            return false; // Gagal memperbarui password
+        }
+    }
     
     
     

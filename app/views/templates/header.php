@@ -77,12 +77,13 @@
                 <img src="<?= BASEURL; ?> /img/back1.png" alt="Profile Picture">
                 <div class="dropdown-content">
                 <?php if ($_SESSION['role'] == 'Praktikan') { ?>
-                    <a href="<?= BASEURL; ?>/Praktikan/profile">Profile</a>
+                    <a href="<?= BASEURL; ?>/Praktikan/profile"><i class="fa fa-id-card-clip">  </i> Profil</a>
 
                 <?php } ?>
                     
-                    <a href="#">Ganti Password</a>
-                    <a href="<?= BASEURL; ?>/log/logout">Logout</a>
+                <a href="<?= BASEURL; ?>/Pengguna/ubahPassword"><i class="fa-solid fa-key"></i> Ganti Sandi</a>
+
+                    <a href="<?= BASEURL; ?>/log/logout"><i class="fa fa-right-from-bracket"></i> Keluar</a>
                 </div>
                 <div class="arrow"></div>
             </div>
