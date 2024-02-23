@@ -1,5 +1,3 @@
-
-
 <div class="content">
 <form method="POST" action="<?= BASEURL; ?>/pengecekan/cari" onsubmit="return validateForm()">    
 <h2 style="margin-top: 70px;">Pengecekan</h2>
@@ -32,14 +30,15 @@
         </option>
     <?php endforeach; ?>
 </select>
+<button style="margin-top: 20px;" onclick="cariPaktikan()">Cari</button>
+    </form>
+
+
     
-
-
-
-    <button style="margin-top: 20px;" onclick="cariPaktikan()">Cari</button>
+    <form action="<?= BASEURL; ?>/pengecekan/add" method="POST">
   
 
-    </form>
+   
 
     <table  id="data-table">
         <thead>
@@ -84,11 +83,13 @@
     </table>
     <div style="margin-top: 30px;">
         <button onclick="editPengecekan(<?php echo $pengecekan['id_tugas']; ?>)">Edit</button>
-        <!-- <button onclick="simpanPengecekan(<?php echo $pengecekan['id_tugas']; ?>)">Simpan</button> -->
         <button type="submit" name="simpan">Simpan</button>
+        <!-- <button onclick="simpanPengecekan(<?php echo $pengecekan['id_tugas']; ?>)">Simpan</button> -->
+        <!-- <button type="submit" name="simpan">Simpan</button> -->
 
     </div>
 
 </div>
 
 
+</form>

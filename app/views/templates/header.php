@@ -36,6 +36,31 @@
 }
 
 
+
+.sidebar-links button {
+    font-family: poppins;
+    color: black;
+    background-color: #ffffff;
+    width: 200px;
+    list-style: none;
+    padding: 20px;
+    float: right; /* Mengatur agar tombol-tombol berbaris secara horizontal */
+    text-align: left; /* Mengatur agar teks di dalam tombol memiliki rata kiri */
+    margin-right: 5px; /* Jika diperlukan, tambahkan jarak antara tombol dengan elemen lain */
+    font-size:17px;
+    
+}
+
+#clock {
+    font-family: 'Arial', sans-serif;
+    font-size: 2em;
+    color: #333;
+}
+
+
+
+
+
     </style>
     
 

@@ -33,40 +33,44 @@ class Pengecekan_model {
         }
     }
     
-    
-    
 
-
-    // public function addPengecean($id_praktikan, $id_tugas, $status, $tgl_pengecekan) {
-    //     try {
-    //         $this->db->query("INSERT INTO $this->table (id_praktikan, id_tugas, status_pengecekan, tgl_pengecekan) VALUES (:id_praktikan, :id_tugas, :status_pengecekan, :tgl_pengecekan)");
-    //         $this->db->bind(':id_praktikan', $id_praktikan);
-    //         $this->db->bind(':id_tugas', $id_tugas);
-    //         $this->db->bind(':status_pengecekan', $status);
-    //         // $this->db->bind(':tgl_tugas', $tgl_tugas);
-    //         $this->db->bind(':tgl_pengecekan', $tgl_pengecekan);
-    //         // $this->db->bind(':id_frekuensi', $id_frekuensi);
-    //         // $this->db->bind(':id_praktikan', $id_praktikan);
-    
-    //         $this->db->execute();
-    //     } catch (\Throwable $th) {
-    //         echo 'Error: ' . $th->getMessage();
-    //     }
-    // }
-
-    public function addPengecean($id_praktikan, $id_tugas, $status, $tgl_pengecekan) {
+    public function addPengecean($id_tugas, $status, $tgl_pengecekan, $id_frekuensi) {
         try {
-            $this->db->query("CALL PengecekanProcedure(:id_praktikan, :id_tugas, :status_pengecekan, :tgl_pengecekan)");
-            $this->db->bind(':id_praktikan', $id_praktikan);
+            // Query SQL untuk memasukkan data ke dalam tabel
+            $this->db->query("INSERT INTO trx_pengecekan (id_praktikan, id_tugas, status_pengecekan, tgl_pengecekan)
+                SELECT 
+                    mst_praktikan.id_praktikan, 
+                    :id_tugas, 
+                    :status_pengecekan, 
+                    :tgl_pengecekan
+                FROM 
+                    mst_praktikan 
+                WHERE 
+                    mst_praktikan.id_frekuensi = (
+                        SELECT id_frekuensi 
+                        FROM mst_praktikan 
+                        WHERE mst_praktikan.id_frekuensi = :id_frekuensi
+                    )");
+            
+            // Bind nilai ke parameter dalam query
             $this->db->bind(':id_tugas', $id_tugas);
             $this->db->bind(':status_pengecekan', $status);
             $this->db->bind(':tgl_pengecekan', $tgl_pengecekan);
+            $this->db->bind(':id_frekuensi', $id_frekuensi);
+            
+            // Eksekusi query
             $this->db->execute();
         } catch (\Throwable $th) {
             echo 'Error: ' . $th->getMessage();
         }
     }
     
+    
+
+    
+
+
+
            
    
 
@@ -163,6 +167,19 @@ class Pengecekan_model {
             echo 'Error: ' . $th->getMessage();
         }
     }
+
+    public function getIdPraktikan($id_frekuensi) {
+        try {
+            $this->db->query("SELECT id_praktikan FROM mst_praktikan WHERE id_frekuensi = :id_frekuensi");
+            $this->db->bind(':id_frekuensi', $id_frekuensi);
+            $result = $this->db->single();
+            return $result['id_praktikan'] ?? null; // Mengembalikan nilai id_praktikan jika ada, atau null jika tidak ada
+        } catch (\Throwable $th) {
+            echo 'Error: ' . $th->getMessage();
+            return null; // Mengembalikan null jika terjadi error
+        }
+    }
+    
 
     
     

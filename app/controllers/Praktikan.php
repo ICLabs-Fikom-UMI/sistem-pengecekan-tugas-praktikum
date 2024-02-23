@@ -55,6 +55,16 @@ class Praktikan extends Controller {
     }
     
     
-    
+    // controllers/Praktikan.php
+
+public function profile($id) {
+    $data['judul'] = 'Profil Praktikan';
+    $data['praktikan'] = $this->model('Praktikan_model')->getPraktikanById($id);
+    $this->view('templates/header', $data);
+    $this->view('templates/sidebar', $data);
+    $this->view('praktikan/profile', $data);
+    $this->view('templates/footer');
+}
+
 
 }
