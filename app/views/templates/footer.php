@@ -202,23 +202,47 @@ function updateTugasOptions() {
     });
 }
 
-// function updateTanggalPengecekan(select) {
-//     var selectedValue = select.value;
-//     var row = select.closest('tr'); // Mendapatkan baris terdekat (closest) dari elemen select
-//     var tanggalPengecekanCell = row.querySelector('.tgl_pengecekan'); // Mendapatkan sel dengan kelas 'tgl_pengecekan'
+function cariPengecekan() {
+    // Mengambil nilai dari semua input formulir pencarian
+    var id_matkul = document.getElementById('inputNamaMatkul').value;
+    var id_frekuensi = document.getElementById('inputFrekuensi').value;
+    var id_tugas = document.getElementById('pilihTugas').value;
 
-//     // Jika opsi yang dipilih adalah 'ACC' atau 'Revisi', isi otomatis nilai tanggal pengecekan
-//     if (selectedValue === 'ACC' || selectedValue === 'Revisi') {
-//         var currentDate = new Date();
-//         var formattedDate = currentDate.toLocaleString(); // Konversi tanggal menjadi format yang sesuai
+    // Kirim permintaan ke server
+    fetch(BASEURL + '/pengecekan/cari', {
+        method: 'POST',
+        body: JSON.stringify({ id_matkul: id_matkul, id_frekuensi: id_frekuensi, id_tugas: id_tugas }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Tampilkan data yang diterima ke dalam tabel HTML
+        var tbody = document.querySelector('#data-table tbody');
+        tbody.innerHTML = ''; // Mengosongkan isi tabel sebelum menambahkan data baru
 
-//         // Isi nilai tanggal pengecekan dengan tanggal saat ini
-//         tanggalPengecekanCell.textContent = formattedDate;
-//     } else {
-//         // Jika opsi yang dipilih tidak 'ACC' atau 'Revisi', kosongkan nilai tanggal pengecekan
-//         tanggalPengecekanCell.textContent = '';
-//     }
-// }
+        data.forEach((pengecekan, index) => {
+            var row = `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${pengecekan.nim_praktikan}</td>
+                    <td>${pengecekan.nama_praktikan}</td>
+                    <td>
+                        <select name="status" class="status-dropdown" id="status_${pengecekan.id_pengecekan}" onchange="updatePengecekan(this)">
+                            <option value="" disabled selected>Pilih</option>
+                            <option value="ACC">ACC</option>
+                            <option value="Revisi">Revisi</option>
+                        </select>
+                    </td>
+                    <td class="tgl_pengecekan">${pengecekan.tgl_pengecekan}</td>
+                </tr>`;
+            tbody.innerHTML += row;
+        });
+    })
+    .catch(error => console.error('Error:', error));
+}
+
 
 function updatePengecekan(select) {
     var selectedValue = select.value;
@@ -350,6 +374,21 @@ function getAsistenById(id) {
     return null; // Return null jika tidak ditemukan data asisten dengan ID yang diberikan
 }
 
+
+function validateForm() {
+    // Ambil nilai dari input
+    var idMatkul = document.getElementById('inputNamaMatkul').value;
+    var idFrekuensi = document.getElementById('inputFrekuensi').value;
+    var idTugas = document.getElementById('pilihTugas').value;
+
+    // Lakukan validasi, contoh:
+    if (idMatkul === '' || idFrekuensi === '' || idTugas === '') {
+        alert('Harap lengkapi semua bidang sebelum mengirimkan formulir.');
+        return false; // Mencegah pengiriman formulir jika validasi gagal
+    }
+
+    return true; // Izinkan pengiriman formulir jika validasi berhasil
+}
 
 
 </script>

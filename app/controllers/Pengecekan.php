@@ -14,41 +14,27 @@
             $this->view('templates/footer');
         }
 
-        
+       
+
         public function add() {
             try {
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    $id_tugas = $_POST['id_tugas'];
-                    $status = $_POST['status_pengecekan'];
-                    $tgl_pengecekan = $_POST['tgl_pengecekan'];
-                    $id_frekuensi = $_POST['id_frekuensi'];
+                    $tgl_pengecekan = date('Y-m-d H:i:s'); // Tanggal pengecekan dapat diambil dari server
         
-                    // Mengambil id_praktikan dari id_frekuensi yang diterima dari form
-                    $pengecekan_model = $this->model('Pengecekan_model');
-                    $id_praktikan = $pengecekan_model->getIdPraktikan($id_frekuensi);
+                    // Memanggil model untuk menyimpan data
+                    $this->model('Pengecekan_model')->addPengecekan($_POST, $tgl_pengecekan);
         
-                    if ($id_praktikan) {
-                        // Jika berhasil mendapatkan id_praktikan, lanjutkan dengan memanggil fungsi addPengecean
-                        $pengecekan_model->addPengecean($id_praktikan, $id_tugas, $status, $tgl_pengecekan, $id_frekuensi);
-                        echo "berhasil";
-                        exit();
-                    } else {
-                        // Jika gagal mendapatkan id_praktikan, tampilkan pesan kesalahan
-                        echo "Gagal mendapatkan id praktikan dari id frekuensi yang diberikan";
-                    }
+                    header('Location: ' . BASEURL . '/Pengecekan');
                 } else {
-                    echo "Gagal Mengimputkan Data";
+                    echo "Form tidak disubmit atau tombol simpan tidak ditekan";
                 }
             } catch (\Throwable $th) {
                 echo 'Error: ' . $th->getMessage();
             }
         }
         
-        
-        
-        
 
-        public function cariPengecekan($id_matkul = null, $id_frekuensi = null, $id_tugas = null) {
+        public function cariPengecekan($id_matkul, $id_frekuensi , $id_tugas) {
             try {
                 // Panggil model atau lakukan operasi pencarian sesuai kebutuhan
                 $data['pengecekan'] = $this->model('Pengecekan_model')->cariPengecekan($id_matkul, $id_frekuensi, $id_tugas);
@@ -81,11 +67,6 @@
                 echo $th;
             }
         }
-        
-        
-        
-        
-
         
 
     }

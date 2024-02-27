@@ -9,7 +9,7 @@ class Pengecekan_model {
     }
 
     public function getAllPengecekan() {
-        try {
+        try {   
             $this->db->query('SELECT 
                 trx_tugas.*, 
                 trx_frekuensi.nama_frekuensi,
@@ -34,29 +34,17 @@ class Pengecekan_model {
     }
     
 
-    public function addPengecean($id_tugas, $status, $tgl_pengecekan, $id_frekuensi) {
+    public function addPengecekan($data, $tgl) {
         try {
             // Query SQL untuk memasukkan data ke dalam tabel
             $this->db->query("INSERT INTO trx_pengecekan (id_praktikan, id_tugas, status_pengecekan, tgl_pengecekan)
-                SELECT 
-                    mst_praktikan.id_praktikan, 
-                    :id_tugas, 
-                    :status_pengecekan, 
-                    :tgl_pengecekan
-                FROM 
-                    mst_praktikan 
-                WHERE 
-                    mst_praktikan.id_frekuensi = (
-                        SELECT id_frekuensi 
-                        FROM mst_praktikan 
-                        WHERE mst_praktikan.id_frekuensi = :id_frekuensi
-                    )");
+            VALUES (:id_praktikan, :id_tugas, :status_pengecekan, :tgl_pengecekan)");
             
             // Bind nilai ke parameter dalam query
-            $this->db->bind(':id_tugas', $id_tugas);
-            $this->db->bind(':status_pengecekan', $status);
-            $this->db->bind(':tgl_pengecekan', $tgl_pengecekan);
-            $this->db->bind(':id_frekuensi', $id_frekuensi);
+            $this->db->bind(':id_praktikan', $_POST['id_praktikan']);
+            $this->db->bind(':id_tugas', $_POST['id_tugas']);
+            $this->db->bind(':status_pengecekan', $_POST['status']);
+            $this->db->bind(':tgl_pengecekan', $tgl);
             
             // Eksekusi query
             $this->db->execute();
@@ -64,15 +52,10 @@ class Pengecekan_model {
             echo 'Error: ' . $th->getMessage();
         }
     }
-    
-    
 
     
-
-
-
-           
-   
+    
+    
 
     public function getDosenById($id_dosen) {
         try {
@@ -131,6 +114,7 @@ class Pengecekan_model {
                 trx_tugas.*, 
                 trx_frekuensi.nama_frekuensi,
                 mst_matkul.nama_matkul,
+                mst_praktikan.id_praktikan,
                 mst_praktikan.nim_praktikan,
                 mst_praktikan.nama_praktikan
             FROM 
@@ -167,22 +151,25 @@ class Pengecekan_model {
             echo 'Error: ' . $th->getMessage();
         }
     }
+    
 
-    public function getIdPraktikan($id_frekuensi) {
+    public function getIdPraktikan($nama_praktikan) {
         try {
-            $this->db->query("SELECT id_praktikan FROM mst_praktikan WHERE id_frekuensi = :id_frekuensi");
-            $this->db->bind(':id_frekuensi', $id_frekuensi);
+            $query = $this->db->query("SELECT id_praktikan FROM mst_praktikan WHERE nama_praktikan = :nama_praktikan");
+            $this->db->bind(':nama_praktikan', $nama_praktikan);
             $result = $this->db->single();
-            return $result['id_praktikan'] ?? null; // Mengembalikan nilai id_praktikan jika ada, atau null jika tidak ada
+            if ($result) {
+                return $result['id_praktikan'];
+            } else {
+                return null; // Jika tidak ada hasil ditemukan, kembalikan null
+            }
         } catch (\Throwable $th) {
-            echo 'Error: ' . $th->getMessage();
+            // Catat pesan kesalahan ke log atau konsol
+            error_log('Error: ' . $th->getMessage());
             return null; // Mengembalikan null jika terjadi error
         }
     }
-    
 
-    
-    
 
     
     

@@ -35,21 +35,55 @@
     color :#526D82;
 }
 
-
-
-.sidebar-links button {
-    font-family: poppins;
-    color: black;
-    background-color: #ffffff;
-    width: 200px;
-    list-style: none;
-    padding: 20px;
-    float: right; /* Mengatur agar tombol-tombol berbaris secara horizontal */
-    text-align: left; /* Mengatur agar teks di dalam tombol memiliki rata kiri */
-    margin-right: 5px; /* Jika diperlukan, tambahkan jarak antara tombol dengan elemen lain */
-    font-size:17px;
-    
+.sidebar-links li {
+    padding: 5px;
+    margin: 1px;
+    position: relative;
+    z-index: 1;
 }
+
+.sidebar-links li:hover::after {
+    content: '';
+    position: absolute;
+    top: 20%; /* Menetapkan posisi vertikal ke tengah */
+    right: 10px; /* Menetapkan posisi horizontal ke paling kiri */
+    width: 100%; /* Menetapkan lebar sejajar dengan lebar elemen utama */
+    height: 100%; 
+    background-color: rgba(231, 244, 239, 0.8);
+    z-index: -1;
+    border-radius: 5px;
+}
+
+
+/* .sidebar-links li:hover::after,
+.sidebar-links .sidebar-li::after {
+    content: ''; 
+    position: absolute; 
+    top: 20%; 
+    right: 10px; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(231, 244, 239, 0.8); 
+    border-radius: 5px; 
+    z-index: -1; 
+}
+ */
+.sidebar-links .sidebar-li a i,
+.sidebar-links .sidebar-li a {
+    color: black; /* Warna ikon dan teks saat tidak dipilih */
+}
+
+.sidebar-links .sidebar-li:hover a i,
+.sidebar-links .sidebar-li a.active i {
+    color: #51A8B1; /* Warna ikon saat fitur dipilih */
+}
+
+.sidebar-links .sidebar-li:hover a,
+.sidebar-links .sidebar-li a.active {
+    color: #51A8B1; /* Warna teks pada ikon saat fitur dipilih */
+}
+
+
 
 #clock {
     font-family: 'Arial', sans-serif;
@@ -99,7 +133,8 @@
         </div>
         <div class="profile-picture">
             <div class="profile-dropdown" id="profileDropdown">
-                <img src="<?= BASEURL; ?> /img/back1.png" alt="Profile Picture">
+                <!-- <img src="<?= BASEURL; ?> /img/back1.png" alt="Profile Picture"> -->
+                
                 <div class="dropdown-content">
                 <?php if ($_SESSION['role'] == 'Praktikan') { ?>
                     <a href="<?= BASEURL; ?>/Praktikan/profile"><i class="fa fa-id-card-clip">  </i> Profil</a>

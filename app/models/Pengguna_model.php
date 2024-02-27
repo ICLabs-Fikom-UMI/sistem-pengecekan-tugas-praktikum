@@ -129,28 +129,6 @@ public function getUserById($id) {
         }
     }
     
-    // public function updatePassword($id, $newPassword) {
-    //     try {
-    //         // Hash password baru sebelum menyimpannya ke database
-    //         $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-    
-    //         // Eksekusi query UPDATE untuk mengubah password
-    //         $this->db->query("UPDATE $this->table SET password = :password WHERE id_user = :id_user");
-    //         $this->db->bind(':password', $hashedPassword);
-    //         $this->db->bind(':id_user', $id);
-            
-    //         // Lakukan eksekusi query
-    //         $this->db->execute();
-            
-    //         // Kembalikan true jika eksekusi berhasil
-    //         return true;
-    //     } catch (\Throwable $th) {
-    //         // Tangkap dan tampilkan pesan error jika terjadi kesalahan
-    //         echo 'Error: ' . $th->getMessage();
-    //         // Kembalikan false jika terjadi kesalahan
-    //         return false;
-    //     }
-    // }
 
     public function updatePassword($id, $newPassword) {
         try {
@@ -164,10 +142,5 @@ public function getUserById($id) {
             return false; // Gagal memperbarui password
         }
     }
-    
-    
-    
-
-
     
 }
