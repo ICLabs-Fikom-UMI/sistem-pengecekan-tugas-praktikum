@@ -91,6 +91,65 @@
     color: #333;
 }
 
+.grid-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    grid-gap: 30px;
+}
+        .card {
+            /* background-color: rgba(82, 109, 130, 0.9); Warna latar belakang dengan opasitas */
+            border: 1px solid #E7F4EF ;
+            color: black;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            /* text-align: center; */
+            display: flex;
+            flex-direction: column;
+            width: 210px;
+            margin-top: 50px;
+            
+            
+            /* align-items: center; */
+        }
+        .card i {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #fff;
+
+        }
+        .card h3 {
+            text-align: right;
+            margin: 0;
+            font-weight: normal;
+            color : #A9A9A9;
+        }
+        .card p {
+            text-align: right;
+            margin: 0;
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 10px;
+            
+        }
+
+        .i i{
+            /* border: solid; */
+            /* background-color: orange; */
+            border-radius: 5px;
+            padding: 20px;
+            margin-right: 200px;
+            margin-top: -50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+           
+        }
+        .ii {
+            margin-top: -50px;
+            
+            
+        }
+
 
 
 

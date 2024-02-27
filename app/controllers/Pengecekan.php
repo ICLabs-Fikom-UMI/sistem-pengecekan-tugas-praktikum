@@ -16,19 +16,47 @@
 
        
 
+        // public function add() {
+        //     try {
+        //         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //             $tgl_pengecekan = date('Y-m-d H:i:s'); // Tanggal pengecekan dapat diambil dari server
+        
+        //             // Memanggil model untuk menyimpan data
+        //             $this->model('Pengecekan_model')->addPengecekan($_POST, $tgl_pengecekan);
+        
+        //             header('Location: ' . BASEURL . '/Pengecekan');
+        //         } else {
+        //             echo "Form tidak disubmit atau tombol simpan tidak ditekan";
+        //         }
+        //     } catch (\Throwable $th) {
+        //         echo 'Error: ' . $th->getMessage();
+        //     }
+        // }
+        
         public function add() {
             try {
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    $tgl_pengecekan = date('Y-m-d H:i:s'); // Tanggal pengecekan dapat diambil dari server
-        
-                    // Memanggil model untuk menyimpan data
-                    $this->model('Pengecekan_model')->addPengecekan($_POST, $tgl_pengecekan);
-        
-                    header('Location: ' . BASEURL . '/Pengecekan');
+                    // Pastikan data yang diperlukan telah disediakan
+                    if(isset($_POST['id_praktikan']) && isset($_POST['id_tugas']) && isset($_POST['status'])) {
+                        // Ambil tanggal pengecekan dari server
+                        $tgl_pengecekan = date('Y-m-d H:i:s');
+            
+                        // Panggil model untuk menyimpan data
+                        $this->model('Pengecekan_model')->addPengecekan($_POST, $tgl_pengecekan);
+            
+                        // Redirect setelah data berhasil disimpan
+                        header('Location: ' . BASEURL . '/Pengecekan');
+                        exit(); // Pastikan untuk keluar setelah redirect
+                    } else {
+                        // Jika data yang diperlukan tidak tersedia, beri respons yang sesuai
+                        echo "Data yang diperlukan tidak lengkap.";
+                    }
                 } else {
-                    echo "Form tidak disubmit atau tombol simpan tidak ditekan";
+                    // Beri tanggapan jika metode permintaan bukan POST
+                    echo "Form tidak disubmit atau metode permintaan yang tidak valid.";
                 }
             } catch (\Throwable $th) {
+                // Tangani pengecualian jika terjadi kesalahan
                 echo 'Error: ' . $th->getMessage();
             }
         }

@@ -37,10 +37,6 @@
 
 
     <form action="<?= BASEURL; ?>/pengecekan/add" method="POST">
-
-
-
-
         <table id="data-table">
             <thead>
                 <tr>
@@ -52,8 +48,8 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if (isset($_POST['id_matkul']) && isset($_POST['id_frekuensi']) && isset($_POST['id_tugas'])) : ?>
-                    <?php if (isset($data['pengecekan']) && !empty($data['pengecekan'])) : ?>
+                    <?php if (isset($_POST['id_matkul']) && isset($_POST['id_frekuensi']) && isset($_POST['id_tugas'])) : ?>
+                    <?php if (isset($data['pengecekan']) && !empty($data['pengecekan'])) : ?> 
                         <?php $i = 1;
                         foreach ($data['pengecekan'] as $pengecekan) : ?>
                             <tr>
@@ -70,9 +66,7 @@
                                         <option value="<?php $pengecekan['status_pengecekan']?>">Pilih</option>
                                         <option value="ACC">ACC</option>
                                         <option value="Revisi">Revisi</option>
-
                                     </select>
-
                                 </td>
                                 <td class="tgl_pengecekan"><?= $pengecekan['tgl_pengecekan']; ?></td>
 
@@ -83,19 +77,16 @@
                             </tr>
                         <?php endif; ?>
                     <?php endif; ?>
-
-
             </tbody>
         </table>
         <div style="margin-top: 30px;">
             <button onclick="editPengecekan(<?php echo $pengecekan['id_tugas']; ?>)">Edit</button>
             <button type="submit" name="simpan">Simpan</button>
-
-
         </div>
+    </form>
 
 </div>
 
 
-</form>
+
 
