@@ -123,6 +123,15 @@ class Praktikan_model {
         
         
 
+        public function getJumlahPraktikan() {
+            try {
+                $this->db->query('SELECT COUNT(*) AS jumlah FROM ' . $this->table);
+                $result = $this->db->single();
+                return $result['jumlah'];
+            } catch (\Throwable $th) {
+                echo 'Error: ' . $th->getMessage();
+            }
+        }
         
 }
 

@@ -43,6 +43,7 @@ body {
 
 .sidebar {
     border: solid 0 #51A8B1 ;
+    background-color: #fff;
     color: #000000;
     height: 100vh;
     width: 200px;

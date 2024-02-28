@@ -1,7 +1,7 @@
 <?php
     // session_start();
 class Controller {
-    public function __construct(){
+     public function __construct(){
         $this->db = new Database();
         session_start();
     }
@@ -20,12 +20,5 @@ class Controller {
         return new $model;
     }
 
-    // public function checkLogin() {
-    //     // Sesuaikan ini dengan cara Anda mengecek login
-    //     if(!isset($_SESSION['nama'])){
-    //         // Redirect atau proses login sesuai kebutuhan
-    //         header('Location: ' . BASEURL . '/login');
-    //         exit();
-    //     }
-    // }
+
 }

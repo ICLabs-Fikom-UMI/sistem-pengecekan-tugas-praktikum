@@ -4,6 +4,7 @@ class Database {
     private $user = DB_USER;
     private $password = DB_PASS;
     private $dbname = DB_NAME;
+    
     private $dbh;
     private $stmt;
 
@@ -61,5 +62,9 @@ class Database {
 
     public function lastInsertId() {
         return $this->dbh->lastInsertId();
+    }
+
+    public function rowCount(){
+        return $this->stmt->rowCount();
     }
 }

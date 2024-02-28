@@ -171,6 +171,17 @@ class Frekuensi_model {
             echo 'Error: ' . $th->getMessage();
         }
     }
+
+    public function getJumlahFrekuensi() {
+        try {
+            $this->db->query('SELECT COUNT(*) AS jumlah FROM ' . $this->table);
+            $result = $this->db->single();
+            return $result['jumlah'];
+        } catch (\Throwable $th) {
+            echo 'Error: ' . $th->getMessage();
+        }
+    }
+    
     
     
     

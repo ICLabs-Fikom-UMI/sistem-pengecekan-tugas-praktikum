@@ -3,74 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratorium Dashboard</title>
+    <title>Document</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
         .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #526D82;
-            text-align: center;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 20px;
-            margin-top: 20px;
-        }
-        .card {
-            background-color: #526D82;
-            color: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        }
-        .card h2 {
-            margin-top: 0;
-        }
-        .card p {
-            margin: 0;
-            font-size: 24px;
-            font-weight: bold;
-        }
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 25%;
+  margin: 10px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.card p {
+  margin-bottom: 0;
+}
+
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Laboratorium Dashboard</h1>
-        <div class="grid-container">
-            <div class="card">
-                <h2>Jumlah Mata Kuliah</h2>
-                <p>25</p>
-            </div>
-            <div class="card">
-                <h2>Jumlah Dosen</h2>
-                <p>10</p>
-            </div>
-            <div class="card">
-                <h2>Jumlah Asisten</h2>
-                <p>15</p>
-            </div>
-            <div class="card">
-                <h2>Frekuensi</h2>
-                <p>Weekly</p>
-            </div>
-            <div class="card">
-                <h2>Jumlah Praktikan</h2>
-                <p>100</p>
-            </div>
+        <div class="header">
+          <h1>Statistik Website</h1>
         </div>
-    </div>
+        <div class="content">
+          <div class="card">
+            <h2>Kunjungan</h2>
+            <p>40% - 29.703 Pengguna</p>
+          </div>
+          <div class="card">
+            <h2>Unik</h2>
+            <p>20% - 24.093 Pengguna Unik</p>
+          </div>
+          <div class="card">
+            <h2>Tampilan Halaman</h2>
+            <p>60% - 78.706 Tampilan</p>
+          </div>
+          <div class="card">
+            <h2>Pengguna Baru</h2>
+            <p>80% - 22.123 Pengguna</p>
+          </div>
+          <div class="card">
+            <h2>Rasio Pentalan</h2>
+            <p>40.15%</p>
+          </div>
+        </div>
+      </div>
+      
 </body>
 </html>
