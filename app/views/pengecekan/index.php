@@ -48,35 +48,40 @@
                 </tr>
             </thead>
             <tbody>
-                    <?php if (isset($_POST['id_matkul']) && isset($_POST['id_frekuensi']) && isset($_POST['id_tugas'])) : ?>
-                    <?php if (isset($data['pengecekan']) && !empty($data['pengecekan'])) : ?> 
+                <?php if (isset($_POST['id_matkul']) && isset($_POST['id_frekuensi']) && isset($_POST['id_tugas'])) : ?>
+                    <?php if (isset($data['pengecekan']) && !empty($data['pengecekan'])) : ?>
+                        <!-- Mulai menampilkan tabel jika ada data dari database -->
                         <?php $i = 1;
-                        foreach ($data['pengecekan'] as $pengecekan) : ?>
+                        foreach ($data['pengecekan'] as $ii => $pengecekan) : ?>
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <td>
-                                    <input type="text" name="id_praktikan" id="id_praktikan" value="<?= $pengecekan['id_praktikan']?>">
-                                    <input type="text" name="id_tugas" id="id_tugas" value="<?= $pengecekan['id_tugas']?>">
+                                    <input type="hidden" name="id_praktikan<?= $ii ?>" id="id_praktikan" value="<?= $pengecekan['id_praktikan'] ?>">
+                                    <input type="hidden" name="id_tugas<?= $ii ?>" id="id_tugas" value="<?= $pengecekan['id_tugas'] ?>">
                                     <?= $pengecekan['nim_praktikan']; ?>
                                 </td>
                                 <td><?= $pengecekan['nama_praktikan']; ?></td>
                                 <td>
-                                    <select name="status" class="status-dropdown" id="status_<?php echo $pengecekan['id_pengecekan']; ?>" onchange="updatePengecekan(this)">
+                                    <select name="status<?= $ii ?>" class="status-dropdown" id="status_<?php echo $pengecekan['id_pengecekan']; ?>" onchange="updatePengecekan(this)">
                                         <option value="" disabled selected style="display:none;">Pilih</option>
-                                        <option value="<?php $pengecekan['status_pengecekan']?>">Pilih</option>
+                                        <option value="<?php $pengecekan['status_pengecekan'] ?>">Pilih</option>
                                         <option value="ACC">ACC</option>
                                         <option value="Revisi">Revisi</option>
                                     </select>
                                 </td>
                                 <td class="tgl_pengecekan"><?= $pengecekan['tgl_pengecekan']; ?></td>
-
-                            <?php endforeach; ?>
-                        <?php else : ?>
-                            <tr>
-                                <td colspan="5">Tidak ada data yang tersedia.</td>
                             </tr>
-                        <?php endif; ?>
+                        <?php endforeach; ?>
+                        <!-- Akhir dari tabel -->
+                        <input type="hidden" name="jumlah" value="<?= $ii + 1 ?>">
+                    <?php else : ?>
+                        <!-- Jika tidak ada data dari database -->
+                        <tr>
+                            <td colspan="5">Tidak ada data yang tersedia.</td>
+                        </tr>
                     <?php endif; ?>
+                <?php endif; ?>
+
             </tbody>
         </table>
         <div style="margin-top: 30px;">
@@ -86,7 +91,3 @@
     </form>
 
 </div>
-
-
-
-

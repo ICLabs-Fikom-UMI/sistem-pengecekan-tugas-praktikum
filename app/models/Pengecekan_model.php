@@ -34,24 +34,50 @@ class Pengecekan_model {
     }
     
 
-    public function addPengecekan($data, $tgl) {
+    // public function addPengecekan($data, $tgl) {
+    //     try {
+    //         // Query SQL untuk memasukkan data ke dalam tabel
+    //         $this->db->query("INSERT INTO trx_pengecekan (id_praktikan, id_tugas, status_pengecekan, tgl_pengecekan)
+    //         VALUES (:id_praktikan, :id_tugas, :status_pengecekan, :tgl_pengecekan)");
+            
+    //         // Bind nilai ke parameter dalam query
+    //         $this->db->bind(':id_praktikan', $_POST['id_praktikan']);
+    //         $this->db->bind(':id_tugas', $_POST['id_tugas']);
+    //         $this->db->bind(':status_pengecekan', $_POST['status']);
+    //         $this->db->bind(':tgl_pengecekan', $tgl);
+            
+    //         // Eksekusi query
+    //         $this->db->execute();
+    //     } catch (\Throwable $th) {
+    //         echo 'Error: ' . $th->getMessage();
+    //     }
+    // }
+
+    public function addPengecekan($data, $tgl, $i) {
         try {
-            // Query SQL untuk memasukkan data ke dalam tabel
+            // Prepare the SQL query for insertion
+            // var_dump($data);
             $this->db->query("INSERT INTO trx_pengecekan (id_praktikan, id_tugas, status_pengecekan, tgl_pengecekan)
             VALUES (:id_praktikan, :id_tugas, :status_pengecekan, :tgl_pengecekan)");
-            
-            // Bind nilai ke parameter dalam query
-            $this->db->bind(':id_praktikan', $_POST['id_praktikan']);
-            $this->db->bind(':id_tugas', $_POST['id_tugas']);
-            $this->db->bind(':status_pengecekan', $_POST['status']);
-            $this->db->bind(':tgl_pengecekan', $tgl);
-            
-            // Eksekusi query
-            $this->db->execute();
+    
+            // Loop through each data row and execute the query
+            // foreach ($data as $row) {
+                // Bind parameters for the current row
+                $this->db->bind(':id_praktikan', $data['id_praktikan' . $i]);
+                $this->db->bind(':id_tugas', $data['id_tugas'. $i]);
+                $this->db->bind(':status_pengecekan', $data['status'. $i]);
+                $this->db->bind(':tgl_pengecekan', $tgl);
+    
+                // Execute the query for the current row
+                $this->db->execute();
+            // }
+    
+            // echo "Data berhasil dimasukkan ke dalam database.";
         } catch (\Throwable $th) {
             echo 'Error: ' . $th->getMessage();
         }
     }
+    
 
    
     

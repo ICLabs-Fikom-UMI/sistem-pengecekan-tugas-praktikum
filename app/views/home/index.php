@@ -57,29 +57,29 @@
     </div>
     <div class="containers" style="display: flex;gap:10px">
         <div class="container1" style="width:50%;border:1px solid #ccc;border-radius:5px;padding:10px;">
-        <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>NIM Asisten</th>
-                <th>Nama Asisten</th>
-                <!-- <th>Kelas</th>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>NIM Asisten</th>
+                        <th>Nama Asisten</th>
+                        <!-- <th>Kelas</th>
                 <th>Prodi</th>                -->
-            </tr>
-        </thead>
-        <tbody>
-        <?php $i = 1;
-        foreach ($data['asisten'] as $asisten): ?>
-        <tr>
-            <td><?= $i++ ?></td>
-            <td><?= $asisten['nim_asisten']; ?></td>
-            <td><?= $asisten['nama_asisten']; ?></td>
-            <!-- <td><?= $asisten['kelas']; ?></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $i = 1;
+                    foreach ($data['asisten'] as $asisten) : ?>
+                        <tr>
+                            <td><?= $i++ ?></td>
+                            <td><?= $asisten['nim_asisten']; ?></td>
+                            <td><?= $asisten['nama_asisten']; ?></td>
+                            <!-- <td><?= $asisten['kelas']; ?></td>
             <td><?= $asisten['prodi']; ?></td> -->
-        </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
 
         </div>
         <!-- KALENDER -->
